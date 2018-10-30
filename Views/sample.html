@@ -1,0 +1,86 @@
+<!-- What I want to do 
+1. Have the "energy bar" be more visible like the #myBar, and have it be green
+2. Have it set up so that when a key is pressed the bar goes down.
+3. Input the character that we will play with and all key movements.
+4. Make a class for energy or create some type of hierarchy.
+-->
+<html>
+<title>FRUPAL</title>
+<body onkeyup='getKeyAndMove(event)'>
+	<img id="mario" src="https://mbtskoudsalg.com/images/mario-background-png-8.png" height="32px" width="32px"/>
+</body>
+<h1 style="color:blue">Frupal</h1>
+<progress id="Energy" value="100" max="100" ></progress>
+
+<script src="../scripts/sample.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<style>
+#energyBar{
+	width: 100%;
+	background-color: #ddd;
+}
+#myBar{
+	width: 10%;
+	height: 30px;
+	background-color: #4CAF50;
+	text-align: center;	
+	line-height: 30px;
+	color: white;
+}
+</style>
+<div id="energyBar">
+	<div id="myBar">10</div>
+</div>
+
+<br>
+<progress value="20" min="0" id="energy"></progress>
+<button onclick="decrement">Lower</button>
+<button onclick="increment">Raise</button>
+<script>
+	var count = 0;
+	function decrement(){
+		count = count - 10;
+		document.getElementById("energy").value = count;
+	}
+	function increment(){
+	count = count + 10;
+	document.getElementById("energy").value = count;
+}
+	
+</script>				
+-->
+</html>
+
+<!--
+<script>
+	function move(){
+		var elem = document.getElementById("myBar");
+		var width = 1;
+		var id = setInterval(frame, 10);
+		function frame() {
+			if(width >= 100){
+				clearInterval(id);
+			}else{
+				width++;
+				elem.style.width = width + '%';
+				elem.innerHTML = width * 1 + '%';
+			}
+		}
+	}
+</script>				
+-->
+
+
