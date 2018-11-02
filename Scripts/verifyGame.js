@@ -2,20 +2,17 @@
 
 <script>
 
-/*localStorage.setItem("mapName", "Sample Frupal Map");
-localStorage.setItem("mapSize", 25);
-localStorage.setItem("heroPosition", JSON.stringify([22,12]));
-localStorage.setItem("energy", 103);
-localStorage.setItem("money", 1000);
-localStorage.setItem("inventory", JSON.stringify(["Axe", "Axe", "Shears", "Pretty Rock"]));
-localStorage.setItem("tiles", JSON.stringify([[12,12,1,1,"None"],[13,12,0,1,"Tree"],[14,12,0,2,"Diamonds"]]));
-*/
+
 
 	
 /*checks gamestate variables in localstorage for validity. returns false if any required gamestate variables
 are not present on local storage or are in an invalid format, and shows an alert specifying where it found a problem. 
 if it returns true, everything in localStorage is present, parsable, and in bounds... but no guarentee that its working 
 as intended.
+
+
+note about position: hero position and tiles are located by their XY coordinates. [0,0] is the top left corner of the map,
+and [size-1,size-1] is the bottom right.
 
 for reference: here is basic info about all elements required for valid gamestate and the formats they must be stored as:
 
@@ -34,6 +31,18 @@ in this function by changing numTerrains value
 tiles[4]: string specifying object, if any, present in tile. "None" specifies no object present. note that a valid
 tile containing "Diamonds" MUST exist in order for the game state to be valid - this tile must be found to win the game*/
 
+
+/*localStorage.setItem("mapName", "Sample Frupal Map");
+localStorage.setItem("mapSize", 25);
+localStorage.setItem("heroPosition", JSON.stringify([22,12]));
+localStorage.setItem("energy", 103);
+localStorage.setItem("money", 1000);
+localStorage.setItem("inventory", JSON.stringify(["Axe", "Axe", "Shears", "Pretty Rock"]));
+localStorage.setItem("tiles", JSON.stringify([[12,12,1,1,"None"],[13,12,0,1,"Tree"],[14,12,0,2,"Diamonds"]]));
+*/
+	
+	
+	
 function isValidState() { 
 
 	var numTerrains = 5; //not sure how many different valid terrain types there will be, adjust if needed
