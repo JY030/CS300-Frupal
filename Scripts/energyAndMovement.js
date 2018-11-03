@@ -1,5 +1,3 @@
-energy = document.getElementById("Energy");
-
 var starttime;
 function loadCharacter() {
   character = document.getElementById('mario');
@@ -30,7 +28,7 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
 }
  
 // switch statement based on key pressed => which direction to move
-function getKeyAndMove(input) {				
+document.addEventListener('keyup', function (input) {				
   var keyCode = (input.keyCode);
   if(energy.value == 0) {
      if(!alert('You ran out of energy!')){window.location.reload();}
@@ -77,10 +75,7 @@ function getKeyAndMove(input) {
       });
       break;						
   }
-}
-
-window.onload = loadCharacter;
-
+});
 
 
 /*

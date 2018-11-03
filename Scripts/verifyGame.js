@@ -1,7 +1,5 @@
 //11/1/2018 Johnny Neckar
-
-<script>
-
+	
 /*localStorage.setItem("mapName", "Sample Frupal Map");
 localStorage.setItem("mapSize", 25);
 localStorage.setItem("heroPosition", JSON.stringify([22,12]));
@@ -118,7 +116,3 @@ function isValidState() {
 
 	return true;			
 }
-
-
-
-</script>
