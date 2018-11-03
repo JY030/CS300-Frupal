@@ -1,11 +1,23 @@
-var starttime;
+var starttime; // don't worry about this
+var moving = false; // don't worry about this
+var spawnLeft = 32; // pixels left you want character to spawn at
+var spawnTop = 32; // pixels top ...var moving = false;
+var speed = 200; // don't mess
+var movementDistance = 32; // how far character moves, in pixels
+var edgeTop = 1 + spawnTop; // if characer coordinates falls below this number he is transported to the other side
+var edgeBottom = 256; // bottom map bound
+var edgeLeft = 1 + spawnLeft; // left map bound
+var edgeRight = 256; // right map bound
+window.addEventListener('keyup', getKeyAndMove, false); // event for getting keys pressed
+
 function loadCharacter() {
-  character = document.getElementById('mario');
-  character.style.position = 'absolute';
-  character.style.left = '250px';
-  character.style.top = '150px';
+  character = document.getElementById('mario'); // loads character in
+  character.style.position = 'absolute'; // dw about this
+  character.style.left = parseInt(spawnLeft) + 'px'; // spawn coordinates, x 
+  character.style.top = parseInt(spawnTop) + 'px'; // spawn coordinates, y
 }
- 
+
+// dw about this
 function moveit(timestamp, el, dist, duration, pxs, dir) {
     // if browser doesn't support requestAnimationFrame, generate timestamp using Date:
     var timestamp = timestamp || new Date().getTime();
@@ -23,56 +35,64 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
     if (runtime < duration) { // if duration not met yet
         requestAnimationFrame(function(timestamp) { // call requestAnimationFrame again with parameters
             moveit(timestamp, el, dist, duration, pxs, dir);
-        })
+        });
     }
 }
  
 // switch statement based on key pressed => which direction to move
-document.addEventListener('keyup', function (input) {				
+function getKeyAndMove(input) {	
+  // holds key value of key pressed
   var keyCode = (input.keyCode);
-  if(energy.value == 0) {
-     if(!alert('You ran out of energy!')){window.location.reload();}
-  }
+  // stops the user from spamming
+  if(moving) { return; }
+  else {
+    moving = true;
+    setTimeout(function() { moving = false; }, speed) }
   switch(keyCode) {
     case 37: //left arrow key
+      // bounds for left edge of map
       energy.value -= 1;
-      if(parseInt(character.style.left) < 1) {
-        character.style.left = '550px';
-      }       
-      requestAnimationFrame(function(timestamp) {
-        starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
-        moveit(timestamp, character, -50, 100, character.style.left, 'LR') // 50px over .2 seconds
-      });
-      break;
-    case 38: //Up arrow key
-      energy.value -= 1;
-      if(parseInt(character.style.top) < 1) {
-        character.style.top = '550px';
+      if(parseInt(character.style.left) < edgeLeft) {
+        character.style.left = parseInt(edgeRight + movementDistance) + 'px'; // allows for 1 'move' in
       }
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
-        moveit(timestamp, character, -50, 100, character.style.top, 'UD'); // 50px over .2 seconds
+        moveit(timestamp, character, -movementDistance, speed, character.style.left, 'LR'); // 50px over .2 seconds
+      });
+      break;
+    case 38: //Up arrow key
+      // bounds for top edge of map
+      energy.value -= 1;
+      if(parseInt(character.style.top) < edgeTop) {
+        character.style.top = parseInt(edgeBottom + movementDistance) + 'px'; // allows for 1 'move' in 
+      }
+      requestAnimationFrame(function(timestamp) {
+        starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
+        moveit(timestamp, character, -movementDistance, speed, character.style.top, 'UD'); // 50px over .2 seconds
       });
       break;
     case 39: //right arrow key
-      energy.value -= 1; 	
-      if(parseInt(character.style.left) > 499) {
-        character.style.left = '-50px';
+      // bounds for right edge of map
+      energy.value -= 1;
+      if(parseInt(character.style.left) > (edgeRight - 1)) {
+        character.style.left = parseInt(spawnLeft + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
       }      
       requestAnimationFrame(function(timestamp) {
-        starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
-        moveit(timestamp, character, 50, 100, character.style.left, 'LR') // 50px over .2 seconds
+        starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
+        moveit(timestamp, character, movementDistance, speed, character.style.left, 'LR'); // 50px over .2 seconds
       });
       break;
     case 40: //down arrow key
+      // bounds for bottom edge of map
       energy.value -= 1;
-      if(parseInt(character.style.top) > 499) {
-        character.style.top = '-50px';
+      if(parseInt(character.style.top) > (edgeBottom - 1)) {
+        character.style.top = parseInt(spawnTop + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
       }
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime();
-        moveit(timestamp, character, 50, 100, character.style.top, 'UD'); // 50px over .2 seconds
+        moveit(timestamp, character, movementDistance, speed, character.style.top, 'UD'); // 50px over .2 seconds
       });
       break;						
   }
-});
+}
+
