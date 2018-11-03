@@ -41,6 +41,8 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
  
 // switch statement based on key pressed => which direction to move
 function getKeyAndMove(input) {	
+  if(energy.value == 0){
+    if(!(alert('You ran out of energy!')){window.location.reload();}
   // holds key value of key pressed
   var keyCode = (input.keyCode);
   // stops the user from spamming
