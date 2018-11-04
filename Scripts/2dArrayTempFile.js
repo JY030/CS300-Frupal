@@ -11,8 +11,10 @@ window.onload = function() {
 		}]
 	)
 	
-	energy = document.getElementById("Energy");
-	loadCharacter();
-	
 	loadFromLocal();
+	
+	energyBar = document.getElementById("Energy");
+	energyBar.value = energy;
+	energyBar.max = energy;
+	loadCharacter();
 }

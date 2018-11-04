@@ -41,7 +41,7 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
  
 // switch statement based on key pressed => which direction to move
 function getKeyAndMove(input) {	
-  if(energy.value == 0){
+  if(energyBar.value == 0){
     if(!(alert('You ran out of energy!'))){window.location.reload();}
   }
   // holds key value of key pressed
@@ -54,7 +54,7 @@ function getKeyAndMove(input) {
   switch(keyCode) {
     case 37: //left arrow key
       // bounds for left edge of map
-      energy.value -= 1;
+      energyBar.value -= 1;
       if(parseInt(character.style.left) < edgeLeft) {
         character.style.left = parseInt(edgeRight + movementDistance) + 'px'; // allows for 1 'move' in
       }
@@ -65,7 +65,7 @@ function getKeyAndMove(input) {
       break;
     case 38: //Up arrow key
       // bounds for top edge of map
-      energy.value -= 1;
+      energyBar.value -= 1;
       if(parseInt(character.style.top) < edgeTop) {
         character.style.top = parseInt(edgeBottom + movementDistance) + 'px'; // allows for 1 'move' in 
       }
@@ -76,7 +76,7 @@ function getKeyAndMove(input) {
       break;
     case 39: //right arrow key
       // bounds for right edge of map
-      energy.value -= 1;
+      energyBar.value -= 1;
       if(parseInt(character.style.left) > (edgeRight - 1)) {
         character.style.left = parseInt(spawnLeft + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
       }      
@@ -87,7 +87,7 @@ function getKeyAndMove(input) {
       break;
     case 40: //down arrow key
       // bounds for bottom edge of map
-      energy.value -= 1;
+      energyBar.value -= 1;
       if(parseInt(character.style.top) > (edgeBottom - 1)) {
         character.style.top = parseInt(spawnTop + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
       }
