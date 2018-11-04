@@ -1,5 +1,5 @@
 window.onload = function() {
-	myFunction(
+	loadMap(
 		[{
 			"display": "#"
 		},
@@ -12,5 +12,7 @@ window.onload = function() {
 	)
 	
 	energy = document.getElementById("Energy");
-	loadCharacter()
+	loadCharacter();
+	
+	loadFromLocal();
 }
