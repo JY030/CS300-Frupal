@@ -45,7 +45,7 @@ function isValidState() {
 		return false;
 		}
 
-	var checkPosition = JSON.parse(localStorage.getItem("heroPosition"));
+	var checkPosition = JSON.parse(localStorage.getItem("heroPosition")).split(',').map(Number);//Maps to numbers from string
 	if (checkPosition[0] == null || checkPosition[1] == null || Math.max(...checkPosition) >= checkSize 
 		|| Math.min(...checkPosition) < 0) {
 		alert("Error: Invalid game state - hero out of bounds");
@@ -65,6 +65,7 @@ function isValidState() {
 		}
 		
 	var checkInventory = JSON.parse(localStorage.getItem("inventory"));//Everything in here should be strings
+	checkInventory = JSON.parse(checkInventory);//Because it was string of a json for some reason?
 	if (checkInventory === undefined) {
 		alert("Error: Invalid game state - unable to read inventory");
 		return false;
@@ -77,6 +78,7 @@ function isValidState() {
 		}
 	
 	var checkTiles = JSON.parse(localStorage.getItem("tiles"));
+	checkTiles = JSON.parse(checkTiles);//Because it was string of a json for some reason?
 	
 	var hasDiamonds = false;
 	
