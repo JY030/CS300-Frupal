@@ -11,10 +11,16 @@ var edgeRight = 256; // right map bound
 window.addEventListener('keyup', getKeyAndMove, false); // event for getting keys pressed
 
 function loadCharacter() {
-  character = document.getElementById('mario'); // loads character in
-  character.style.position = 'absolute'; // dw about this
-  character.style.left = parseInt(spawnLeft) + 'px'; // spawn coordinates, x 
-  character.style.top = parseInt(spawnTop) + 'px'; // spawn coordinates, y
+	character = document.getElementById('mario'); // loads character in
+	character.style.position = 'absolute'; // dw about this
+	character.style.left = (parseInt(spawnLeft) * heroPosition[0] + printThis.offsetLeft) + 'px'; // spawn coordinates, x 
+	character.style.top = (parseInt(spawnTop) * heroPosition[1] + printThis.offsetTop) + 'px'; // spawn coordinates, y
+	
+	//Might move elsewhere. Sets the edges to the border of our box and the mapsize the user chooses
+	edgeTop = printThis.offsetTop;
+	edgeLeft = printThis.offsetLeft;
+	edgeBottom = printThis.offsetTop + (mapSize * 32);
+	edgeRight = printThis.offsetLeft + (mapSize * 32);
 }
 
 // dw about this
@@ -55,8 +61,8 @@ function getKeyAndMove(input) {
     case 37: //left arrow key
       // bounds for left edge of map
       energyBar.value -= 1;
-      if(parseInt(character.style.left) < edgeLeft) {
-        character.style.left = parseInt(edgeRight + movementDistance) + 'px'; // allows for 1 'move' in
+      if(parseInt(character.style.left) <= edgeLeft) {
+        character.style.left = parseInt(edgeRight) + 'px'; // allows for 1 'move' in
       }
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
@@ -66,8 +72,8 @@ function getKeyAndMove(input) {
     case 38: //Up arrow key
       // bounds for top edge of map
       energyBar.value -= 1;
-      if(parseInt(character.style.top) < edgeTop) {
-        character.style.top = parseInt(edgeBottom + movementDistance) + 'px'; // allows for 1 'move' in 
+      if(parseInt(character.style.top) <= edgeTop) {
+        character.style.top = parseInt(edgeBottom) + 'px'; // allows for 1 'move' in 
       }
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
@@ -77,8 +83,10 @@ function getKeyAndMove(input) {
     case 39: //right arrow key
       // bounds for right edge of map
       energyBar.value -= 1;
-      if(parseInt(character.style.left) > (edgeRight - 1)) {
-        character.style.left = parseInt(spawnLeft + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
+	  
+	  //The 32 if becuase this is based on the left side of the hero
+      if((parseInt(character.style.left) + 32) >= (edgeRight)) {
+        character.style.left = parseInt(edgeLeft + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
       }      
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
@@ -88,8 +96,10 @@ function getKeyAndMove(input) {
     case 40: //down arrow key
       // bounds for bottom edge of map
       energyBar.value -= 1;
-      if(parseInt(character.style.top) > (edgeBottom - 1)) {
-        character.style.top = parseInt(spawnTop + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
+	  
+	  //The 32 if becuase this is based on the top side of the hero
+      if((parseInt(character.style.top) + 32) >= (edgeBottom - 1)) {
+        character.style.top = parseInt(edgeTop + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
       }
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime();

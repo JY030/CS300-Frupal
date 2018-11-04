@@ -3,3 +3,38 @@
 	max-height: 256px;
 	border: 1px solid red;
 }
+
+.tileSize {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+}
+
+.water {
+	background-color: lightblue;
+}
+
+.none {
+	background-color: whitesmoke;
+}
+
+.notVisable {
+	background-color: black;
+}
+
+.tree {
+	background-color: green;
+}
+
+.diamonds {
+	background-image: url("http://web.cecs.pdx.edu/~thonnell/Diamond.png");
+	background-size: 32px 32px;
+}
+
+.mountains {
+	background-color: gray;
+}
+
+.grass {
+	background-color: lightgreen;
+}

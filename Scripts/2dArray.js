@@ -76,25 +76,70 @@ function lineofsight(a, rows, cols, playerx,  playery){
 	return a;
 }
 
-var a = create2DArray(8, 8); //creates a 2 dimensional array given row,col
-
-a = lineofsight(a, 8, 8, 1, 1);
-console.log(a); //displays the 2d array in the console
-
 function loadMap(file) {
 	var text = "";
-
-	for(var i = 0; i < a.length; i++){
-		for(var j = 0; j < a[i].length; j++){
-
-		a[i][j].image = file[0].display;
-		text += a[i][j].image;
-
+	
+	loadFromLocal();//Load map for any changes
+	
+	//Create map size and line of sight. 
+	var mapToLoad = create2DArray(mapSize, mapSize);
+	mapToLoad = lineofsight(mapToLoad, mapSize, mapSize, heroPosition[0], heroPosition[1]);
+	
+	//This still needs to address hero lineofsight and not just what the map_file has to offer.
+	//And needs to address Thomas' jewel creations too.
+	for(var i = 0; i < mapToLoad.length; i++){
+		for(var j = 0; j < mapToLoad[i].length; j++){
+			//Do we want the heroPosition to be a "none". This will get overwritten if someone puts in map_file.
+			if (heroPosition[0] == j && heroPosition[1] == i) {
+				mapToLoad[i][j].image = file[0].display;
+			}
+			else {
+				mapToLoad[i][j].image = file[0].display;//Make it a "none" by default?
+				for (var t = 0; t < tiles.length; t++) {
+					//if column = i and row = j and isvisable
+					if (tiles[t][0] == i && tiles[t][1] == j && tiles[t][2] == 1) {
+						if (tiles[t][4] == 'None') {
+							mapToLoad[i][j].image = file[0].display;
+						}
+						
+						else if (tiles[t][4] == 'Diamonds') {
+							mapToLoad[i][j].image = file[2].display;
+						}
+						
+						else if (tiles[t][4] == 'Water') {
+							mapToLoad[i][j].image = file[3].display;
+						}
+						
+						else if (tiles[t][4] == 'Trees') {
+							mapToLoad[i][j].image = file[4].display;
+						}
+						
+						else if (tiles[t][4] == 'Mountains') {
+							mapToLoad[i][j].image = file[5].display;
+						}
+						
+						else if (tiles[t][4] == 'Grass') {
+							mapToLoad[i][j].image = file[6].display;
+						}
+						
+						else {
+							mapToLoad[i][j].image = file[0].display;
+						}
+					}
+					else if (tiles[t][0] == i && tiles[t][1] == j && tiles[t][2] == 0){
+						mapToLoad[i][j].image = file[1].display;//Not Visable
+					}
+				}
+			}
+			text += mapToLoad[i][j].image;
 		}
 		text += '<br>';
 	}
+	//This might load tiles outside the map if someone adds it and makes the map smaller. Needs testing.
+	//We should save the map after making it?
 	
 	var printThis = document.getElementById("printThis");
 	printThis.innerHTML += text;
-	printThis.style.margin = "50px 50px 50px 50px";	
+	printThis.style.height = (mapSize*32)+'px';	
+	printThis.style.width = (mapSize*32)+'px';	
 }
