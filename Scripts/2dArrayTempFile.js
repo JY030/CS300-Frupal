@@ -16,5 +16,6 @@ window.onload = function() {
 	energyBar = document.getElementById("Energy");
 	energyBar.value = energy;
 	energyBar.max = energy;
+	EnergyCount.value = energy;
 	loadCharacter();
 }
