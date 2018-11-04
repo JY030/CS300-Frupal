@@ -81,7 +81,7 @@ var a = create2DArray(8, 8); //creates a 2 dimensional array given row,col
 a = lineofsight(a, 8, 8, 1, 1);
 console.log(a); //displays the 2d array in the console
 
-function myFunction(file) {
+function loadMap(file) {
 	var text = "";
 
 	for(var i = 0; i < a.length; i++){
@@ -95,6 +95,6 @@ function myFunction(file) {
 	}
 	
 	var printThis = document.getElementById("printThis");
-	printThis.innerHTML = text;
+	printThis.innerHTML += text;
 	printThis.style.margin = "50px 50px 50px 50px";	
 }

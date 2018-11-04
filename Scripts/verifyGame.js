@@ -45,8 +45,8 @@ function isValidState() {
 		return false;
 		}
 
-	var checkPosition = JSON.parse(localStorage.getItem("heroPosition"));
-	if (checkPosition[0] == null || checkPosition[1] == null || Math.max(...checkPosition) >= localStorage.getItem("mapSize") 
+	var checkPosition = JSON.parse(localStorage.getItem("heroPosition")).split(',').map(Number);//Maps to numbers from string
+	if (checkPosition[0] == null || checkPosition[1] == null || Math.max(...checkPosition) >= checkSize 
 		|| Math.min(...checkPosition) < 0) {
 		alert("Error: Invalid game state - hero out of bounds");
 		return false;
@@ -58,13 +58,14 @@ function isValidState() {
 		return false;
 		}
 		
-	var checkMoney = Number(localStorage.getItem("money")); 
-	if (checkMoney == null || isNaN(checkMoney) || checkMoney < 1 || !(checkMoney % 1 === 0)) {
+	var checkMoney = Number(localStorage.getItem("money"));
+	if (checkMoney == null || isNaN(checkMoney) || checkMoney < 0 || !(checkMoney % 1 === 0)) {
 		alert("Error: Invalid game state - unable to read money");
 		return false;
 		}
 		
-	var checkInventory = JSON.parse(localStorage.getItem("inventory"));
+	var checkInventory = JSON.parse(localStorage.getItem("inventory"));//Everything in here should be strings
+	checkInventory = JSON.parse(checkInventory);//Because it was string of a json for some reason?
 	if (checkInventory === undefined) {
 		alert("Error: Invalid game state - unable to read inventory");
 		return false;
@@ -77,6 +78,8 @@ function isValidState() {
 		}
 	
 	var checkTiles = JSON.parse(localStorage.getItem("tiles"));
+	checkTiles = JSON.parse(checkTiles);//Because it was string of a json for some reason?
+	
 	var hasDiamonds = false;
 	
 	if (checkTiles == null ) {
@@ -102,7 +105,7 @@ function isValidState() {
 			return false;
 			}
 
-		if ( isNaN(checkTiles[i][3]) || checkTiles[i][3] < 0 || checkTiles[i][3] >= numTerrains) {
+		if ( isNaN(checkTiles[i][3]) || checkTiles[i][3] < 0 || checkTiles[i][3] > numTerrains) {
 			alert("Error: Invalid game state - terrain type invalid, tile:"+i);
 			return false;
 			}
