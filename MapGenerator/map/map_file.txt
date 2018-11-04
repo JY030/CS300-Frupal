@@ -1,21 +1,21 @@
 Sample Frupal Game
 9
-#######
+######################
 4,8
 100
 0
-"Axe"
-"some"
-"new"
-"items"
-"to"
-"have"
-"ok?"
-"Diamond Sword"
-#######
-4,8,1,2,"Mountains"
-3,8,1,0
-5,8,1,2,"Grass"
-3,7,1,4,"Water"
-4,7,1,5,"Trees"
-5,7,1,1,"Diamonds"
+Axe
+some
+new
+items
+to
+have
+ok?
+Diamond Sword
+######################
+4,8,1,2,Mountains
+3,8,1,0,None
+5,8,1,2,Grass
+3,7,1,4,Water
+4,7,1,5,Trees
+5,7,1,1,Diamonds

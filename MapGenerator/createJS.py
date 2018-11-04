@@ -15,7 +15,11 @@ listOfContents.remove(mapName)
 
 mapSize = listOfContents[0]
 listOfContents.remove(mapSize)
-listOfContents.remove('#######')
+
+for i in listOfContents:
+	if (i.startswith('###')):
+			listOfContents.remove(i)
+			break
 
 heroPosition = listOfContents[0]
 listOfContents.remove(heroPosition)
@@ -28,7 +32,7 @@ listOfContents.remove(money)
 
 inventory = []
 for i in listOfContents:
-	if (i == '#######'):
+	if (i.startswith('###')):
 			listOfContents.remove(i)
 			break
 	else:
@@ -38,7 +42,11 @@ newListOfContents = set(listOfContents).difference(set(inventory));
 
 tiles = []
 for i in newListOfContents:
-	tiles.append([i])
+    i = i.split(",")
+    tiles.append(i)
+
+for i in tiles:
+	i[4] = '"' + str(i[4]) + '"'
 
 print(mapName);
 print(mapSize);
@@ -48,7 +56,7 @@ print(money);
 print(inventory);
 print(tiles);
 
-strInventory = str(inventory).replace('\'', '')
+strInventory = str(inventory).replace('\'', '"')
 strTiles = str(tiles).replace('\'', '')
 
 input("Press Enter to continue.")
