@@ -65,5 +65,5 @@ with open('../Views/Index.html', 'r+') as f:
 	ignore = f.readline()
 	originalFile = f.read()
 	f.seek(0)
-	print("<script>localStorage.setItem('mapName', '" + mapName + "'); localStorage.setItem('mapSize', '" + mapSize + "'); localStorage.setItem('heroPosition', JSON.stringify('" + heroPosition + "')); localStorage.setItem('energy', '" + energy + "'); localStorage.setItem('money', '" + money + "'); localStorage.setItem('inventory', JSON.stringify('" + strInventory + "')); localStorage.setItem('tiles', JSON.stringify('" + strTiles + "')); </script>", file=f)
+	print("<script>localStorage.setItem('mapName', '" + mapName + "'); localStorage.setItem('mapSize',", mapSize,"); localStorage.setItem('heroPosition', JSON.stringify([", heroPosition, "])); localStorage.setItem('energy',", energy, "); localStorage.setItem('money',", money, "); localStorage.setItem('inventory', JSON.stringify(", strInventory, ")); localStorage.setItem('tiles', JSON.stringify(", strTiles, ")); </script>", file=f)
 	f.write(originalFile)

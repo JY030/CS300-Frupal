@@ -1,6 +1,6 @@
 # CS300-Frupal
 
-'Content' folder for sprites, CSS files.
+'CSS' folder for CSS files.
 'Scripts' folder for Javascript files.
 'Views' folder for html files.
 
