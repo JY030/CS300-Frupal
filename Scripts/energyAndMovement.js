@@ -36,7 +36,7 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
     }
     else if(dir == 'UD') { // up/down
       el.style.top = (dist * progress).toFixed(2) + 'px';
-      el.style.top = parseInt(pxs) + parseInt(el.style.top) + 'px';    
+      el.style.top = parseInt(pxs) + parseInt(el.style.top) + 'px';  
     }
     if (runtime < duration) { // if duration not met yet
         requestAnimationFrame(function(timestamp) { // call requestAnimationFrame again with parameters
@@ -46,7 +46,7 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
 }
  
 // switch statement based on key pressed => which direction to move
-function getKeyAndMove(input) {	
+function getKeyAndMove(input) {
   if(energyBar.value == 0){
     if(!(alert('You ran out of energy!'))){window.location.reload();}
   }
@@ -67,6 +67,13 @@ function getKeyAndMove(input) {
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
         moveit(timestamp, character, -movementDistance, speed, character.style.left, 'LR'); // 50px over .2 seconds
+		if (-movementDistance < 0) {
+			heroPosition[0] = ((heroPosition[0] - 1 + mapSize) % mapSize); 
+			if (jewelsPosition){
+				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
+			}
+			loadMap(file);
+		}
       });
       break;
     case 38: //Up arrow key
@@ -78,6 +85,13 @@ function getKeyAndMove(input) {
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
         moveit(timestamp, character, -movementDistance, speed, character.style.top, 'UD'); // 50px over .2 seconds
+		if (-movementDistance < 0) {
+			heroPosition[1] = ((heroPosition[1] - 1 + mapSize) % mapSize); 
+			if (jewelsPosition){
+				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
+			}
+			loadMap(file);
+		}
       });
       break;
     case 39: //right arrow key
@@ -91,6 +105,13 @@ function getKeyAndMove(input) {
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
         moveit(timestamp, character, movementDistance, speed, character.style.left, 'LR'); // 50px over .2 seconds
+		if (movementDistance > 0) {
+			heroPosition[0] = ((heroPosition[0] + 1 + mapSize) % mapSize); 
+			if (jewelsPosition){
+				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
+			}
+			loadMap(file);
+		}
       });
       break;
     case 40: //down arrow key
@@ -104,7 +125,14 @@ function getKeyAndMove(input) {
       requestAnimationFrame(function(timestamp) {
         starttime = timestamp || new Date().getTime();
         moveit(timestamp, character, movementDistance, speed, character.style.top, 'UD'); // 50px over .2 seconds
-      });
+		if (movementDistance > 0) {
+			heroPosition[1] = ((heroPosition[1] + 1 + mapSize) % mapSize);
+			if (jewelsPosition){
+				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);	
+			}
+			loadMap(file);
+		}
+	  });
       break;						
   }
 }

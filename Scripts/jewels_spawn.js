@@ -24,27 +24,25 @@ function jewel_visual(coordinate){
 
 function jewel_spawn(pixelx,pixely){
 
-    document.getElementById('Diamond'), src = 'http://web.cecs.pdx.edu/~thonnell/Diamond.png' img = document.createElement('img');
-
-    img.src = src;
-    img.style.position = 'absolute';
-    img.style.left = pixelx;
-    img.style.top = pixely;
+    //document.getElementById('Diamond'), src = 'http://web.cecs.pdx.edu/~thonnell/Diamond.png' img = document.createElement('img');
+    
+    //img.src = src;
+    //img.style.position = 'absolute';
+    //img.style.left = pixelx;
+    //img.style.top = pixely;
 }
 
 function jewel_found(x,y,jx,jy){
 
-
   if (x==jx && y==jy){
-  window.alert("you have found the jewel and won the game");
-  //I wasn't sure if bool is how you wanted the function to check or not, but
-  //returning true means to quit game and returning false means continue,
-  //this should be called every time the character moves to my understanding
-  return true;
+	window.alert("you have found the jewel and won the game");
+	//I wasn't sure if bool is how you wanted the function to check or not, but
+	//returning true means to quit game and returning false means continue,
+	//this should be called every time the character moves to my understanding
+	 return true;
+   }
+   else{
+	 return false;
   }
-  else{
-  return false;
-  }
-
 }
 
