@@ -5,6 +5,9 @@
 function jewel_xy(n){
     //run this twice to get both x and y randomized.
     var x = Math.floor(Math.random() * n);
+	if (x >= mapSize) {
+		x = jewel_xy(n);
+	}
     return x;
 }
 
@@ -22,8 +25,15 @@ function jewel_visual(coordinate){
     
 }
 
-function jewel_spawn(pixelx,pixely){
-
+function jewel_spawn(x,y){
+	
+	for(var i = 0; i < mapToLoad.length; i++){
+		for(var j = 0; j < mapToLoad[i].length; j++){
+				if(mapToLoad[j][i].x == x && mapToLoad[j][i].y == y) {
+					mapToLoad[j][i].image = file[7].display;
+				}
+		}
+	}
     //document.getElementById('Diamond'), src = 'http://web.cecs.pdx.edu/~thonnell/Diamond.png' img = document.createElement('img');
     
     //img.src = src;

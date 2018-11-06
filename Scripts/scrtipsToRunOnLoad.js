@@ -1,32 +1,35 @@
 window.onload = function() {
 	
 	file = [{
-			"display": "<span class=\"tileSize none\"></span>"
+			"display": "<span class=\"tileSize meadow\"></span>"
+		},
+		{
+			"display": "<span class=\"tileSize forest\"></span>"
+		},
+		{
+			"display": "<span class=\"tileSize water\"></span>"
+		},
+		{
+			"display": "<span class=\"tileSize wall\"></span>"
+		},
+		{
+			"display": "<span class=\"tileSize bog\"></span>"
+		},
+		{
+			"display": "<span class=\"tileSize swamp\"></span>"
 		},
 		{
 			"display": "<span class=\"tileSize notVisable\"></span>"
 		},
 		{
 			"display": "<span class=\"tileSize diamonds\"></span>"
-		},
-		{
-			"display": "<span class=\"tileSize water\"></span>"
-		},
-		{
-			"display": "<span class=\"tileSize tree\"></span>"
-		},
-		{
-			"display": "<span class=\"tileSize mountains\"></span>"
-		},
-		{
-			"display": "<span class=\"tileSize grass\"></span>"
 		}];
 	
 	loadFromLocal();
-	
+	mapToLoad = create2DArray(mapSize, mapSize);
+	var x = 10;
+	jewelsPosition = [jewel_xy(x), jewel_xy(x)];
 	loadMap(file);
-	
-	jewelsPosition = [];
 	
 	energyBar = document.getElementById("Energy");
 	energyBar.value = energy;

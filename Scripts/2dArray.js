@@ -80,7 +80,7 @@ function loadMap(file) {
 	var text = "";
 	
 	//Create map size and line of sight. 
-	var mapToLoad = create2DArray(mapSize, mapSize);
+	
 	mapToLoad = lineofsight(mapToLoad, mapSize, mapSize, heroPosition[0], heroPosition[1]);
 	
 	//This still needs to address hero lineofsight and not just what the map_file has to offer.
@@ -88,40 +88,39 @@ function loadMap(file) {
 	for(var i = 0; i < mapToLoad.length; i++){
 		for(var j = 0; j < mapToLoad[i].length; j++){
 			if (mapToLoad[j][i].visibility == 0) {
-				mapToLoad[j][i].image = file[1].display;
+				mapToLoad[j][i].image = file[6].display;
 			}
 			else {
 				var isInTilesList = false;
 				for (var t = 0; t < tiles.length; t++) {
 					if (isInTilesList == false && tiles[t][0] == mapToLoad[j][i].x && tiles[t][1] == mapToLoad[j][i].y) {
-						if (tiles[t][4] == 'None') {
+						if (tiles[t][3] == 0) {
 							mapToLoad[j][i].image = file[0].display;
 							isInTilesList = true;
 						}
 						
-						else if (tiles[t][4] == 'Diamonds') {
-							mapToLoad[j][i].image = file[2].display;
-							jewelsPosition = [j, i];
+						else if (tiles[t][3] == 1) {
+							mapToLoad[j][i].image = file[1].display;
 							isInTilesList = true;
 						}
 						
-						else if (tiles[t][4] == 'Water') {
+						else if (tiles[t][3] == 2) {
+							mapToLoad[j][i].image = file[2].display;
+							isInTilesList = true;
+						}
+						
+						else if (tiles[t][3] == 3) {
 							mapToLoad[j][i].image = file[3].display;
 							isInTilesList = true;
 						}
 						
-						else if (tiles[t][4] == 'Trees') {
+						else if (tiles[t][3] == 4) {
 							mapToLoad[j][i].image = file[4].display;
 							isInTilesList = true;
 						}
 						
-						else if (tiles[t][4] == 'Mountains') {
+						else if (tiles[t][3] == 5) {
 							mapToLoad[j][i].image = file[5].display;
-							isInTilesList = true;
-						}
-						
-						else if (tiles[t][4] == 'Grass') {
-							mapToLoad[j][i].image = file[6].display;
 							isInTilesList = true;
 						}
 						
@@ -130,11 +129,11 @@ function loadMap(file) {
 							isInTilesList = true;
 						}
 					}
-
 				}
 				if (isInTilesList == false){
 					mapToLoad[j][i].image = file[0].display;
 				}
+				jewel_spawn(jewelsPosition[0], jewelsPosition[1]);
 			}
 			text += mapToLoad[j][i].image;
 		}
