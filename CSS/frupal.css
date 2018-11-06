@@ -10,12 +10,12 @@
 	height: 32px;
 }
 
-.water {
+.bog {
 	background-color: lightblue;
 }
 
 .none {
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 .notVisable {

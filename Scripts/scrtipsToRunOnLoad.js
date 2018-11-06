@@ -1,6 +1,6 @@
 window.onload = function() {
-	loadMap(
-		[{
+	
+	file = [{
 			"display": "<span class=\"tileSize none\"></span>"
 		},
 		{
@@ -20,10 +20,13 @@ window.onload = function() {
 		},
 		{
 			"display": "<span class=\"tileSize grass\"></span>"
-		}]
-	)
+		}];
 	
 	loadFromLocal();
+	
+	loadMap(file);
+	
+	jewelsPosition = [];
 	
 	energyBar = document.getElementById("Energy");
 	energyBar.value = energy;
