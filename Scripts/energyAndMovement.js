@@ -60,7 +60,8 @@ function getKeyAndMove(input) {
   switch(keyCode) {
     case 37: //left arrow key
       // bounds for left edge of map
-      energyBar.value -= 1;
+      energyBar.value -= 1; p.innerHTML = energyBar.value;
+	  
       if(parseInt(character.style.left) <= edgeLeft) {
         character.style.left = parseInt(edgeRight) + 'px'; // allows for 1 'move' in
       }
@@ -78,7 +79,8 @@ function getKeyAndMove(input) {
       break;
     case 38: //Up arrow key
       // bounds for top edge of map
-      energyBar.value -= 1;
+      energyBar.value -= 1; p.innerHTML = energyBar.value;
+	  
       if(parseInt(character.style.top) <= edgeTop) {
         character.style.top = parseInt(edgeBottom) + 'px'; // allows for 1 'move' in 
       }
@@ -96,7 +98,7 @@ function getKeyAndMove(input) {
       break;
     case 39: //right arrow key
       // bounds for right edge of map
-      energyBar.value -= 1;
+      energyBar.value -= 1; p.innerHTML = energyBar.value;
 	  
 	  //The 32 if becuase this is based on the left side of the hero
       if((parseInt(character.style.left) + 32) >= (edgeRight)) {
@@ -116,7 +118,7 @@ function getKeyAndMove(input) {
       break;
     case 40: //down arrow key
       // bounds for bottom edge of map
-      energyBar.value -= 1;
+      energyBar.value -= 1; p.innerHTML = energyBar.value;
 	  
 	  //The 32 if becuase this is based on the top side of the hero
       if((parseInt(character.style.top) + 32) >= (edgeBottom - 1)) {
