@@ -10,20 +10,61 @@
 	height: 32px;
 }
 
-.bog {
-	background-color: lightblue;
-}
-
-.none {
-	background-color: white;
-}
-
 .notVisable {
 	background-color: black;
 }
 
+/* Terrain types */
+.meadow {
+	background-color: lightgreen;
+}
+
+.forest {
+	background-color: green;
+}
+
+.water {
+	background-color: lightblue;
+}
+
+.wall {
+	background-color: gray;
+}
+
+.bog {
+	background-color: sandybrown;
+}
+
+.swamp {
+	background-color: brown;
+}
+
+/* End Terrian types */
+
+/* Content */
+
 .tree {
 	background-color: green;
+}
+
+.boulder {
+	background-color: green;
+}
+
+.blackberry-bush {
+	background-color: gray;
+}
+
+.power-bar {
+	background-color: gray;
+}
+
+.type1-treasure {
+	background-color: gray;
+}
+
+.type2-treasure {
+	background-color: gray;
 }
 
 .diamonds {
@@ -31,10 +72,48 @@
 	background-size: 32px 32px;
 }
 
-.mountains {
+.clue {
 	background-color: gray;
 }
 
-.grass {
+.hatchet {
+	background-color: gray;
+}
+
+.axe {
+	background-color: gray;
+}
+
+.chainsaw {
 	background-color: lightgreen;
 }
+
+.chisel {
+	background-color: lightgreen;
+}
+
+.sledge {
+	background-color: lightgreen;
+}
+
+.jackhammer {
+	background-color: lightgreen;
+}
+
+.machete {
+	background-color: lightgreen;
+}
+
+.shears {
+	background-color: lightgreen;
+}
+
+.binoculars {
+	background-color: lightgreen;
+}
+
+.none {
+	background-color: white;
+}
+
+/* End Content */
