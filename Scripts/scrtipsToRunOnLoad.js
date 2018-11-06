@@ -34,6 +34,7 @@ window.onload = function() {
 	energyBar = document.getElementById("Energy");
 	energyBar.value = energy;
 	energyBar.max = energy;
-	//EnergyCount.value = energy;
+	p = document.getElementById("EnergyCount");
+	p.innerHTML = energy;
 	loadCharacter();
 }

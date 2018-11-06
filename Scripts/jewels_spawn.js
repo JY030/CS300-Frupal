@@ -49,7 +49,8 @@ function jewel_found(x,y,jx,jy){
 	//I wasn't sure if bool is how you wanted the function to check or not, but
 	//returning true means to quit game and returning false means continue,
 	//this should be called every time the character moves to my understanding
-	 return true;
+	 window.location.reload();
+	  return true;
    }
    else{
 	 return false;
