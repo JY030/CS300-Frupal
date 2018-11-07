@@ -16,27 +16,33 @@
 
 /* Terrain types */
 .meadow {
-	background-color: lightgreen;
+	background-image: url("../Assets/Meadow.png");
+	background-size: 32px 32px;
 }
 
 .forest {
-	background-color: green;
+	background-image: url("../Assets/Forest.png");
+	background-size: 32px 32px;
 }
 
 .water {
-	background-color: lightblue;
+	background-image: url("../Assets/Water.png");
+	background-size: 32px 32px;
 }
 
 .wall {
-	background-color: gray;
+	background-image: url("../Assets/Wall.png");
+	background-size: 32px 32px;
 }
 
 .bog {
-	background-color: sandybrown;
+	background-image: url("../Assets/Bog.png");
+	background-size: 32px 32px;
 }
 
 .swamp {
-	background-color: brown;
+	background-image: url("../Assets/Swamp.png");
+	background-size: 32px 32px;
 }
 
 /* End Terrian types */
@@ -44,15 +50,18 @@
 /* Content */
 
 .tree {
-	background-color: green;
+	background-image: url("../Assets/Trees.png");
+	background-size: 32px 32px;
 }
 
 .boulder {
-	background-color: green;
+	background-image: url("../Assets/Boulder.png");
+	background-size: 32px 32px;
 }
 
 .blackberry-bush {
-	background-color: gray;
+	background-image: url("../Assets/Bush.png");
+	background-size: 32px 32px;
 }
 
 .power-bar {
@@ -68,7 +77,7 @@
 }
 
 .diamonds {
-	background-image: url("http://web.cecs.pdx.edu/~thonnell/Diamond.png");
+	background-image: url("../Assets/Jewel.png");
 	background-size: 32px 32px;
 }
 
