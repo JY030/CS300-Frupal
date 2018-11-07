@@ -5,7 +5,8 @@ function cell(xc, yc, v, i) {
 	this.x = xc;
 	this.y = yc;
 	this.visibility = v;
-	this.image = i;
+	this.image = i; //Terrain Image
+	this.content = ''; //Obstacles
 }
 
 //Function: create2DArray
@@ -79,19 +80,22 @@ function lineofsight(a, rows, cols, playerx,  playery){
 function loadMap(file) {
 	var text = "";
 	
-	//Create map size and line of sight. 
-	
 	mapToLoad = lineofsight(mapToLoad, mapSize, mapSize, heroPosition[0], heroPosition[1]);
 	
-	//This still needs to address hero lineofsight and not just what the map_file has to offer.
-	//And needs to address Thomas' jewel creations too.
+	//This is fun. With the custom map we made, go through each Column and then each Row of that Column.
+	//If it is not visibile, just set add the notVisable string to the "image".
+	//If it is visibile, check that Row and then start comparing to our list of tiles.
+	//After going through the list of tiles and adding strings to "image", set the jewel we randomly made to "content"
+	//Create a <span> for the [x,y] we setup. If "content" is not empty, we need to add another span so "content" will show over "image".
+	//Add a <br> after the end of a Row.
+	//Update "printThis" on the index.html to have our map. 
 	for(var i = 0; i < mapToLoad.length; i++){
 		for(var j = 0; j < mapToLoad[i].length; j++){
 			if (mapToLoad[j][i].visibility == 0) {
-				mapToLoad[j][i].image = file[6].display;
+				mapToLoad[j][i].image = file[6].display; //Add the "notVisable" class
 			}
 			else {
-				var isInTilesList = false;
+				var isInTilesList = false; //This tells us we had found a tile, so don't look at more.
 				for (var t = 0; t < tiles.length; t++) {
 					if (isInTilesList == false && tiles[t][0] == mapToLoad[j][i].x && tiles[t][1] == mapToLoad[j][i].y) {
 						if (tiles[t][3] == 0) {
@@ -135,7 +139,12 @@ function loadMap(file) {
 				}
 				jewel_spawn(jewelsPosition[0], jewelsPosition[1]);
 			}
-			text += mapToLoad[j][i].image;
+			if (mapToLoad[j][i].content != '') {
+				text += '<span class=\"tileSize ' + mapToLoad[j][i].image + '\"><span class=\"tileSize ' + mapToLoad[j][i].content + '\"></span></span>';
+			}
+			else {
+				text += '<span class=\"tileSize ' + mapToLoad[j][i].image + '\"></span>';
+			}
 		}
 		text += '<br>';
 	}
