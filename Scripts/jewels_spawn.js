@@ -43,17 +43,16 @@ function jewel_spawn(x,y){
 }
 
 function jewel_found(x,y,jx,jy){
-
   if (x==jx && y==jy){
-	window.alert("you have found the jewel and won the game");
-	//I wasn't sure if bool is how you wanted the function to check or not, but
-	//returning true means to quit game and returning false means continue,
-	//this should be called every time the character moves to my understanding
-	 window.location.reload();
-	  return true;
+    setTimeout( function () {window.alert("you have found the jewel and won the game"); }, 300);
+    //I wasn't sure if bool is how you wanted the function to check or not, but
+    //returning true means to quit game and returning false means continue,
+    //this should be called every time the character moves to my understanding
+    setTimeout( function() { window.location.reload(); }, 500);
+      return true;
    }
    else{
-	 return false;
+     return false;
   }
 }
 

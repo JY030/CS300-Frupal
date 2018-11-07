@@ -49,6 +49,7 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
 function getKeyAndMove(input) {
   if(energyBar.value == 0){
     if(!(alert('You ran out of energy!'))){window.location.reload();}
+	return;
   }
   // holds key value of key pressed
   var keyCode = (input.keyCode);
@@ -56,7 +57,7 @@ function getKeyAndMove(input) {
   if(moving) { return; }
   else {
     moving = true;
-    setTimeout(function() { moving = false; }, speed) }
+    setTimeout(function() { moving = false; }, speed + 50) }
   switch(keyCode) {
     case 37: //left arrow key
       // bounds for left edge of map
