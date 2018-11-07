@@ -1,28 +1,28 @@
 window.onload = function() {
 	
 	file = [{
-			"display": "<span class=\"tileSize meadow\"></span>"
+			"display": "meadow"
 		},
 		{
-			"display": "<span class=\"tileSize forest\"></span>"
+			"display": "forest"
 		},
 		{
-			"display": "<span class=\"tileSize water\"></span>"
+			"display": "water"
 		},
 		{
-			"display": "<span class=\"tileSize wall\"></span>"
+			"display": "wall"
 		},
 		{
-			"display": "<span class=\"tileSize bog\"></span>"
+			"display": "bog"
 		},
 		{
-			"display": "<span class=\"tileSize swamp\"></span>"
+			"display": "swamp"
 		},
 		{
-			"display": "<span class=\"tileSize notVisable\"></span>"
+			"display": "notVisable"
 		},
 		{
-			"display": "<span class=\"tileSize diamonds\"></span>"
+			"display": "diamonds"
 		}];
 	
 	loadFromLocal();

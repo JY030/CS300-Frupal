@@ -30,7 +30,7 @@ function jewel_spawn(x,y){
 	for(var i = 0; i < mapToLoad.length; i++){
 		for(var j = 0; j < mapToLoad[i].length; j++){
 				if(mapToLoad[j][i].x == x && mapToLoad[j][i].y == y) {
-					mapToLoad[j][i].image = file[7].display;
+					mapToLoad[j][i].content = file[7].display;
 				}
 		}
 	}

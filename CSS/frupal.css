@@ -14,6 +14,10 @@
 	background-color: black;
 }
 
+.notVisable > span {
+	display: none;
+}
+
 /* Terrain types */
 .meadow {
 	background-image: url("../Assets/Meadow.png");
