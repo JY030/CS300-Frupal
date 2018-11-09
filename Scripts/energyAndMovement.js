@@ -74,7 +74,7 @@ function getKeyAndMove(input) {
 			if (jewelsPosition){
 				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 			}
-			loadMap(file);
+			updateTile();
 		}
       });
       break;
@@ -93,7 +93,7 @@ function getKeyAndMove(input) {
 			if (jewelsPosition){
 				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 			}
-			loadMap(file);
+			updateTile();
 		}
       });
       break;
@@ -113,7 +113,7 @@ function getKeyAndMove(input) {
 			if (jewelsPosition){
 				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 			}
-			loadMap(file);
+			updateTile();
 		}
       });
       break;
@@ -133,7 +133,7 @@ function getKeyAndMove(input) {
 			if (jewelsPosition){
 				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);	
 			}
-			loadMap(file);
+			updateTile();
 		}
 	  });
       break;						

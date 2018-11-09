@@ -91,59 +91,58 @@ function loadMap(file) {
 	//Update "printThis" on the index.html to have our map. 
 	for(var i = 0; i < mapToLoad.length; i++){
 		for(var j = 0; j < mapToLoad[i].length; j++){
-			if (mapToLoad[j][i].visibility == 0) {
-				mapToLoad[j][i].image = file[6].display; //Add the "notVisable" class
-			}
-			else {
-				var isInTilesList = false; //This tells us we had found a tile, so don't look at more.
-				for (var t = 0; t < tiles.length; t++) {
-					if (isInTilesList == false && tiles[t][0] == mapToLoad[j][i].x && tiles[t][1] == mapToLoad[j][i].y) {
-						if (tiles[t][3] == 0) {
-							mapToLoad[j][i].image = file[0].display;
-							isInTilesList = true;
-						}
-						
-						else if (tiles[t][3] == 1) {
-							mapToLoad[j][i].image = file[1].display;
-							isInTilesList = true;
-						}
-						
-						else if (tiles[t][3] == 2) {
-							mapToLoad[j][i].image = file[2].display;
-							isInTilesList = true;
-						}
-						
-						else if (tiles[t][3] == 3) {
-							mapToLoad[j][i].image = file[3].display;
-							isInTilesList = true;
-						}
-						
-						else if (tiles[t][3] == 4) {
-							mapToLoad[j][i].image = file[4].display;
-							isInTilesList = true;
-						}
-						
-						else if (tiles[t][3] == 5) {
-							mapToLoad[j][i].image = file[5].display;
-							isInTilesList = true;
-						}
-						
-						else {
-							mapToLoad[j][i].image = file[0].display;
-							isInTilesList = true;
-						}
+			
+			mapToLoad[j][i].image += file[6].display + " "; //Add the "notVisable" class
+			
+			var isInTilesList = false; //This tells us we had found a tile, so don't look at more.
+			for (var t = 0; t < tiles.length; t++) {
+				if (isInTilesList == false && tiles[t][0] == mapToLoad[j][i].x && tiles[t][1] == mapToLoad[j][i].y) {
+					if (tiles[t][3] == 0) {
+						mapToLoad[j][i].image += file[0].display;
+						isInTilesList = true;
+					}
+					
+					else if (tiles[t][3] == 1) {
+						mapToLoad[j][i].image += file[1].display;
+						isInTilesList = true;
+					}
+					
+					else if (tiles[t][3] == 2) {
+						mapToLoad[j][i].image += file[2].display;
+						isInTilesList = true;
+					}
+					
+					else if (tiles[t][3] == 3) {
+						mapToLoad[j][i].image += file[3].display;
+						isInTilesList = true;
+					}
+					
+					else if (tiles[t][3] == 4) {
+						mapToLoad[j][i].image += file[4].display;
+						isInTilesList = true;
+					}
+					
+					else if (tiles[t][3] == 5) {
+						mapToLoad[j][i].image += file[5].display;
+						isInTilesList = true;
+					}
+					
+					else {
+						mapToLoad[j][i].image += file[0].display;
+						isInTilesList = true;
 					}
 				}
-				if (isInTilesList == false){
-					mapToLoad[j][i].image = file[0].display;
-				}
-				jewel_spawn(jewelsPosition[0], jewelsPosition[1]);
 			}
+			if (isInTilesList == false){
+				mapToLoad[j][i].image += file[0].display;
+			}
+			jewel_spawn(jewelsPosition[0], jewelsPosition[1]);
+			
 			if (mapToLoad[j][i].content != '') {
-				text += '<span class=\"tileSize ' + mapToLoad[j][i].image + '\"><span class=\"tileSize ' + mapToLoad[j][i].content + '\"></span></span>';
+				text += '<span id=\"x' + mapToLoad[j][i].x + 'y' + mapToLoad[j][i].y + '\" class=\"tileSize ' + mapToLoad[j][i].image + '\"><span class=\"tileSize ' + mapToLoad[j][i].content + '\"></span></span>';
 			}
 			else {
-				text += '<span class=\"tileSize ' + mapToLoad[j][i].image + '\"></span>';
+				text += '<span id=\"x' + mapToLoad[j][i].x + 'y' + mapToLoad[j][i].y + '\" class=\"tileSize ' + mapToLoad[j][i].image + '\"></span>';
 			}
 		}
 		text += '<br>';
@@ -152,5 +151,21 @@ function loadMap(file) {
 	var printThis = document.getElementById("printThis");
 	printThis.innerHTML = text;
 	printThis.style.height = (mapSize*32)+'px';	
-	printThis.style.width = (mapSize*32)+'px';	
+	printThis.style.width = (mapSize*32)+'px';
+	
+	updateTile();
+}
+
+function updateTile(){
+	mapToLoad = lineofsight(mapToLoad, mapSize, mapSize, heroPosition[0], heroPosition[1]);
+	
+	for(var i = 0; i < mapToLoad.length; i++){
+		for(var j = 0; j < mapToLoad[i].length; j++){
+			if (mapToLoad[j][i].visibility == 1) {
+				var idToFind = "x" + mapToLoad[j][i].x.toString().concat("y" + mapToLoad[j][i].y.toString());
+				var foundSpan = document.getElementById(idToFind);
+				foundSpan.classList.remove(file[6].display);
+			}
+		}
+	}
 }
