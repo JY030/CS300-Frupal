@@ -139,10 +139,10 @@ function loadMap(file) {
 			jewel_spawn(jewelsPosition[0], jewelsPosition[1]);
 			
 			if (mapToLoad[j][i].content != '') {
-				text += '<span id=\"' + mapToLoad[j][i].x + '' + mapToLoad[j][i].y + '\" class=\"tileSize ' + mapToLoad[j][i].image + '\"><span class=\"tileSize ' + mapToLoad[j][i].content + '\"></span></span>';
+				text += '<span id=\"x' + mapToLoad[j][i].x + 'y' + mapToLoad[j][i].y + '\" class=\"tileSize ' + mapToLoad[j][i].image + '\"><span class=\"tileSize ' + mapToLoad[j][i].content + '\"></span></span>';
 			}
 			else {
-				text += '<span id=\"' + mapToLoad[j][i].x + '' + mapToLoad[j][i].y + '\" class=\"tileSize ' + mapToLoad[j][i].image + '\"></span>';
+				text += '<span id=\"x' + mapToLoad[j][i].x + 'y' + mapToLoad[j][i].y + '\" class=\"tileSize ' + mapToLoad[j][i].image + '\"></span>';
 			}
 		}
 		text += '<br>';
@@ -162,7 +162,7 @@ function updateTile(){
 	for(var i = 0; i < mapToLoad.length; i++){
 		for(var j = 0; j < mapToLoad[i].length; j++){
 			if (mapToLoad[j][i].visibility == 1) {
-				var idToFind = mapToLoad[j][i].x.toString().concat(mapToLoad[j][i].y.toString());
+				var idToFind = "x" + mapToLoad[j][i].x.toString().concat("y" + mapToLoad[j][i].y.toString());
 				var foundSpan = document.getElementById(idToFind);
 				foundSpan.classList.remove(file[6].display);
 			}
