@@ -8,7 +8,7 @@ var edgeTop = 1 + spawnTop; // if characer coordinates falls below this number h
 var edgeBottom = 256; // bottom map bound
 var edgeLeft = 1 + spawnLeft; // left map bound
 var edgeRight = 256; // right map bound
-window.addEventListener('keyup', getKeyAndMove, false); // event for getting keys pressed
+window.addEventListener('keydown', getKeyAndMove, false); // event for getting keys pressed
 
 function loadCharacter() {
 	character = document.getElementById('mario'); // loads character in
@@ -47,6 +47,7 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
  
 // switch statement based on key pressed => which direction to move
 function getKeyAndMove(input) {
+  input.preventDefault()
   if(energyBar.value == 0){
     if(!(alert('You ran out of energy!'))){window.location.reload();}
 	return;
