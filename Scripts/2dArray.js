@@ -48,7 +48,7 @@ function lineofsight(a, rows, cols, playerx,  playery){
 	
 	if (playery-1 >= 0)
 	{
-			a[playerx][playery-1].visibility = 1;
+		a[playerx][playery-1].visibility = 1;
 	}
 	
 	if (playerx >= 0)
@@ -78,94 +78,147 @@ function lineofsight(a, rows, cols, playerx,  playery){
 }
 
 function loadMap(file) {
-	var text = "";
-	
-	mapToLoad = lineofsight(mapToLoad, mapSize, mapSize, heroPosition[0], heroPosition[1]);
-	
-	//This is fun. With the custom map we made, go through each Column and then each Row of that Column.
-	//If it is not visibile, just set add the notVisable string to the "image".
-	//If it is visibile, check that Row and then start comparing to our list of tiles.
-	//After going through the list of tiles and adding strings to "image", set the jewel we randomly made to "content"
-	//Create a <span> for the [x,y] we setup. If "content" is not empty, we need to add another span so "content" will show over "image".
-	//Add a <br> after the end of a Row.
-	//Update "printThis" on the index.html to have our map. 
-	for(var i = 0; i < mapToLoad.length; i++){
-		for(var j = 0; j < mapToLoad[i].length; j++){
-			
-			mapToLoad[j][i].image += file[6].display + " "; //Add the "notVisable" class
-			
+	//Load up the map with everything from the tile set.
+	mapToLoad.forEach(function (row) {
+		row.forEach(function (cell) {
 			var isInTilesList = false; //This tells us we had found a tile, so don't look at more.
-			for (var t = 0; t < tiles.length; t++) {
-				if (isInTilesList == false && tiles[t][0] == mapToLoad[j][i].x && tiles[t][1] == mapToLoad[j][i].y) {
-					if (tiles[t][3] == 0) {
-						mapToLoad[j][i].image += file[0].display;
+			tiles.forEach(function (tile) {
+				//Go through tile list and fill up each cell if we find a match.
+				if (isInTilesList == false && tile[0] == cell.x && tile[1] == cell.y) {
+					if (tile[3] == 0) {
+						cell.image += file[0].display;
 						isInTilesList = true;
 					}
 					
-					else if (tiles[t][3] == 1) {
-						mapToLoad[j][i].image += file[1].display;
+					else if (tile[3] == 1) {
+						cell.image += file[1].display;
 						isInTilesList = true;
 					}
 					
-					else if (tiles[t][3] == 2) {
-						mapToLoad[j][i].image += file[2].display;
+					else if (tile[3] == 2) {
+						cell.image += file[2].display;
 						isInTilesList = true;
 					}
 					
-					else if (tiles[t][3] == 3) {
-						mapToLoad[j][i].image += file[3].display;
+					else if (tile[3] == 3) {
+						cell.image += file[3].display;
 						isInTilesList = true;
 					}
 					
-					else if (tiles[t][3] == 4) {
-						mapToLoad[j][i].image += file[4].display;
+					else if (tile[3] == 4) {
+						cell.image += file[4].display;
 						isInTilesList = true;
 					}
 					
-					else if (tiles[t][3] == 5) {
-						mapToLoad[j][i].image += file[5].display;
+					else if (tile[3] == 5) {
+						cell.image += file[5].display;
 						isInTilesList = true;
 					}
 					
 					else {
-						mapToLoad[j][i].image += file[0].display;
+						cell.image += file[0].display;
 						isInTilesList = true;
 					}
+					cell.content = tile[4]; //Put obstacle in cell
+					cell.visibility = tile[2]; //Put if visable on cell from tile list
 				}
-			}
-			if (isInTilesList == false){
-				mapToLoad[j][i].image += file[0].display;
-			}
-			jewel_spawn(jewelsPosition[0], jewelsPosition[1]);
+			});
 			
-			if (mapToLoad[j][i].content != '') {
-				text += '<span id=\"x' + mapToLoad[j][i].x + 'y' + mapToLoad[j][i].y + '\" class=\"tileSize ' + mapToLoad[j][i].image + '\"><span class=\"tileSize ' + mapToLoad[j][i].content + '\"></span></span>';
+			//Can't find in tile list. Make a meadow that is not visable.
+			if (isInTilesList == false){
+				cell.image += file[0].display;
+				cell.visibility = 0; 
 			}
-			else {
-				text += '<span id=\"x' + mapToLoad[j][i].x + 'y' + mapToLoad[j][i].y + '\" class=\"tileSize ' + mapToLoad[j][i].image + '\"></span>';
-			}
-		}
-		text += '<br>';
-	}
+		});
+	});
 	
-	var printThis = document.getElementById("printThis");
-	printThis.innerHTML = text;
-	printThis.style.height = (mapSize*32)+'px';	
-	printThis.style.width = (mapSize*32)+'px';
-	
-	updateTile();
+	//Spawn the jewel now overwritting what obstacle is in that cell.
+	jewel_spawn(jewelsPosition[0], jewelsPosition[1]);
 }
 
-function updateTile(){
-	mapToLoad = lineofsight(mapToLoad, mapSize, mapSize, heroPosition[0], heroPosition[1]);
+function traverseTiles() {
 	
+}
+
+function showVisibleMap() {
+	var text = "";
+	
+	//Create spans for the size of map window we can see at all times.
 	for(var i = 0; i < mapToLoad.length; i++){
-		for(var j = 0; j < mapToLoad[i].length; j++){
+		if (i < sizeOfMapWindow) {
+			for(var j = 0; j < mapToLoad[i].length; j++){
+				
+				if (j < sizeOfMapWindow)
+				{
+					text += '<span id=\"x' + mapToLoad[j][i].x + 'y' + mapToLoad[j][i].y + '\" class=\"tileSize ' + mapToLoad[j][i].image + '\"><span class=\"tileSize ' + mapToLoad[j][i].content + '\"></span></span>';
+				}
+			}
+			text += '<br>';
+		}
+	}
+	
+	//Print those spans onto the page.
+	var printThis = document.getElementById("printThis");
+	printThis.innerHTML = text;
+	printThis.style.height = (sizeOfMapWindow*32)+'px';	
+	printThis.style.width = (sizeOfMapWindow*32)+'px';
+}
+
+function updateTile() {
+	//update all tiles for visibility
+	var heroX = heroPosition[0];
+	if (heroPosition[0] >= mapSize) {
+		heroX = 0;
+	}
+	if (heroPosition[0] < 0) {
+		heroX = mapSize - 1;
+	}
+	
+	var heroY = heroPosition[1];
+	if (heroPosition[1] >= mapSize) {
+		heroY = 0;
+	}
+	if (heroPosition[1] < 0 ) {
+		heroY = mapSize - 1;
+	}
+	mapToLoad = lineofsight(mapToLoad, sizeOfMapWindow, sizeOfMapWindow, 9, 9);
+	
+	for(var i = 0; i < sizeOfMapWindow; i++){
+		for(var j = 0; j < sizeOfMapWindow; j++){
+			var idToFind = "x" + j.toString().concat("y" + i.toString());
+			var foundSpan = document.getElementById(idToFind);
+			foundSpan.classList = mapToLoad[j][i].image;
+			foundSpan.firstChild.classList = mapToLoad[j][i].content;
 			if (mapToLoad[j][i].visibility == 1) {
-				var idToFind = "x" + mapToLoad[j][i].x.toString().concat("y" + mapToLoad[j][i].y.toString());
-				var foundSpan = document.getElementById(idToFind);
 				foundSpan.classList.remove(file[6].display);
+			}
+			if (mapToLoad[j][i].visibility == 0) {
+				foundSpan.classList.add(file[6].display);
 			}
 		}
 	}
+}
+
+function shiftTiles(direction) {
+	if (direction == "left") {
+			var p = mapToLoad.pop();
+			mapToLoad.unshift(p);
+	}
+	
+	if (direction == "right") {
+		var s = mapToLoad.shift();
+		mapToLoad.push(s);
+	}
+	
+	mapToLoad.forEach(function (row) {
+		if (direction == "up") {
+			var p = row.pop();
+			row.unshift(p);
+		}
+		
+		if (direction == "down") {
+			var s = row.shift();
+			row.push(s);
+		}
+	});
 }

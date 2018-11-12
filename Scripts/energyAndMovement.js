@@ -11,12 +11,12 @@ var edgeRight = 256; // right map bound
 window.addEventListener('keydown', getKeyAndMove, false); // event for getting keys pressed
 
 function loadCharacter() {
-	character = document.getElementById('mario'); // loads character in
+	character = document.getElementById('hero'); // loads character in
 	character.style.position = 'absolute'; // dw about this
-	character.style.left = (parseInt(spawnLeft) * heroPosition[0] + printThis.offsetLeft) + 'px'; // spawn coordinates, x 
-	character.style.top = (parseInt(spawnTop) * heroPosition[1] + printThis.offsetTop) + 'px'; // spawn coordinates, y
+	character.style.left = (parseInt(spawnLeft) * 9 + printThis.offsetLeft) + 'px'; // spawn coordinates, x center of map
+	character.style.top = (parseInt(spawnTop) * 9 + printThis.offsetTop) + 'px'; // spawn coordinates, y center of map
 	
-	//Might move elsewhere. Sets the edges to the border of our box and the mapsize the user chooses
+	//Might move elsewhere. Sets the edges to the border of our box and the mapSize the user chooses
 	edgeTop = printThis.offsetTop;
 	edgeLeft = printThis.offsetLeft;
 	edgeBottom = printThis.offsetTop + (mapSize * 32);
@@ -26,23 +26,23 @@ function loadCharacter() {
 // dw about this
 function moveit(timestamp, el, dist, duration, pxs, dir) {
     // if browser doesn't support requestAnimationFrame, generate timestamp using Date:
-    var timestamp = timestamp || new Date().getTime();
-    var runtime = timestamp - starttime; 
-    var progress = runtime / duration;
-    progress = Math.min(progress, 1);
-    if(dir == 'LR') { // left/right
-      el.style.left = (dist * progress).toFixed(2) + 'px';
-      el.style.left = parseInt(pxs) + parseInt(el.style.left) + 'px';
-    }
-    else if(dir == 'UD') { // up/down
-      el.style.top = (dist * progress).toFixed(2) + 'px';
-      el.style.top = parseInt(pxs) + parseInt(el.style.top) + 'px';  
-    }
-    if (runtime < duration) { // if duration not met yet
-        requestAnimationFrame(function(timestamp) { // call requestAnimationFrame again with parameters
-            moveit(timestamp, el, dist, duration, pxs, dir);
-        });
-    }
+    // var timestamp = timestamp || new Date().getTime();
+    // var runtime = timestamp - starttime; 
+    // var progress = runtime / duration;
+    // progress = Math.min(progress, 1);
+    // if(dir == 'LR') { // left/right
+		// el.style.left = (dist * progress).toFixed(2) + 'px';
+		// el.style.left = parseInt(pxs) + parseInt(el.style.left) + 'px';
+    // }
+    // else if(dir == 'UD') { // up/down
+		// el.style.top = (dist * progress).toFixed(2) + 'px';
+		// el.style.top = parseInt(pxs) + parseInt(el.style.top) + 'px';  
+    // }
+    // if (runtime < duration) { // if duration not met yet
+        // requestAnimationFrame(function(timestamp) { // call requestAnimationFrame again with parameters
+            // moveit(timestamp, el, dist, duration, pxs, dir);
+        // });
+    // }
 }
  
 // switch statement based on key pressed => which direction to move
@@ -75,6 +75,7 @@ function getKeyAndMove(input) {
 			if (jewelsPosition){
 				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 			}
+			shiftTiles("left");
 			updateTile();
 		}
       });
@@ -94,6 +95,7 @@ function getKeyAndMove(input) {
 			if (jewelsPosition){
 				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 			}
+			shiftTiles("up");
 			updateTile();
 		}
       });
@@ -114,6 +116,7 @@ function getKeyAndMove(input) {
 			if (jewelsPosition){
 				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 			}
+			shiftTiles("right");
 			updateTile();
 		}
       });
@@ -134,6 +137,7 @@ function getKeyAndMove(input) {
 			if (jewelsPosition){
 				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);	
 			}
+			shiftTiles("down");
 			updateTile();
 		}
 	  });
