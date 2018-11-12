@@ -4,14 +4,15 @@
 	border: 1px solid red;
 }
 
-.tileSize {
+span {
 	display: inline-block;
 	width: 32px;
 	height: 32px;
 }
 
 .notVisable {
-	background-color: black;
+	background-color: black !important;
+	background-image: none !important;
 }
 
 .notVisable > span {
@@ -63,7 +64,7 @@
 	background-size: 32px 32px;
 }
 
-.blackberry-bush {
+.bush {
 	background-image: url("../Assets/Bush.png");
 	background-size: 32px 32px;
 }
@@ -126,7 +127,7 @@
 }
 
 .none {
-	background-color: white;
+	
 }
 
 /* End Content */
