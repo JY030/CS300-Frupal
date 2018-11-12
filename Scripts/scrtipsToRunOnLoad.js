@@ -46,12 +46,24 @@ window.onload = function() {
 	//Create spans for the size of map window we can see at all times.
 	showVisibleMap();
 	
-	//These for loops will position the map to x9y9 
-	for (var i = 0; i < heroPosition[0] + 7; i++) {
-		shiftTiles("up");
+	//These for loops will position the map to x9y9
+	var xShift = heroPosition[0] <= 9 ? (-heroPosition[0] + 9) : (heroPosition[0] - 9);
+	var yShift = heroPosition[1] <= 9 ? (-heroPosition[1]) + 9 : (heroPosition[1] - 9);
+	for (var i = 0; i < yShift; i++) {
+		if (yShift <= 9) {
+			shiftTiles("up");
+		}
+		else {
+			shiftTiles("down");
+		}
 	}
-	for (var i = 0; i < heroPosition[1] + 7; i++) {
-		shiftTiles("left");
+	for (var i = 0; i < xShift; i++) {
+		if (xShift <= 9) {
+			shiftTiles("left");
+		}
+		else {
+			shiftTiles("right");
+		}
 	}
 	
 	//update all tiles for visibility
