@@ -40,7 +40,7 @@ window.onload = function() {
 	//Randomize the jewel in the bounds of the mapsize
 	jewelsPosition = [jewel_xy(mapSize), jewel_xy(mapSize)];
 	
-	//Load up or map with the tile list.
+	//Load up our map with the tile list.
 	loadMap(file);
 	
 	//Create spans for the size of map window we can see at all times.
