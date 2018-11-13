@@ -69,6 +69,8 @@ window.onload = function() {
 	//update all tiles for visibility
 	updateTile();
 	
+	whiffles = document.getElementById("WhiffleCount");
+	whiffles.innerHTML = 100; // if there is whiffle value in localStorage this should equal that
 	energyBar = document.getElementById("Energy");
 	energyBar.value = energy;
 	energyBar.max = energy;
