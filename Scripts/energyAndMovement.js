@@ -66,9 +66,9 @@ function getKeyAndMove(input) {
 	case 37: //left arrow key
 		// bounds for left edge of map
 		
+		input.preventDefault();
 		if (!isWaterCollision(heroPosition[0] - 1, heroPosition[1])) {
 			energyBar.value -= 1; p.innerHTML = energyBar.value;
-			input.preventDefault();
 			if(parseInt(character.style.left) <= edgeLeft) {
 				character.style.left = parseInt(edgeRight) + 'px'; // allows for 1 'move' in
 			}
@@ -90,9 +90,9 @@ function getKeyAndMove(input) {
 	case 38: //Up arrow key
 		// bounds for top edge of map
 		
+		input.preventDefault();
 		if (!isWaterCollision(heroPosition[0], heroPosition[1] - 1)) {
 			energyBar.value -= 1; p.innerHTML = energyBar.value;
-			input.preventDefault();
 			if(parseInt(character.style.top) <= edgeTop) {
 				character.style.top = parseInt(edgeBottom) + 'px'; // allows for 1 'move' in 
 			}
@@ -114,9 +114,9 @@ function getKeyAndMove(input) {
 	case 39: //right arrow key
 		// bounds for right edge of map
 		
+		input.preventDefault();
 		if (!isWaterCollision(heroPosition[0] + 1, heroPosition[1])) {
 			energyBar.value -= 1; p.innerHTML = energyBar.value;
-			input.preventDefault();
 			//The 32 if becuase this is based on the left side of the hero
 			if((parseInt(character.style.left) + 32) >= (edgeRight)) {
 				character.style.left = parseInt(edgeLeft + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
@@ -140,9 +140,9 @@ function getKeyAndMove(input) {
 	case 40: //down arrow key
 		// bounds for bottom edge of map
 		
+		input.preventDefault();
 		if (!isWaterCollision(heroPosition[0], heroPosition[1] + 1)) {
 			energyBar.value -= 1; p.innerHTML = energyBar.value;
-			input.preventDefault();
 			//The 32 if becuase this is based on the top side of the hero
 			if((parseInt(character.style.top) + 32) >= (edgeBottom - 1)) {
 				character.style.top = parseInt(edgeTop + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
