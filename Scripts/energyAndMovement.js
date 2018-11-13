@@ -145,3 +145,17 @@ function getKeyAndMove(input) {
   }
 }
 
+// format to use function: 
+//  whiffles.value = updateWhiffles(whiffles.innerHTML, intToAdd, intToSubtract); whiffles.innerHTML = whiffles.value;
+// ex: add 5: whiffles.value = updateWhiffles(whiffles.innerHTML, 5, 0); whiffles.innerHTML = whiffles.value;
+// format for copy-paste: whiffles.value = updateWhiffles(whiffles.innerHTML, X, X); whiffles.innerHTML = whiffles.value;
+function updateWhiffles(total, add, subtract) {
+	if(parseInt(total)+add-subtract >= 0) {
+		total = parseInt(total) + add - subtract;
+		return total;
+	}
+	else {
+		alert("not enough whiffles");
+		return total;
+	}
+}
