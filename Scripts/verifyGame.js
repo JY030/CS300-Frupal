@@ -120,3 +120,18 @@ function isValidState() {
 
 	return true;			
 }
+
+/*returns string representation of object that exists in specified tile. 
+arguments int x, int y, (xy coordinate of tile), return string
+if tile is not specified by game state, returns "None". 
+assumes arguments are valid, default return of "None" */
+function checkTile(toCheckX, toCheckY) {
+	var tileContains = "None";
+	var allTiles = JSON.parse(localStorage.getItem("tiles"));
+	for (i in allTiles) {
+		if (allTiles[i][0] == toCheckX && allTiles[i][1] == toCheckY) {
+			tileContains = allTiles[i][4];
+		}
+	}
+	return tileContains;
+}
