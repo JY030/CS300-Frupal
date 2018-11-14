@@ -181,7 +181,7 @@ function updateTile() {
 	if (heroPosition[1] < 0 ) {
 		heroY = mapSize - 1;
 	}
-	mapToLoad = lineofsight(mapToLoad, sizeOfMapWindow, sizeOfMapWindow, 9, 9);
+	mapToLoad = lineofsight(mapToLoad, sizeOfMapWindow, sizeOfMapWindow, heroPositionOffset, heroPositionOffset);
 	
 	for(var i = 0; i < sizeOfMapWindow; i++){
 		for(var j = 0; j < sizeOfMapWindow; j++){
