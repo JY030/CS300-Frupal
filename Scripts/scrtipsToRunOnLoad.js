@@ -23,6 +23,21 @@ window.onload = function() {
 		},
 		{
 			"display": "diamonds"
+		},
+		{
+			"display": "chainsaw"
+		},
+		{
+			"display": "jackhammer"
+		},
+		{
+			"display": "chest"
+		},
+		{
+			"display": "shears"
+		},
+		{
+			"display": "power-bar"
 		}];
 	
 	//load all local storage varibles.
