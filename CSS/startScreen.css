@@ -1,0 +1,43 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	background: black;
+}
+
+p {
+	margin: 0;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	font-size: 3vw;
+	font-style: italic;
+	color: dimgray;
+}
+
+#startScreenContainer {
+	background: url("../Assets/StartBackground.png") no-repeat center;
+	background-size: cover;
+	height: 100%;
+}
+
+#flashingText {
+	animation: blinker 5s linear infinite;
+}
+
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
+}
+
+#fadeOut {
+	animation: fadeOut 4s;
+	animation-iteration-count: 1;
+}
+
+@keyframes fadeOut {
+	to {
+		opacity: 0;
+	}
+}
