@@ -126,12 +126,47 @@ arguments int x, int y, (xy coordinate of tile), return string
 if tile is not specified by game state, returns "None". 
 assumes arguments are valid, default return of "None" */
 function checkTile(toCheckX, toCheckY) {
-	var tileContains = "None";
-	var allTiles = JSON.parse(localStorage.getItem("tiles"));
-	for (i in allTiles) {
-		if (allTiles[i][0] == toCheckX && allTiles[i][1] == toCheckY) {
-			tileContains = allTiles[i][4];
+	
+	toCheckX = Math.floor(Number(toCheckX));
+	toCheckY = Math.floor(Number(toCheckY));
+	
+	if (toCheckX < 0 || toCheckX >= mapSize || toCheckY < 0 || toCheckY >= mapSize) {
+		return "Out of bounds";
+	}
+	
+	for (i in mapToLoad) {
+		if (mapToLoad[i][0].x == toCheckX) {
+			for (j in mapToLoad[i]) {
+				if (mapToLoad[i][j].y == toCheckY) {
+					return mapToLoad[i][j].content;
+				}
+			}
 		}
 	}
-	return tileContains;
+	
+	return "checkTile function fail";
+}
+
+/*similar to checkTile function, returns terrain type as string
+instead of object in tile*/
+function checkTileTerrain(toCheckX, toCheckY) {
+	
+	toCheckX = Math.floor(Number(toCheckX));
+	toCheckY = Math.floor(Number(toCheckY));
+	
+	if (toCheckX < 0 || toCheckX >= mapSize || toCheckY < 0 || toCheckY >= mapSize) {
+		return "Out of bounds";
+	}
+	
+	for (i in mapToLoad) {
+		if (mapToLoad[i][0].x == toCheckX) {
+			for (j in mapToLoad[i]) {
+				if (mapToLoad[i][j].y == toCheckY) {
+					return mapToLoad[i][j].image;
+				}
+			}
+		}
+	}
+	
+	return "checkTileTerrain function fail";
 }
