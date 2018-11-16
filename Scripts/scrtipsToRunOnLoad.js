@@ -70,11 +70,11 @@ window.onload = function() {
 	updateTile();
 	
 	whiffles = document.getElementById("WhiffleCount");
-	whiffles.innerHTML = 100; // if there is whiffle value in localStorage this should equal that
+	whiffles.innerHTML += 100; // if there is whiffle value in localStorage this should equal that
 	energyBar = document.getElementById("Energy");
 	energyBar.value = energy;
 	energyBar.max = energy;
 	p = document.getElementById("EnergyCount");
-	p.innerHTML = energy;
+	p.innerHTML += energy;
 	loadCharacter();
 }

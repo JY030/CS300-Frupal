@@ -48,6 +48,7 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
 // switch statement based on key pressed => which direction to move
 function getKeyAndMove(input) {
   input.preventDefault()
+  var obstacle;
   if(energyBar.value == 0){
     if(!(alert('You ran out of energy!'))){window.location.reload();}
 	return;
@@ -62,7 +63,13 @@ function getKeyAndMove(input) {
   switch(keyCode) {
     case 37: //left arrow key
       // bounds for left edge of map
-      energyBar.value -= 1; p.innerHTML = energyBar.value;
+	  obstacle = checkTileObject(x,y)
+	  if(obstacle == "water"){
+		  energyBar.value -= 1; p.innerHTML = energyBar.value;
+		  break;
+	  }
+	  
+     
 	  
       if(parseInt(character.style.left) <= edgeLeft) {
         character.style.left = parseInt(edgeRight) + 'px'; // allows for 1 'move' in
@@ -102,7 +109,7 @@ function getKeyAndMove(input) {
       break;
     case 39: //right arrow key
       // bounds for right edge of map
-      energyBar.value -= 1; p.innerHTML = energyBar.value;
+    //  energyBar.value -= energyCost(checkTileObject(heroPosition[0],heroPosition[1]), checkTileTerrain(heroPosition[0],heroPosition[1]); p.innerHTML = energyBar.value;
 	  
 	  //The 32 if becuase this is based on the left side of the hero
       if((parseInt(character.style.left) + 32) >= (edgeRight)) {
@@ -116,6 +123,7 @@ function getKeyAndMove(input) {
 			if (jewelsPosition){
 				jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 			}
+			energyBar.value -= energyCost(checkTileObject(heroPosition[0],heroPosition[1]), checkTileTerrain(heroPosition[0],heroPosition[1]); p.innerHTML = energyBar.value;
 			shiftTiles("right");
 			updateTile();
 		}

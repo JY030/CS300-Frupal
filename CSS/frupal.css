@@ -3,7 +3,19 @@
 	max-height: 256px;
 	border: 1px solid red;
 }
+#Energy{
+	color: #43b749;
+    background-color: white;
+	border: black solid 1px;
 
+}
+#Energy::-webkit-progress-bar{ background: white;}
+#EnergyCount{
+	display: inline-block;
+    height: 32px;
+    width: 64px;
+    margin-left: 4px;
+}
 span {
 	display: inline-block;
 	width: 32px;
