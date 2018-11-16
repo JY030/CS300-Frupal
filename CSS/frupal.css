@@ -81,15 +81,18 @@ span {
 }
 
 .power-bar {
-	background-color: gray;
+	background-image: url("../Assets/Powerbar.png");
+	background-size: 32px 32px;
 }
 
 .type1-treasure {
-	background-color: gray;
+	background-image: url("../Assets/Chest.png");
+	background-size: 32px 32px;
 }
 
 .type2-treasure {
-	background-color: gray;
+	background-image: url("../Assets/Chest.png");
+	background-size: 32px 32px;
 }
 
 .diamonds {
@@ -110,7 +113,8 @@ span {
 }
 
 .chainsaw {
-	background-color: lightgreen;
+	background-image: url("../Assets/Chainsaw.png");
+	background-size: 32px 32px;
 }
 
 .chisel {
@@ -122,7 +126,8 @@ span {
 }
 
 .jackhammer {
-	background-color: lightgreen;
+	background-image: url("../Assets/Jackhammer.png");
+	background-size: 32px 32px;
 }
 
 .machete {
@@ -130,7 +135,8 @@ span {
 }
 
 .shears {
-	background-color: lightgreen;
+	background-image: url("../Assets/Shears.png");
+	background-size: 32px 32px;
 }
 
 .binoculars {
