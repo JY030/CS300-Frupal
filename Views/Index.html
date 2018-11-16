@@ -1,7 +1,6 @@
 <html>
 <head>
 	<title>FRUPAL</title>
-	<h1 style="color:blue">FRUPAL</h1>
 	<link rel="stylesheet" type="text/css" href="../CSS/frupal.css">
 	<script src="../scripts/saveAndLoad.js"></script>
 	<script src="../scripts/energyAndMovement.js"></script>
@@ -12,10 +11,15 @@
 	<script src="../scripts/waterCollision.js"></script>
 </head>
 <body>
-	<progress id="Energy" value="0" max="0"></progress><span id="EnergyCount"></span>
-	<p id="WhiffleCount" value= "0">Whiffles:</p>
-	<img id="hero" src="../Assets/Player.png" height="32px" width="32px"/>
-	<div id="printThis" align="center" class="mapBorder"></div>
+	<div id="container">
+		<h1 id="title">FRUPAL</h1>
+		<div id="stats">
+			<progress id="Energy" value="0" max="0"></progress><span id="EnergyCount"></span>
+			<p id="WhiffleCount" value= "0">Whiffles:</p>
+		</div>
+		<img id="hero" src="../Assets/Player.png" height="32px" width="32px"/>
+		<div id="printThis" align="center" class="mapBorder"></div>
+	</div>
 	<br><br>
 </body>
 </html>

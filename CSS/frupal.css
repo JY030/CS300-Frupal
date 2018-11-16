@@ -8,16 +8,44 @@ body {
 	background-size: cover;
 }
 
-.mapBorder{
-	border: 1px solid red;
-	margin: 50px 50px;
+#container {
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+#title {
+	color: blue;
+	margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -125%);
+}
+
+#stats {
+	margin: 0;
+    position: absolute;
+    top: 8.5%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+	background-color: darkgray;
+	padding: 10px;
+	border: 1px solid saddlebrown;
+}
+
+.mapBorder{
+	border: 1px solid cadetblue;
+}
+
 #Energy{
 	color: #43b749;
     background-color: white;
 	border: black solid 1px;
 
 }
+
 #Energy::-webkit-progress-bar{ background: white;}
 #EnergyCount{
 	display: inline-block;

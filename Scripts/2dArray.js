@@ -120,11 +120,17 @@ function loadMap(file) {
 						isInTilesList = true;
 					}
 					cell.content = tile[4]; //Put obstacle in cell
+					
+					//if user put a diamond on a map reset the random jewel.
+					if (tile[4] == "Diamonds") {
+						jewelsPosition[0] = cell.x;
+						jewelsPosition[1] = cell.y;
+					}
 					cell.visibility = tile[2]; //Put if visable on cell from tile list
 				}
 			});
 			
-			//Can't find in tile list. Make a meadow that is not visable.
+			//Can't find in tile list? Then make a meadow that is not visable.
 			if (isInTilesList == false){
 				cell.image += file[0].display;
 				cell.visibility = 0; 
@@ -134,10 +140,6 @@ function loadMap(file) {
 	
 	//Spawn the jewel now overwritting what obstacle is in that cell.
 	jewel_spawn(jewelsPosition[0], jewelsPosition[1]);
-}
-
-function traverseTiles() {
-	
 }
 
 function showVisibleMap() {
