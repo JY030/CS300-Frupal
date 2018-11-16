@@ -23,6 +23,21 @@ window.onload = function() {
 		},
 		{
 			"display": "diamonds"
+		},
+		{
+			"display": "chainsaw"
+		},
+		{
+			"display": "jackhammer"
+		},
+		{
+			"display": "chest"
+		},
+		{
+			"display": "shears"
+		},
+		{
+			"display": "power-bar"
 		}];
 	
 	//load all local storage varibles.
@@ -31,8 +46,10 @@ window.onload = function() {
 	//The window size we can see at all times.
 	sizeOfMapWindow = 20;
 	if (mapSize < 20) {
-		showVisibleMap = mapSize; //If mapSize is less than default 20x20
+		sizeOfMapWindow = mapSize; //If mapSize is less than default 20x20
 	}
+	
+	heroPositionOffset = Math.floor(sizeOfMapWindow / 2);
 	
 	//create our map based on mapSize.
 	mapToLoad = create2DArray(mapSize, mapSize);
@@ -40,17 +57,17 @@ window.onload = function() {
 	//Randomize the jewel in the bounds of the mapsize
 	jewelsPosition = [jewel_xy(mapSize), jewel_xy(mapSize)];
 	
-	//Load up or map with the tile list.
+	//Load up our map with the tile list.
 	loadMap(file);
 	
 	//Create spans for the size of map window we can see at all times.
 	showVisibleMap();
 	
-	//These for loops will position the map to x9y9
-	var xShift = heroPosition[0] <= 9 ? (-heroPosition[0] + 9) : (heroPosition[0] - 9);
-	var yShift = heroPosition[1] <= 9 ? (-heroPosition[1]) + 9 : (heroPosition[1] - 9);
+	//These for loops will position the map to the center
+	var xShift = heroPosition[0] <= heroPositionOffset ? (-heroPosition[0] + heroPositionOffset) : (heroPosition[0] - heroPositionOffset);
+	var yShift = heroPosition[1] <= heroPositionOffset ? (-heroPosition[1] + heroPositionOffset) : (heroPosition[1] - heroPositionOffset);
 	for (var i = 0; i < yShift; i++) {
-		if (yShift <= 9) {
+		if (yShift <= heroPositionOffset) {
 			shiftTiles("up");
 		}
 		else {
@@ -58,7 +75,7 @@ window.onload = function() {
 		}
 	}
 	for (var i = 0; i < xShift; i++) {
-		if (xShift <= 9) {
+		if (xShift <= heroPositionOffset) {
 			shiftTiles("left");
 		}
 		else {

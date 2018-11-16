@@ -1,7 +1,6 @@
 .mapBorder{
-	max-width: 256px;
-	max-height: 256px;
 	border: 1px solid red;
+	margin: 50px 50px;
 }
 #Energy{
 	color: #43b749;
