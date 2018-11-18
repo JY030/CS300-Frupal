@@ -77,6 +77,7 @@ function getKeyAndMove(input) {
 				moveit(timestamp, character, -movementDistance, speed, character.style.left, 'LR'); // 50px over .2 seconds
 				if (-movementDistance < 0) {
 					heroPosition[0] = ((heroPosition[0] - 1 + mapSize) % mapSize); 
+					checkForPurchase(heroPosition[0], heroPosition[1]);
 					if (jewelsPosition){
 						jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 					}
@@ -101,6 +102,7 @@ function getKeyAndMove(input) {
 				moveit(timestamp, character, -movementDistance, speed, character.style.top, 'UD'); // 50px over .2 seconds
 				if (-movementDistance < 0) {
 					heroPosition[1] = ((heroPosition[1] - 1 + mapSize) % mapSize); 
+					checkForPurchase(heroPosition[0], heroPosition[1]);
 					if (jewelsPosition){
 						jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 					}
@@ -126,6 +128,7 @@ function getKeyAndMove(input) {
 				moveit(timestamp, character, movementDistance, speed, character.style.left, 'LR'); // 50px over .2 seconds
 				if (movementDistance > 0) {
 					heroPosition[0] = ((heroPosition[0] + 1 + mapSize) % mapSize); 
+					checkForPurchase(heroPosition[0], heroPosition[1]);
 					if (jewelsPosition){
 						jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 					}
@@ -152,6 +155,7 @@ function getKeyAndMove(input) {
 				moveit(timestamp, character, movementDistance, speed, character.style.top, 'UD'); // 50px over .2 seconds
 				if (movementDistance > 0) {
 					heroPosition[1] = ((heroPosition[1] + 1 + mapSize) % mapSize);
+					checkForPurchase(heroPosition[0], heroPosition[1]);
 					if (jewelsPosition){
 						jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);	
 					}
