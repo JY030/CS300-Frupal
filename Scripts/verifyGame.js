@@ -131,14 +131,14 @@ function checkTile(toCheckX, toCheckY) {
 	toCheckY = Math.floor(Number(toCheckY));
 	
 	if (toCheckX < 0 || toCheckX >= mapSize || toCheckY < 0 || toCheckY >= mapSize) {
-		return "Out of bounds";
+		return "out of bounds";
 	}
 	
 	for (i in mapToLoad) {
 		if (mapToLoad[i][0].x == toCheckX) {
 			for (j in mapToLoad[i]) {
 				if (mapToLoad[i][j].y == toCheckY) {
-					return mapToLoad[i][j].content;
+					return mapToLoad[i][j].content.toLowerCase();
 				}
 			}
 		}
