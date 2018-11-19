@@ -8,7 +8,7 @@ var edgeTop = 1 + spawnTop; // if characer coordinates falls below this number h
 var edgeBottom = 256; // bottom map bound
 var edgeLeft = 1 + spawnLeft; // left map bound
 var edgeRight = 256; // right map bound
-window.addEventListener('keydown', getKeyAndMove, false); // event for getting keys pressed
+window.addEventListener('keyup', getKeyAndMove, false); // event for getting keys pressed
 
 function loadCharacter() {
 	character = document.getElementById('hero'); // loads character in
