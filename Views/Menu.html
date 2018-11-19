@@ -2,15 +2,58 @@
 <head>
 	<title>FRUPAL</title>
 	<link rel="stylesheet" type="text/css" href="../CSS/menu.css">
+	<script src="../scripts/verifyGame.js"></script>
+	<script src="../scripts/saveAndLoad.js"></script>
 	<script src="../scripts/menu.js"></script>
 </head>
 <body>
 	<div id="menuContainer">
-		<h1>Welcome To Frupal</h1>
-		<h2>Try not to wander too far...</h2>
-		<p>Select an Option</p>
-		<button id="startGame">Start Game</button>
-		<button id="settings">Settings</button>
+		<div id="startContent">
+			<h1>Welcome To Frupal</h1>
+			<h2>Try not to wander too far...</h2>
+			<p>Select an Option</p>
+			<button onclick="StartGame()">Start Game</button>
+			<button onclick="LoadSettings()">Settings</button>
+			<button onclick="LoadGlossary()">Glossary</button>
+		</div>
+		<div id="settingsContent">
+			<h1 style="margin-top: 100px;">Settings</h1>
+			<form onsubmit="return false;" method="post" name="settingsForm">
+				<p>
+					Map Name
+					<input type="text" name="mapName" value="" placeholder="Ex: Map Name"/>
+				</p>
+				<p>
+					Map Size
+					<input type="text" name="mapSize" value="" placeholder="Ex: 25"/>
+				</p>
+				<p>
+					Player Starting Posistion
+					<input type="text" name="heroPosistion" value="" placeholder="Ex: 0,0"/>
+				</p>
+				<p>
+					Energy
+					<input type="text" name="energy" value="" placeholder="Ex: 100"/>
+				</p>
+				<p>
+					Money
+					<input type="text" name="money" value="" placeholder="Ex: 10"/>
+				</p>
+				<p>
+					Inventory<br />
+					<textarea type="text" name="inventory" rows="4" cols="50" value="" placeholder="Ex: [&#147;jackhammer&#148;, &#147;axe&#148;]"></textarea>
+				</p>
+				<p>
+					Tiles<br />
+					<textarea type="text" rows="4" cols="50" name="tiles" value="" placeholder="Ex: [[0,0,0,1,&#147;None&#148;],[0,1,1,2,&#147;Axe&#148;],...]"></textarea>
+				</p>
+				<input type="submit" name="submit" onclick="validate()">
+			</form>
+			<button onclick="SettingsBack()">Back</button>
+		</div>
+		<div id="glossaryContent">
+			<button onclick="GlossaryBack()">Back</button>
+		</div>
 	</div>
 </body>
 </html>

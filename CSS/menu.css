@@ -22,6 +22,14 @@ h1 {
 	text-align: center;
 }
 
+#settingsContent {
+	display: none;
+}
+
+#glossaryContent {
+	display: none;
+}
+
 .fadeIn {
 	opacity: 1 !important;
 	animation: fadeIn 3s;
@@ -37,13 +45,10 @@ h1 {
 	}
 }
 
-#fadeOut {
-	animation: fadeOut 3s;
-	animation-iteration-count: 1;
+.display {
+	display: inline !important;
 }
 
-@keyframes fadeOut {
-	to {
-		opacity: 0;
-	}
+.doNotDisplay {
+	display: none;
 }
