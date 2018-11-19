@@ -8,7 +8,8 @@ var usefulItems = {
 	"sledge":25,
 	"jackhammer":100,
 	"machete":25,
-	"shears":35
+	"shears":35,
+	"binoculars":50
 };
 
 /*function removes object from map at given x,y coordinates. returns true if
