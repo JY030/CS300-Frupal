@@ -69,10 +69,14 @@ function checkForPurchase(x, y) {
 		return false;
 	}
 	
+//	var buyItem = confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?");
 	if (confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?") == true) {
 		money -= usefulItems[tileObject];
 		addToInventory(tileObject);
 		removeItemFromMap(x, y);
+		if (tileObject == "binoculars") {
+			binocularcheck = 1;
+		}
 		alert("You bought the "+tileObject);
 		whiffles.innerHTML = "Whiffles: "+money;
 		return true;
