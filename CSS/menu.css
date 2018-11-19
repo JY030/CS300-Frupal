@@ -26,6 +26,14 @@ h1 {
 	display: none;
 }
 
+.gloassaryCell {
+	border: 1px solid blue;
+	display: inline-block;
+	padding: 15px;
+	margin: 10px 5px;
+	background-color: ivory;
+}
+
 .fadeIn {
 	opacity: 1 !important;
 	animation: fadeIn 3s;
@@ -42,7 +50,7 @@ h1 {
 }
 
 .display {
-	display: inline !important;
+	display: inline-block !important;
 }
 
 .doNotDisplay {
