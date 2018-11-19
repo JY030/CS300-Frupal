@@ -178,7 +178,8 @@ span {
 }
 
 .binoculars {
-	background-color: lightgreen;
+	background-image: url("../Assets/Binoculars.png");
+	background-size: 32px 32px;
 }
 
 .none {
