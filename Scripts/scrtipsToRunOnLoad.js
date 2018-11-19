@@ -86,12 +86,16 @@ window.onload = function() {
 	//update all tiles for visibility
 	updateTile();
 	
+	document.getElementById("title").innerHTML = mapName;
+	
 	whiffles = document.getElementById("WhiffleCount");
-	whiffles.innerHTML += localStorage.getItem("money"); // if there is whiffle value in localStorage this should equal that
+	whiffles.innerHTML += money; // if there is whiffle value in localStorage this should equal that
+	
 	energyBar = document.getElementById("Energy");
 	energyBar.value = energy;
 	energyBar.max = energy;
 	p = document.getElementById("EnergyCount");
 	p.innerHTML += energy;
+	
 	loadCharacter();
 }
