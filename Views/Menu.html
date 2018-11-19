@@ -2,15 +2,136 @@
 <head>
 	<title>FRUPAL</title>
 	<link rel="stylesheet" type="text/css" href="../CSS/menu.css">
+	<script src="../scripts/verifyGame.js"></script>
+	<script src="../scripts/saveAndLoad.js"></script>
 	<script src="../scripts/menu.js"></script>
 </head>
 <body>
 	<div id="menuContainer">
-		<h1>Welcome To Frupal</h1>
-		<h2>Try not to wander too far...</h2>
-		<p>Select an Option</p>
-		<button id="startGame">Start Game</button>
-		<button id="settings">Settings</button>
+		<div id="startContent">
+			<h1>Welcome To Frupal</h1>
+			<h2>Try not to wander too far...</h2>
+			<p>Select an Option</p>
+			<button onclick="StartGame()">Start Game</button>
+			<button onclick="LoadSettings()">Settings</button>
+			<button onclick="LoadGlossary()">Glossary</button>
+		</div>
+		<div id="settingsContent">
+			<h1>Settings</h1>
+			<form onsubmit="return false;" method="post" name="settingsForm">
+				<p>
+					Map Name
+					<input type="text" name="mapName" value="" placeholder="Ex: Map Name"/>
+				</p>
+				<p>
+					Map Size
+					<input type="text" name="mapSize" value="" placeholder="Ex: 25"/>
+				</p>
+				<p>
+					Player Starting Posistion
+					<input type="text" name="heroPosistion" value="" placeholder="Ex: 0,0"/>
+				</p>
+				<p>
+					Energy
+					<input type="text" name="energy" value="" placeholder="Ex: 100"/>
+				</p>
+				<p>
+					Money
+					<input type="text" name="money" value="" placeholder="Ex: 10"/>
+				</p>
+				<p>
+					Inventory<br />
+					<textarea type="text" name="inventory" rows="4" cols="50" value="" placeholder="Ex: [&#147;jackhammer&#148;, &#147;axe&#148;]"></textarea>
+				</p>
+				<p>
+					Tiles<br />
+					<textarea type="text" rows="4" cols="50" name="tiles" value="" placeholder="Ex: [[0,0,0,1,&#147;None&#148;],[0,1,1,2,&#147;Axe&#148;],...]"></textarea>
+				</p>
+				<input type="submit" name="submit" onclick="validate()">
+			</form>
+			<button onclick="SettingsBack()">Back</button>
+		</div>
+		<div id="glossaryContent">
+			<h1>Glossary</h1>
+			<div>
+				<p>
+					Use the Arrow keys to move and find the Royal Diamonds.<br />
+					Each move will spend 1 Energy.<br />
+					If you use all your energy you lose!
+				</p>
+			</div>
+			<div class="gloassaryCell">
+				<p>The Player</p>
+				<img src="../Assets/Player.png" height="32px" width="32px"/>
+			</div>
+			<h2>Items</h2>
+			<div class="gloassaryCell">
+				<p>
+					The Royal Diamonds
+					Gather this to win!
+				</p>
+				<img src="../Assets/Jewel.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>
+					Powerbar
+					Buy this for 1 wiffle and get 20 Energy!
+				</p>
+				<img src="../Assets/Powerbar.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Shears</p>
+				<img src="../Assets/Shears.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Jackhammer</p>
+				<img src="../Assets/Jackhammer.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Chainsaw</p>
+				<img src="../Assets/Chainsaw.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Treasure Chest</p>
+				<img src="../Assets/Chest.png" height="32px" width="32px"/>
+			</div>
+			<h2>Terrain</h2>
+			<div class="gloassaryCell">
+				<p>Meadow</p>
+				<img src="../Assets/Meadow.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Forest</p>
+				<img src="../Assets/Forest.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Swamp</p>
+				<img src="../Assets/Swamp.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Bog</p>
+				<img src="../Assets/Bog.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Water</p>
+				<img src="../Assets/Water.png" height="32px" width="32px"/>
+			</div>
+			<h2>Obstacles</h2>
+			<div class="gloassaryCell">
+				<p>Boulder</p>
+				<img src="../Assets/Boulder.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Bush</p>
+				<img src="../Assets/Bush.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>Trees</p>
+				<img src="../Assets/Trees.png" height="32px" width="32px"/>
+			</div>
+			<br />
+			<button onclick="GlossaryBack()">Back</button>
+		</div>
 	</div>
 </body>
 </html>

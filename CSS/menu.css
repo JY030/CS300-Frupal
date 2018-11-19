@@ -1,11 +1,11 @@
 body, html {
-	height: 100%;
 	margin: 0;
 }
 
 body {
 	background: url("../Assets/StartBackground.png") no-repeat center;
 	background-size: cover;
+	background-color: black;
 }
 
 h1 {
@@ -14,12 +14,24 @@ h1 {
 
 #menuContainer {
 	opacity: 0;
-	margin: 0;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	margin: 10px 10px 20px;
 	text-align: center;
+}
+
+#settingsContent {
+	display: none;
+}
+
+#glossaryContent {
+	display: none;
+}
+
+.gloassaryCell {
+	border: 1px solid blue;
+	display: inline-block;
+	padding: 15px;
+	margin: 10px 5px;
+	background-color: ivory;
 }
 
 .fadeIn {
@@ -37,13 +49,10 @@ h1 {
 	}
 }
 
-#fadeOut {
-	animation: fadeOut 3s;
-	animation-iteration-count: 1;
+.display {
+	display: inline-block !important;
 }
 
-@keyframes fadeOut {
-	to {
-		opacity: 0;
-	}
+.doNotDisplay {
+	display: none;
 }
