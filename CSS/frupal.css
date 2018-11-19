@@ -1,17 +1,67 @@
-.mapBorder{
-	max-width: 256px;
-	max-height: 256px;
-	border: 1px solid red;
+body, html {
+	height: 100%;
+	margin: 0;
 }
 
-.tileSize {
+body {
+	background: url("../Assets/Background1.png") no-repeat center;
+	background-size: cover;
+}
+
+#container {
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#title {
+	color: blue;
+	margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -125%);
+}
+
+#stats {
+	margin: 0;
+    position: absolute;
+    top: 8.5%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+	background-color: darkgray;
+	padding: 10px;
+	border: 1px solid saddlebrown;
+}
+
+.mapBorder{
+	border: 1px solid cadetblue;
+}
+
+#Energy{
+	color: #43b749;
+    background-color: white;
+	border: black solid 1px;
+
+}
+
+#Energy::-webkit-progress-bar{ background: white;}
+#EnergyCount{
+	display: inline-block;
+    height: 32px;
+    width: 64px;
+    margin-left: 4px;
+}
+span {
 	display: inline-block;
 	width: 32px;
 	height: 32px;
 }
 
 .notVisable {
-	background-color: black;
+	background-color: black !important;
+	background-image: none !important;
 }
 
 .notVisable > span {
@@ -63,21 +113,24 @@
 	background-size: 32px 32px;
 }
 
-.blackberry-bush {
+.bush {
 	background-image: url("../Assets/Bush.png");
 	background-size: 32px 32px;
 }
 
 .power-bar {
-	background-color: gray;
+	background-image: url("../Assets/Powerbar.png");
+	background-size: 32px 32px;
 }
 
 .type1-treasure {
-	background-color: gray;
+	background-image: url("../Assets/Chest.png");
+	background-size: 32px 32px;
 }
 
 .type2-treasure {
-	background-color: gray;
+	background-image: url("../Assets/Chest.png");
+	background-size: 32px 32px;
 }
 
 .diamonds {
@@ -98,7 +151,8 @@
 }
 
 .chainsaw {
-	background-color: lightgreen;
+	background-image: url("../Assets/Chainsaw.png");
+	background-size: 32px 32px;
 }
 
 .chisel {
@@ -110,7 +164,8 @@
 }
 
 .jackhammer {
-	background-color: lightgreen;
+	background-image: url("../Assets/Jackhammer.png");
+	background-size: 32px 32px;
 }
 
 .machete {
@@ -118,7 +173,8 @@
 }
 
 .shears {
-	background-color: lightgreen;
+	background-image: url("../Assets/Shears.png");
+	background-size: 32px 32px;
 }
 
 .binoculars {
@@ -126,7 +182,7 @@
 }
 
 .none {
-	background-color: white;
+	
 }
 
 /* End Content */

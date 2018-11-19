@@ -49,10 +49,10 @@ function jewel_found(x,y,jx,jy){
     //returning true means to quit game and returning false means continue,
     //this should be called every time the character moves to my understanding
     setTimeout( function() { window.location.reload(); }, 500);
-      return true;
+		return true;
    }
    else{
-     return false;
+		return false;
   }
 }
 
