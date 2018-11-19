@@ -31,8 +31,122 @@ function create2DArray(rows, cols){
 
 //Function: lineofsight
 //Input: array, row boundary, column boundar, player x coordinate, player y coordinate
-//Output: array with visibility tags for the line of sight of all cells seen
-function lineofsight(a, rows, cols, playerx,  playery){
+//Update Input bincocularcheck if binocular is in inventory binocularcheck is 1 else 0
+ //Output: array with visibility tags for the line of sight of all cells seen
+function lineofsight(a, rows, cols, playerx,  playery, binocularcheck){
+	if(binocularcheck == 1)
+	{
+	if (playerx-1 >= 0) //player sight back 1 tile
+	{
+		a[playerx-1][playery].visibility = 1;
+		if (playery-1 >=0)
+		{
+			a[playerx-1][playery-1].visibility = 1; //assuming map size x and y are the same
+		}
+		if (playery-2 >=0)
+		{
+			a[playerx-1][playery-2].visibility = 1; //assuming map size x and y are the same
+		}
+		if (playery+1 <= rows-1)
+		{
+			a[playerx-1][playery+1].visibility = 1;
+		}
+		if (playery+2 <= rows-1)
+		{
+			a[playerx-1][playery+2].visibility = 1;
+		}
+	}
+	if (playerx-2 >= 0) //player sight back 1 tile
+	{
+		a[playerx-2][playery].visibility = 1;
+		if (playery-1 >=0)
+		{
+			a[playerx-2][playery-1].visibility = 1; //assuming map size x and y are the same
+		}
+		if (playery-2 >=0)
+		{
+			a[playerx-2][playery-2].visibility = 1; //assuming map size x and y are the same
+		}
+		if (playery+1 <= rows-1)
+		{
+			a[playerx-2][playery+1].visibility = 1;
+		}
+		if (playery+2 <= rows-1)
+		{
+			a[playerx-2][playery+2].visibility = 1;
+		}
+	}
+	
+	if (playery-1 >= 0) //player sight above player
+	{
+			a[playerx][playery-1].visibility = 1; // 1 tile below player
+	}
+	if (playery-2 >= 0)
+	{ 
+			a[playerx][playery-2].visibility = 1; // 2 tile below player
+	}
+	
+	if (playerx >= 0)
+	{
+		a[playerx][playery].visibility = 1; //player location
+	}
+	
+	if (playerx+1 <= cols-1)
+	{
+		a[playerx+1][playery].visibility = 1; //1 tile right of player
+		if (playery+1 <= rows-1)
+		{
+			a[playerx+1][playery+1].visibility = 1; //1 tile right 1 tile up of player
+		}
+			if (playery+2 <= rows-1)
+		{
+			a[playerx+1][playery+2].visibility = 1; //1 tile right 2 tile up of player
+		}
+		if (playery-1 >= 0)
+		{
+			a[playerx+1][playery-1].visibility = 1; //1 tile right 1 tile down of player
+		}
+		if (playery-2 >= 0)
+		{
+			a[playerx+1][playery-2].visibility = 1; //1 tile right 2 tile down of player
+		}
+	}
+	
+	if (playerx+2 <= cols-1)
+	{
+		a[playerx+2][playery].visibility = 1; //1 tile right of player
+		if (playery+1 <= rows-1)
+		{
+			a[playerx+2][playery+1].visibility = 1; //1 tile right 1 tile up of player
+		}
+			if (playery+2 <= rows-1)
+		{
+			a[playerx+2][playery+2].visibility = 1; //1 tile right 2 tile up of player
+		}
+		if (playery-1 >= 0)
+		{
+			a[playerx+2][playery-1].visibility = 1; //1 tile right 1 tile down of player
+		}
+		if (playery-2 >= 0)
+		{
+			a[playerx+2][playery-2].visibility = 1; //1 tile right 2 tile down of player
+		}
+	}
+	
+	if (playery+1 <= rows-1)
+	{
+		a[playerx][playery+1].visibility = 1;
+	}
+	if (playery+2 <= rows-1)
+	{
+		a[playerx][playery+2].visibility = 1;
+	}
+	
+	return a;
+	}
+	
+	if(binocularcheck == 0)
+	{
 	if (playerx-1 >= 0)
 	{
 		a[playerx-1][playery].visibility = 1;
@@ -75,12 +189,13 @@ function lineofsight(a, rows, cols, playerx,  playery){
 	}
 	
 	return a;
+	}
 }
 
 function loadMap(file) {
 	var text = "";
 	
-	mapToLoad = lineofsight(mapToLoad, mapSize, mapSize, heroPosition[0], heroPosition[1]);
+	mapToLoad = lineofsight(mapToLoad, mapSize, mapSize, heroPosition[0], heroPosition[1], 1);// the 1 is bincocularcheck set to default for now
 	
 	//This is fun. With the custom map we made, go through each Column and then each Row of that Column.
 	//If it is not visibile, just set add the notVisable string to the "image".
