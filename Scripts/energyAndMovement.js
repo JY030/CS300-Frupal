@@ -47,7 +47,7 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
  
 // switch statement based on key pressed => which direction to move
 function getKeyAndMove(input) {
-	if (energyBar.value == 0) {
+	if (energyBar.value <= 0) {
 		if(!(alert('You ran out of energy!'))){window.location.reload();}
 		return;
 	}
@@ -68,7 +68,6 @@ function getKeyAndMove(input) {
 		
 		input.preventDefault();
 		if (!isWaterCollision(heroPosition[0] - 1, heroPosition[1])) {
-			energyBar.value -= 1; p.innerHTML = energyBar.value;
 			if(parseInt(character.style.left) <= edgeLeft) {
 				character.style.left = parseInt(edgeRight) + 'px'; // allows for 1 'move' in
 			}
@@ -78,6 +77,8 @@ function getKeyAndMove(input) {
 				if (-movementDistance < 0) {
 					heroPosition[0] = ((heroPosition[0] - 1 + mapSize) % mapSize); 
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
+					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
 						jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 					}
@@ -93,7 +94,6 @@ function getKeyAndMove(input) {
 		
 		input.preventDefault();
 		if (!isWaterCollision(heroPosition[0], heroPosition[1] - 1)) {
-			energyBar.value -= 1; p.innerHTML = energyBar.value;
 			if(parseInt(character.style.top) <= edgeTop) {
 				character.style.top = parseInt(edgeBottom) + 'px'; // allows for 1 'move' in 
 			}
@@ -103,6 +103,8 @@ function getKeyAndMove(input) {
 				if (-movementDistance < 0) {
 					heroPosition[1] = ((heroPosition[1] - 1 + mapSize) % mapSize); 
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
+					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
 						jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 					}
@@ -118,7 +120,6 @@ function getKeyAndMove(input) {
 		
 		input.preventDefault();
 		if (!isWaterCollision(heroPosition[0] + 1, heroPosition[1])) {
-			energyBar.value -= 1; p.innerHTML = energyBar.value;
 			//The 32 if becuase this is based on the left side of the hero
 			if((parseInt(character.style.left) + 32) >= (edgeRight)) {
 				character.style.left = parseInt(edgeLeft + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
@@ -129,6 +130,8 @@ function getKeyAndMove(input) {
 				if (movementDistance > 0) {
 					heroPosition[0] = ((heroPosition[0] + 1 + mapSize) % mapSize); 
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
+					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
 						jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 					}
@@ -145,7 +148,6 @@ function getKeyAndMove(input) {
 		
 		input.preventDefault();
 		if (!isWaterCollision(heroPosition[0], heroPosition[1] + 1)) {
-			energyBar.value -= 1; p.innerHTML = energyBar.value;
 			//The 32 if becuase this is based on the top side of the hero
 			if((parseInt(character.style.top) + 32) >= (edgeBottom - 1)) {
 				character.style.top = parseInt(edgeTop + movementDistance * -1) + 'px'; // allows character to 'move in' from the 'void', assumes 0px is starting location
@@ -156,6 +158,8 @@ function getKeyAndMove(input) {
 				if (movementDistance > 0) {
 					heroPosition[1] = ((heroPosition[1] + 1 + mapSize) % mapSize);
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
+					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
 						jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);	
 					}
