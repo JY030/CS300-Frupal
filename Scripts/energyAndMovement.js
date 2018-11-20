@@ -12,8 +12,8 @@ window.addEventListener('keyup', getKeyAndMove, false); // event for getting key
 
 function loadCharacter() {
 	character = document.getElementById('hero'); // loads character in
-	character.style.position = 'absolute'; // dw about this
-	character.style.left = (parseInt(spawnLeft) * heroPositionOffset + printThis.offsetLeft) + 'px'; // spawn coordinates, x center of map
+	//character.style.position = 'absolute'; // dw about this
+	//character.style.left = (parseInt(spawnLeft) * heroPositionOffset + printThis.offsetLeft) + 'px'; // spawn coordinates, x center of map
 	character.style.top = (parseInt(spawnTop) * heroPositionOffset + printThis.offsetTop) + 'px'; // spawn coordinates, y center of map
 	
 	//Might move elsewhere. Sets the edges to the border of our box and the mapSize the user chooses

@@ -277,7 +277,7 @@ function showVisibleMap() {
 	
 	//Print those spans onto the page.
 	var printThis = document.getElementById("printThis");
-	printThis.innerHTML = text;
+	printThis.innerHTML += text;
 	printThis.style.height = (sizeOfMapWindow*32)+'px';	
 	printThis.style.width = (sizeOfMapWindow*32)+'px';
 }

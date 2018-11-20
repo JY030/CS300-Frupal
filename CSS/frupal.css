@@ -1,5 +1,4 @@
 body, html {
-	height: 100%;
 	margin: 0;
 }
 
@@ -8,35 +7,37 @@ body {
 	background-size: cover;
 }
 
+#hero {
+	position: absolute;
+	right: 0;
+	left: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 32px;
+}
+
 #container {
 	margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	text-align: center;
 }
 
 #title {
 	color: blue;
-	margin: 0;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -125%);
+	margin: 50px 0;
 }
 
 #stats {
 	margin: 0;
-    position: absolute;
-    top: 8.5%;
-    left: 20%;
-    transform: translate(-50%, -50%);
+	position: absolute;
 	background-color: darkgray;
 	padding: 10px;
 	border: 1px solid saddlebrown;
+	text-align: left;
 }
 
 .mapBorder{
 	border: 1px solid cadetblue;
+	display: inline-block;
 }
 
 #Energy{
