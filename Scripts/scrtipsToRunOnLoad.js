@@ -43,6 +43,12 @@ window.onload = function() {
 	//load all local storage varibles.
 	loadFromLocal();
 	
+	//The player set the start location to random in the settings. Reusing jewel randomizer.
+	if (rHero == true) {
+		heroPosition[0] = jewel_xy(mapSize);
+		heroPosition[1] = jewel_xy(mapSize);
+	}
+	
 	//The window size we can see at all times.
 	sizeOfMapWindow = 20;
 	if (mapSize < 20) {

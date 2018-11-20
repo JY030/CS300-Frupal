@@ -235,27 +235,73 @@ function loadMap(file) {
 						cell.image += file[0].display;
 						isInTilesList = true;
 					}
-					cell.content = tile[4]; //Put obstacle in cell
 					
 					//if user put a diamond on a map reset the random jewel.
-					if (tile[4] == "Diamonds") {
+					if (rJewel == false && tile[4] == "Diamonds") {
 						jewelsPosition[0] = cell.x;
 						jewelsPosition[1] = cell.y;
+						cell.content = tile[4];
+					}
+					else if (rJewel == true && tile[4] == "Diamonds") {
+						cell.content = randomTerrainOrItem(500, false);//Put random one instead.
+					}
+					else {
+						cell.content = tile[4]; //Put obstacle in cell
 					}
 					cell.visibility = tile[2]; //Put if visable on cell from tile list
 				}
 			});
 			
-			//Can't find in tile list? Then make a meadow that is not visable.
+			//Can't find in tile list?
 			if (isInTilesList == false){
-				cell.image += file[0].display;
-				cell.visibility = 0; 
+				// Then make a meadow that is not visable or random if the player chose in settings.
+				if (rTiles == false) {
+					cell.image += file[0].display;
+					cell.visibility = 0;
+				}
+				else {
+					cell.image += file[randomTerrainOrItem(6, true)].display;
+					cell.content = randomTerrainOrItem(500, false);
+					cell.visibility = 0;
+				}
 			}
 		});
 	});
 	
 	//Spawn the jewel now overwritting what obstacle is in that cell.
 	jewel_spawn(jewelsPosition[0], jewelsPosition[1]);
+}
+
+//Altered Jewel_random function to match for random item or terrain type.
+function randomTerrainOrItem(num, isTerrain) {
+	var x = Math.floor(Math.random() * num);
+	
+	if (isTerrain == true && x > 5) {
+		x = randomTerrainOrItem(num, true);
+	}
+	
+	if (isTerrain == false) {
+		// var item = x > 20 ? "None" : "type2-treasure";
+		var item =
+		x > 134 ? "None" :
+		(x >= 93 && x <= 133) ? "power-bar" :
+		(x >= 62 && x <= 92) ? "bush" :
+		(x >= 31 && x <= 61) ? "tree" :
+		(x >= 10 && x <= 30) ? "boulder" :
+		x == 9 ? "axe" :
+		x == 8 ? "hatchet" :
+		x == 7 ? "chisel" :
+		x == 6 ? "sledge" :
+		x == 5 ? "shears" :
+		x == 4 ? "jackhammer" :
+		x == 3 ? "binoculars" :
+		x == 2 ? "chainsaw" :
+		x == 1 ? "type2-treasure" :
+		"type1-treasure";
+		
+		return item;
+	}
+    return x;
 }
 
 function showVisibleMap() {

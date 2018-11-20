@@ -47,6 +47,11 @@
 					Tiles<br />
 					<textarea type="text" rows="4" cols="50" name="tiles" value="" placeholder="Ex: [[0,0,0,1,&#147;None&#148;],[0,1,1,2,&#147;Axe&#148;],...]"></textarea>
 				</p>
+				<div class="randomSection">
+					<input type="checkbox" name="randomJewel">Random Jewel<br />
+					<input type="checkbox" name="randomTiles">Random Unspecified tiles<br />
+					<input type="checkbox" name="randomStart">Random Start Location<br />
+				</div>
 				<input type="submit" name="submit" onclick="validate()">
 			</form>
 			<button onclick="SettingsBack()">Back</button>
@@ -61,38 +66,58 @@
 				</p>
 			</div>
 			<div class="gloassaryCell">
-				<p>The Player</p>
+				<p>The Hero</p>
 				<img src="../Assets/Player.png" height="32px" width="32px"/>
 			</div>
 			<h2>Items</h2>
 			<div class="gloassaryCell">
 				<p>
-					The Royal Diamonds
+					The Royal Diamonds<br />
 					Gather this to win!
 				</p>
 				<img src="../Assets/Jewel.png" height="32px" width="32px"/>
 			</div>
 			<div class="gloassaryCell">
 				<p>
-					Powerbar
-					Buy this for 1 wiffle and get 20 Energy!
+					Powerbar<br />
+					Buy this for 1 wiffle<br />and get 20 Energy!
 				</p>
 				<img src="../Assets/Powerbar.png" height="32px" width="32px"/>
 			</div>
 			<div class="gloassaryCell">
-				<p>Shears</p>
+				<p>
+					Binoculars<br />
+					Buy this for 50 wiffles<br />to increase your vision.
+				</p>
+				<img src="../Assets/Binoculars.png" height="32px" width="32px"/>
+			</div>
+			<div class="gloassaryCell">
+				<p>
+					Shears<br />
+					Buy this for 35 whiffles to<br />remove blackberry bushes for 2 energy points.
+				</p>
 				<img src="../Assets/Shears.png" height="32px" width="32px"/>
 			</div>
 			<div class="gloassaryCell">
-				<p>Jackhammer</p>
+				<p>
+					Jackhammer<br />
+					Buy this for 100 whiffles to<br />remove a boulder for 4 energy points.
+				</p>
 				<img src="../Assets/Jackhammer.png" height="32px" width="32px"/>
 			</div>
 			<div class="gloassaryCell">
-				<p>Chainsaw</p>
+				<p>
+					Chainsaw<br />
+					Buy this for 60 whiffles to<br />remove trees for 2 energy points.
+				</p>
 				<img src="../Assets/Chainsaw.png" height="32px" width="32px"/>
 			</div>
 			<div class="gloassaryCell">
-				<p>Treasure Chest</p>
+				<p>
+					Treasure Chest<br />
+					Beware! Opening a Treasure Chest<br />will either contain 100 whiffles or<br />
+					it will explode and you will lose 100 whiffles!
+				</p>
 				<img src="../Assets/Chest.png" height="32px" width="32px"/>
 			</div>
 			<h2>Terrain</h2>
@@ -109,7 +134,10 @@
 				<img src="../Assets/Swamp.png" height="32px" width="32px"/>
 			</div>
 			<div class="gloassaryCell">
-				<p>Bog</p>
+				<p>
+					Bog<br />
+					Will cost you 2 energy when moving into this.
+				</p>
 				<img src="../Assets/Bog.png" height="32px" width="32px"/>
 			</div>
 			<div class="gloassaryCell">
