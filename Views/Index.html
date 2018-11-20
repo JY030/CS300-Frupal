@@ -11,9 +11,15 @@
 	<script src="../scripts/waterCollision.js"></script>
 	<script src="../scripts/addToInventory.js"></script>
 	<script src="../scripts/energy.js"></script>
+	<script src="../scripts/customAlerts.js"></script>
 </head>
 <body>
 	<div id="container">
+		<div id="alert" class="alert">
+			<p>Custom Alert Text</p>
+			<button class="customAlertButton" onclick="Accept()">OK</button>
+			<button class="customAlertButton" onclick="Deny()">Cancel</button>
+		</div>
 		<h1 id="title">FRUPAL</h1>
 		<div id="printThis" align="center" class="mapBorder">
 			<div id="stats">

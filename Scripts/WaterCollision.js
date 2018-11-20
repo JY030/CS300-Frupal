@@ -20,7 +20,7 @@ function isWaterCollision(futureX, futureY) {
 		foundWater = true;
 		energyBar.value -= 1;
 		p.innerHTML = energyBar.value;
-		alert("You can't swim! Lose 1 energy.");
+		genericCustomAlert("blue", "You can't swim! Lose 1 energy.");
 	}
 	
 	if(energyBar.value <= 0){
