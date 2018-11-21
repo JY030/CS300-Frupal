@@ -65,7 +65,7 @@ function checkForPurchase(x, y) {
 		return false;
 	
 	if (money < usefulItems[tileObject]) {
-		alert("Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
+		NoActionCustomAlert("purple", "Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
 		return false;
 	}
 	

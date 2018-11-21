@@ -8,12 +8,13 @@ body {
 }
 
 .alert {
+	display: none;
 	position: absolute;
 	padding: 10px;
 	color: white;
 	opacity: 0;
 	transition: opacity 1.0s;
-	margin: 5px 200px 0 200px;
+	margin: 5px 200px 0 255px;
 }
 
 .alert button {
