@@ -20,11 +20,13 @@ function isWaterCollision(futureX, futureY) {
 		foundWater = true;
 		energyBar.value -= 1;
 		p.innerHTML = energyBar.value;
-		genericCustomAlert("blue", "You can't swim! Lose 1 energy.");
+		NoActionCustomAlert("blue", "You can't swim! Lose 1 energy.");
 	}
 	
 	if(energyBar.value <= 0){
-		if(!(alert('You ran out of energy by Going into water!'))){window.location.reload();}
+		if(GenericCustomAlert("Black", 'You ran out of energy by Going into water!')) {
+			//window.location.reload();
+		}
 		return;
 	}
 	
