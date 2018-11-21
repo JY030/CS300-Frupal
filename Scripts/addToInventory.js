@@ -10,7 +10,7 @@ var usefulItems = {
 	"machete":25,
 	"shears":35,
 	"binoculars":50,
-	"energy-bar":1
+	"power-bar":1
 };
 
 /*function removes object from map at given x,y coordinates. returns true if
