@@ -100,5 +100,17 @@ function checkToolBag(Obstacle){
 	}
 }
 
+function checkEnergy(x,y){
+	var obstacle = checkTile(x,y).toLowerCase();
+	var cost = checkToolBag(obstacle);
+	if(cost > energyBar.value){
+		energyBar.value -= 1;
+		p.innerHTML = energyBar.value;
+		alert("You don't have enough energy");
+		return false;
+	}
+	return true;
+}
+
 		
 
