@@ -65,6 +65,11 @@ function checkForPurchase(x, y) {
 	if (!usefulItems.hasOwnProperty(tileObject))
 		return false;
 	
+	if (tileObject == "binoculars" && binocularcheck == 1) {
+		alert("You've already got some sweet binocs, you don't need another pair.");
+		return false;
+	}
+	
 	if (money < usefulItems[tileObject]) {
 		alert("Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
 		return false;
