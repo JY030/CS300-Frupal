@@ -82,6 +82,7 @@ function getKeyAndMove(input) {
 				if (-movementDistance < 0) {
 					heroPosition[0] = ((heroPosition[0] - 1 + mapSize) % mapSize); 
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					checkChest(heroPosition[0], heroPosition[1]);
 					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
 					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
@@ -108,6 +109,7 @@ function getKeyAndMove(input) {
 				if (-movementDistance < 0) {
 					heroPosition[1] = ((heroPosition[1] - 1 + mapSize) % mapSize); 
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					checkChest(heroPosition[0], heroPosition[1]);
 					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
 					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
@@ -135,6 +137,7 @@ function getKeyAndMove(input) {
 				if (movementDistance > 0) {
 					heroPosition[0] = ((heroPosition[0] + 1 + mapSize) % mapSize); 
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					checkChest(heroPosition[0], heroPosition[1]);
 					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
 					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
@@ -163,6 +166,7 @@ function getKeyAndMove(input) {
 				if (movementDistance > 0) {
 					heroPosition[1] = ((heroPosition[1] + 1 + mapSize) % mapSize);
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					checkChest(heroPosition[0], heroPosition[1]);
 					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
 					p.innerHTML = energyBar.value;
 					if (jewelsPosition){

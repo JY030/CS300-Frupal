@@ -51,7 +51,14 @@ function energyCost(x,y){
 		case "tree" : cost += checkToolBag("tree");
 					removeItemFromMap(x,y);
 					break;
-		case "power-bar" : cost -= 20; removeItemFromMap(x,y);
+		case "power-bar" : if(money == 0) {
+					alert("Can't buy the power bar, you are too damn poor. Get some more whiffles and come back!");
+					break;
+				   }
+				   	cost -= 20;
+					money -= 1;
+					whiffles.innerHTML = "Whiffles: " +money;
+					removeItemFromMap(x,y);
 					break;			
 		default: break;
 	}

@@ -9,7 +9,8 @@ var usefulItems = {
 	"jackhammer":100,
 	"machete":25,
 	"shears":35,
-	"binoculars":50
+	"binoculars":50,
+	"power-bar":1
 };
 
 /*function removes object from map at given x,y coordinates. returns true if
@@ -64,23 +65,33 @@ function checkForPurchase(x, y) {
 	if (!usefulItems.hasOwnProperty(tileObject))
 		return false;
 	
+	if (tileObject == "binoculars" && binocularcheck == 1) {
+		alert("You've already got some sweet binocs, you don't need another pair.");
+		return false;
+	}
+	
 	if (money < usefulItems[tileObject]) {
 		NoActionCustomAlert("purple", "Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
 		return false;
 	}
 	
 //	var buyItem = confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?");
-	DecisionCustomAlert("purple", "Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?", function(answer) {
-		if (answer == true) {
-			money -= usefulItems[tileObject];
-			addToInventory(tileObject);
+	if (confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?") == true) {
+		money -= usefulItems[tileObject];
+		
+		//Here is for the specific case of buying a power-bar... Really hard to do other wise, sorry.
+		if(tileObject == "power-bar"){
 			removeItemFromMap(x, y);
-			if (tileObject == "binoculars") {
-				binocularcheck = 1;
-			}
-			NoActionCustomAlert("purple", "You bought the "+tileObject);
+			alert("You bought the "+tileObject);
 			whiffles.innerHTML = "Whiffles: "+money;
+			energyBar.value += 20; p.innerHTML = energyBar.value;
 			return true;
+		}
+		
+		addToInventory(tileObject);
+		removeItemFromMap(x, y);
+		if (tileObject == "binoculars") {
+			binocularcheck = 1;
 		}
 		
 		return false;
