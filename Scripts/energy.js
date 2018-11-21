@@ -107,6 +107,9 @@ function checkEnergy(x,y){
 		energyBar.value -= 1;
 		p.innerHTML = energyBar.value;
 		alert("You don't have enough energy");
+		if(energyBar.value < 1){
+		if(!(alert('You ran out of energy by Going into water!'))){window.location.reload();}
+		}
 		return false;
 	}
 	return true;

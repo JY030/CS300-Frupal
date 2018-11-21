@@ -73,16 +73,6 @@ function checkForPurchase(x, y) {
 //	var buyItem = confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?");
 	if (confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?") == true) {
 		money -= usefulItems[tileObject];
-		
-		//Here is for the specific case of buying a power-bar... Really hard to do other wise, sorry.
-		if(tileObject == "power-bar"){
-			removeItemFromMap(x, y);
-			alert("You bought the "+tileObject);
-			whiffles.innerHTML = "Whiffles: "+money;
-			energyBar.value += 20; p.innerHTML = energyBar.value;
-			return true;
-		}
-		
 		addToInventory(tileObject);
 		removeItemFromMap(x, y);
 		if (tileObject == "binoculars") {
@@ -95,3 +85,14 @@ function checkForPurchase(x, y) {
 	
 	return false;
 }
+
+
+/*		//Here is for the specific case of buying a power-bar... Really hard to do other wise, sorry.
+		if(tileObject == "power-bar"){
+			removeItemFromMap(x, y);
+			alert("You bought the "+tileObject);
+			whiffles.innerHTML = "Whiffles: "+money;
+			energyBar.value += 20; p.innerHTML = energyBar.value;
+			return true;
+		}
+*/
