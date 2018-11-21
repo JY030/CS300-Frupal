@@ -51,8 +51,8 @@ function energyCost(x,y){
 		case "tree" : cost += checkToolBag("tree");
 					removeItemFromMap(x,y);
 					break;
-		case "power-bar" : cost -= 20; removeItemFromMap(x,y);
-					break;			
+//		case "power-bar" :checkForPurchase(x,y);
+//					break;			
 		default: break;
 	}
 	}

@@ -9,7 +9,7 @@ var usefulItems = {
 	"jackhammer":100,
 	"machete":25,
 	"shears":35,
-	"binoculars":50
+	"binoculars":50,
 	"energy-bar":1
 };
 
@@ -75,7 +75,7 @@ function checkForPurchase(x, y) {
 		money -= usefulItems[tileObject];
 		
 		//Here is for the specific case of buying a power-bar... Really hard to do other wise, sorry.
-		if(tileObject == 'power-bar'){
+		if(tileObject == "power-bar"){
 			removeItemFromMap(x, y);
 			alert("You bought the "+tileObject);
 			whiffles.innerHTML = "Whiffles: "+money;
