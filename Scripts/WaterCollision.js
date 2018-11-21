@@ -24,9 +24,7 @@ function isWaterCollision(futureX, futureY) {
 	}
 	
 	if(energyBar.value <= 0){
-		if(GenericCustomAlert("Black", 'You ran out of energy by Going into water!')) {
-			//window.location.reload();
-		}
+		GenericCustomAlert("red", 'You ran out of energy by Going into water!', function() {window.location.reload()});
 		return;
 	}
 	

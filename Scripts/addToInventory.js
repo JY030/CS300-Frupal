@@ -70,17 +70,19 @@ function checkForPurchase(x, y) {
 	}
 	
 //	var buyItem = confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?");
-	if (confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?") == true) {
-		money -= usefulItems[tileObject];
-		addToInventory(tileObject);
-		removeItemFromMap(x, y);
-		if (tileObject == "binoculars") {
-			binocularcheck = 1;
+	DecisionCustomAlert("purple", "Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?", function(answer) {
+		if (answer == true) {
+			money -= usefulItems[tileObject];
+			addToInventory(tileObject);
+			removeItemFromMap(x, y);
+			if (tileObject == "binoculars") {
+				binocularcheck = 1;
+			}
+			NoActionCustomAlert("purple", "You bought the "+tileObject);
+			whiffles.innerHTML = "Whiffles: "+money;
+			return true;
 		}
-		alert("You bought the "+tileObject);
-		whiffles.innerHTML = "Whiffles: "+money;
-		return true;
-	}
-	
-	return false;
+		
+		return false;
+	});
 }
