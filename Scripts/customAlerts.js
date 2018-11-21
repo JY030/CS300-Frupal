@@ -17,11 +17,12 @@ function GenericCustomAlert(color, contentText, callback) {
 	
 	window.removeEventListener('keyup', getKeyAndMove);
 
-	var buttons = document.getElementsByClassName("genericCustomAlertButton");
-	buttons[0].addEventListener("click", function () {
+	var okButton = document.getElementById("genericCustomAlertButton");
+	okButton.addEventListener("click", function genericCustomAlertButton() {
 		window.addEventListener('keyup', getKeyAndMove, false);
 		callback();
-		buttons[0].removeAttribute("click");
+		//okButton.removeEventListener("click", genericCustomAlertButton);
+		this.outerHTML = this.outerHTML;
 		setTimeout(function () {
 			custAlert.style.opacity = "0";
 		}, 600);
@@ -29,6 +30,8 @@ function GenericCustomAlert(color, contentText, callback) {
 }
 
 function DecisionCustomAlert(color, contentText, callback) {
+	callback = oneCallBack(callback);
+	
 	var custAlert = document.getElementById("decisionCustomAlert");
 	custAlert.style.backgroundColor = color;
 	custAlert.firstElementChild.innerHTML = contentText;
@@ -36,20 +39,24 @@ function DecisionCustomAlert(color, contentText, callback) {
 	
 	window.removeEventListener('keyup', getKeyAndMove);
 	
-	var buttons = document.getElementsByClassName("decisionCustomAlertButton");
-	buttons[0].addEventListener("click", function () {
-		window.addEventListener('keyup', getKeyAndMove, false);
-		callback(true);
-		buttons[0].removeAttribute("click");
-		custAlert.style.opacity = "0";
-	});
+	//var acceptButton = document.getElementById("decisionCustomAlertAcceptButton");
+	//var denyButton = document.getElementById("decisionCustomAlertDenyButton");
 	
-	buttons[1].addEventListener("click", function () {
+	document.getElementById("decisionCustomAlertAcceptButton").addEventListener('click', function test() {
 		window.addEventListener('keyup', getKeyAndMove, false);
-		callback(false);
-		buttons[1].removeAttribute("click");
+		//this.outerHTML = this.outerHTML;
+		callback(true);
+		document.getElementById("decisionCustomAlertAcceptButton").removeEventListener('click', test);
 		custAlert.style.opacity = "0";
-	});
+	}, false);
+	
+	document.getElementById("decisionCustomAlertDenyButton").addEventListener('click', function tset() {
+		window.addEventListener('keyup', getKeyAndMove, false);
+		//this.outerHTML = this.outerHTML;
+		callback(false);
+		document.getElementById("decisionCustomAlertDenyButton").removeEventListener('click', tset);
+		custAlert.style.opacity = "0";
+	}, false);
 }
 
 // function DecisionCustomAlert(color, contentText, callback) {
@@ -60,15 +67,32 @@ function DecisionCustomAlert(color, contentText, callback) {
 	
 	// window.removeEventListener('keyup', getKeyAndMove);
 	
-	// var buttons = document.getElementsByClassName("decisionCustomAlertButton");
-	// buttons[0].addEventListener("click", DecisionCustomAlertListener(true, callback, buttons, custAlert), false);
+	// document.getElementById("decisionCustomAlertAcceptButton").addEventListener("click", DecisionCustomAlertAcceptListener, false);
 	
-	// buttons[1].addEventListener("click", DecisionCustomAlertListener(false, callback, buttons, custAlert), false);
+	// document.getElementById("decisionCustomAlertDenyButton").addEventListener("click", DecisionCustomAlertDenyListener, false);
 // }
 
-// function DecisionCustomAlertListener(val, callback, buttons, custAlert) {
+// function DecisionCustomAlertAcceptListener() {
 	// window.addEventListener('keyup', getKeyAndMove, false);
 		// callback(val);
-		// buttons[1].removeEventListener("click", DecisionCustomAlertListener);
-		// custAlert.style.opacity = "0";
+		// document.getElementById("decisionCustomAlertAcceptButton").removeEventListener("click", DecisionCustomAlertAcceptListener);
+		// document.getElementById("decisionCustomAlert").style.opacity = "0";
 // }
+
+// function DecisionCustomAlertDenyListener() {
+	// window.addEventListener('keyup', getKeyAndMove, false);
+		// callback(val);
+		// document.getElementById("decisionCustomAlertDenyButton").removeEventListener("click", DecisionCustomAlertDenyListener);
+		// document.getElementById("decisionCustomAlert").style.opacity = "0";
+// }
+
+function oneCallBack(fn) {
+	var hasCalled = false;
+	
+	return function() {
+		if (!hasCalled) {
+			hasCalled = true;
+			return fn.apply(this, arguments);
+		}
+	}
+}
