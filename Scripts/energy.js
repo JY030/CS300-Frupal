@@ -91,5 +91,34 @@ function checkToolBag(Obstacle){
 	}
 }
 
-		
+// So we can check what is in the future move's position and stop it if they don't
+// have enough energy to move there
+function checkEnergyCost(x,y){
+	var cost = 0; //How much energy would be spent by end of move
+	var obstacle = checkTile(x,y).toLowerCase();
+	var terrain = checkTileTerrain(x,y).toLowerCase();
+	//Sets cost based on terrain type. He says only 2 types. Either 1 or 2 energy
+	//Can be updated here if we need more dynamic terrain types. Won't be hard
+	switch(terrain){
+		case "bog" : cost += 2; break;
+		case "meadow" : cost += 1; break;
+		case "forest" : cost += 1; break;
+		case "swamp" : cost += 2; break;
+		case "wall" : cost += 1; break;
+		default : cost += 1; break;
+	}
+	
+	if(obstacle != "None" || obstacle != "Diamond"){
+		switch(obstacle){
+			case "boulder" : cost += checkToolBag("boulder");
+							break;
+			case "bush" : cost += checkToolBag("bush");
+						break;
+			case "tree" : cost += checkToolBag("tree");
+						break;		
+			default: break;
+		}
+	}
+	return cost;
+}			
 
