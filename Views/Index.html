@@ -11,6 +11,7 @@
 	<script src="../scripts/waterCollision.js"></script>
 	<script src="../scripts/addToInventory.js"></script>
 	<script src="../scripts/energy.js"></script>
+	<script src="../scripts/customAlerts.js"></script>
 	<script src="../scripts/encounterChest.js"></script>
 </head>
 <body>
@@ -20,6 +21,18 @@
 			<div id="stats">
 				<progress id="Energy" value="0" max="0"></progress><span id="EnergyCount"></span>
 				<p id="WhiffleCount" value= "0">Whiffles:</p>
+			</div>
+			<div id="noActionAlert" class="alert">
+				<p>Custom Alert Text</p>
+			</div>
+			<div id="genericCustomAlert" class="alert">
+				<p>Custom Alert Text</p>
+				<button id="genericCustomAlertButton">OK</button>
+			</div>
+			<div id="decisionCustomAlert" class="alert">
+				<p>Custom Alert Text</p>
+				<button id="decisionCustomAlertAcceptButton">OK</button>
+				<button id="decisionCustomAlertDenyButton">Cancel</button>
 			</div>
 			<img id="hero" src="../Assets/Player.png" height="32px" width="32px"/>
 		</div>

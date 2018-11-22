@@ -9,6 +9,11 @@ var edgeBottom = 256; // bottom map bound
 var edgeLeft = 1 + spawnLeft; // left map bound
 var edgeRight = 256; // right map bound
 window.addEventListener('keyup', getKeyAndMove, false); // event for getting keys pressed
+window.addEventListener('keydown', StopScreenMove, true); // event for getting keys pressed
+
+function StopScreenMove(input) {
+	input.preventDefault();
+}
 
 function loadCharacter() {
 	character = document.getElementById('hero'); // loads character in
@@ -48,7 +53,7 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
 // switch statement based on key pressed => which direction to move
 function getKeyAndMove(input) {
 	if (energyBar.value <= 0) {
-		if(!(alert('You ran out of energy!'))){window.location.reload();}
+		GenericCustomAlert("red", 'You ran out of energy!', function() {window.location.reload()});
 		return;
 	}
 	
@@ -59,7 +64,7 @@ function getKeyAndMove(input) {
 	if (moving) { return; }
 	
 	else {
-	var moving = true;
+	moving = true;
 	setTimeout(function() { moving = false; }, speed + 50) }
 	
 	switch(keyCode) {
@@ -187,7 +192,7 @@ function updateWhiffles(total, add, subtract) {
 		return total;
 	}
 	else {
-		alert("not enough whiffles");
+		NoActionCustomAlert("red", "Not enough whiffles");
 		return total;
 	}
 }

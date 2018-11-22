@@ -66,37 +66,36 @@ function checkForPurchase(x, y) {
 		return false;
 	
 	if (tileObject == "binoculars" && binocularcheck == 1) {
-		alert("You've already got some sweet binocs, you don't need another pair.");
+		NoActionCustomAlert("purple", "You've already got some sweet binocs, you don't need another pair.");
 		return false;
 	}
 	
 	if (money < usefulItems[tileObject]) {
-		alert("Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
+		NoActionCustomAlert("purple", "Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
 		return false;
 	}
 	
-//	var buyItem = confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?");
-	if (confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?") == true) {
-		money -= usefulItems[tileObject];
+	DecisionCustomAlert("purple", "Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?", function(answer) {
+		if (answer == true) {
+			money -= usefulItems[tileObject];
 		
-		//Here is for the specific case of buying a power-bar... Really hard to do other wise, sorry.
-		if(tileObject == "power-bar"){
+			//Here is for the specific case of buying a power-bar... Really hard to do other wise, sorry.
+			if(tileObject == "power-bar"){
+				removeItemFromMap(x, y);
+				NoActionCustomAlert("purple", "You bought the "+tileObject);
+				energyBar.value += 20; p.innerHTML = energyBar.value;
+				whiffles.innerHTML = "Whiffles: "+money;
+				return true;
+			}
+			
+			addToInventory(tileObject);
 			removeItemFromMap(x, y);
-			alert("You bought the "+tileObject);
+			if (tileObject == "binoculars") {
+				binocularcheck = 1;
+			}
 			whiffles.innerHTML = "Whiffles: "+money;
-			energyBar.value += 20; p.innerHTML = energyBar.value;
-			return true;
+			
+			return false;
 		}
-		
-		addToInventory(tileObject);
-		removeItemFromMap(x, y);
-		if (tileObject == "binoculars") {
-			binocularcheck = 1;
-		}
-		alert("You bought the "+tileObject);
-		whiffles.innerHTML = "Whiffles: "+money;
-		return true;
-	}
-	
-	return false;
+	});
 }
