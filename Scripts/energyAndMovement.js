@@ -192,7 +192,7 @@ function updateWhiffles(total, add, subtract) {
 		return total;
 	}
 	else {
-		alert("not enough whiffles");
+		NoActionCustomAlert("red", "Not enough whiffles");
 		return total;
 	}
 }
