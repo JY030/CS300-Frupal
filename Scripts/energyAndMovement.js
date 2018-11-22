@@ -232,7 +232,7 @@ function dontmove(futureX, futureY) {
 	if(temp < 0) {
 		energyBar.value -= 1;
 		p.innerHTML = energyBar.value;
-		alert("You don't have enough energy to move there! Lose 1 energy.");
+		NoActionCustomAlert("blue", "You don't have enough energy to move there!<br />Lose 1 energy.");
 		return true;
 	}
 	
