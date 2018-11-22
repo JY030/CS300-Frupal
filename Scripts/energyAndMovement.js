@@ -13,6 +13,15 @@ window.addEventListener('keydown', StopScreenMove, true); // event for getting k
 
 function StopScreenMove(input) {
 	input.preventDefault();
+	//Ok button for alerts
+	if (input.keyCode === 13) {
+		document.getElementById("genericCustomAlertButton").click();
+		document.getElementById("decisionCustomAlertAcceptButton").click();
+	}
+	//F5
+	if (input.keyCode === 116) { 
+		window.location.reload();
+	}
 }
 
 function loadCharacter() {
