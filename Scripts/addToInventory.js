@@ -10,17 +10,17 @@ var usefulItems = {
 	"machete":25,
 	"shears":35,
 	"binoculars":50,
-	"energy-bar":1
+	"power-bar":1
 };
 
 /*function removes object from map at given x,y coordinates. returns true if
-function successfully removes object, otherwise returns false. possible reasons 
+function successfully removes object, otherwise returns false. possible reasons
 for function failing to remove object: invalid arguments given, coordinates out of
 bounds, no object present in tile*/
 function removeItemFromMap(x, y) {
 	var tileContains = checkTile(x,y);
-	if (tileContains == "out of bounds" || tileContains == "none" || tileContains == "checktile function fail") 
-		return false; 
+	if (tileContains == "out of bounds" || tileContains == "none" || tileContains == "checktile function fail")
+		return false;
 	for (i in mapToLoad) {
 		if (mapToLoad[i][0].x == x) {
 			for (j in mapToLoad[i]) {
@@ -42,7 +42,7 @@ function addToInventory(toAdd) {
 /*removes all instances of object from inventory. returns number of objects removed (0 if none found)*/
 function removeFromInventory(toRemove) {
 	var numRemoved = 0;
-	
+
 	for (i in inventory) {
 		if (inventory[i] == toRemove) {
 			inventory.splice(i, 1);
@@ -50,40 +50,54 @@ function removeFromInventory(toRemove) {
 			numRemoved++;
 		}
 	}
-	
+
 	return numRemoved;
 }
 
 /*arguments are xy coordinate of tile. if a useful item exists on the specified tile, checks
-how much money the player has. displays message if player doesn't have enough funds. if tile 
-has a valid item and player can afford it, asks player whether they want to buy it. if so, 
-deducts the cost, adds to inventory, and removes item from the map. returns true if item is 
+how much money the player has. displays message if player doesn't have enough funds. if tile
+has a valid item and player can afford it, asks player whether they want to buy it. if so,
+deducts the cost, adds to inventory, and removes item from the map. returns true if item is
 purchased, else returns false.*/
 function checkForPurchase(x, y) {
 	var tileObject = checkTile(x, y).toLowerCase();
-	
+
 	if (!usefulItems.hasOwnProperty(tileObject))
 		return false;
-	
-	if (money < usefulItems[tileObject]) {
-		alert("Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
+
+	if (tileObject == "binoculars" && binocularcheck == 1) {
+		NoActionCustomAlert("purple", "You've already got some sweet binocs, you don't need another pair.");
 		return false;
 	}
-	
-//	var buyItem = confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?");
-	if (confirm("Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?") == true) {
-		money -= usefulItems[tileObject];
-		addToInventory(tileObject);
-		removeItemFromMap(x, y);
-		if (tileObject == "binoculars") {
-			binocularcheck = 1;
-		}
-		alert("You bought the "+tileObject);
-		whiffles.innerHTML = "Whiffles: "+money;
-		return true;
+
+	if (money < usefulItems[tileObject]) {
+		NoActionCustomAlert("purple", "Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
+		return false;
 	}
-	
-	return false;
+
+	DecisionCustomAlert("purple", "Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?", function(answer) {
+		if (answer == true) {
+			money -= usefulItems[tileObject];
+
+			//Here is for the specific case of buying a power-bar... Really hard to do other wise, sorry.
+			if(tileObject == "power-bar"){
+				removeItemFromMap(x, y);
+				NoActionCustomAlert("purple", "You bought the "+tileObject);
+				energyBar.value += 20; p.innerHTML = energyBar.value;
+				whiffles.innerHTML = "Whiffles: "+money;
+				return true;
+			}
+
+			addToInventory(tileObject);
+			removeItemFromMap(x, y);
+			if (tileObject == "binoculars") {
+				binocularcheck = 1;
+			}
+			whiffles.innerHTML = "Whiffles: "+money;
+
+			return false;
+		}
+	});
 }
 
 

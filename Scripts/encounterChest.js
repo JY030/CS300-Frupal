@@ -15,23 +15,25 @@ function checkChest(x, y) {
 	if (!chestContents.hasOwnProperty(tileObject))
 		return false;
 	
-	if (confirm("Open "+tileObject+"?") == true) {
-		ChestType = chestContents[tileObject];
-		alert("You opened the "+tileObject);
-		if (ChestType == 1) {
-			money += 100;
-			whiffles.innerHTML = "Whiffles: "+money;
-			alert("You got 100 Whiffles!");
+	DecisionCustomAlert("purple", "Open the chest?", function(answer) {
+		if (answer == true) {
+			ChestType = chestContents[tileObject];
+			if (ChestType == 1) {
+				money += 100;
+				whiffles.innerHTML = "Whiffles: "+money;
+				NoActionCustomAlert("green", "You opened the chest! You got 100 Whiffles!");
+			
+			}
+			if (ChestType == 2) {
+				money = 0;
+				whiffles.innerHTML = "Whiffles: "+money;
+				NoActionCustomAlert("red", "You opened the chest! Lost all of your whiffles!");
+			}
+			removeItemFromMap(x, y);
+			
+			return true;
 		}
-		if (ChestType == 2) {
-			money = 0;
-			whiffles.innerHTML = "Whiffles: "+money;
-			alert("Lost all of your whiffles!");
-		}
-		removeItemFromMap(x, y);
-		
-		return true;
-	}
+	});
 	
 	return false;
 }
