@@ -19,8 +19,15 @@ function in_count(object,inventory)
 //this is the function to display inventory
 //the variable is whether to actively display or not
 function in_display(){
-   
-    
+    var inventoryListDisplay = document.getElementById("inventoryList");
+	
+	if (inventoryListDisplay.style.display === "block") {
+		inventoryListDisplay.style.display = "none";
+	}
+	else {
+		inventoryListDisplay.style.display = "block";
+	}
+	
 	//this is displaying objects
 
 	//hatchet

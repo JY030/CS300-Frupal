@@ -7,6 +7,10 @@ body {
 	background-size: cover;
 }
 
+.display {
+	display: block;
+}
+
 .alert {
 	display: none;
 	position: absolute;
