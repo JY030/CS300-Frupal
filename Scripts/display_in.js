@@ -16,10 +16,10 @@ function in_count(object,inventory)
 
 }
 
-//this is the function to display inventory
-//the variable is whether to actively display or not
-function in_display(){
-    var inventoryListDisplay = document.getElementById("inventoryList");
+//this is for displaying inventory
+function in_div_display()
+{
+	var inventoryListDisplay = document.getElementById("inventoryList");
 	
 	if (inventoryListDisplay.style.display === "block") {
 		inventoryListDisplay.style.display = "none";
@@ -27,6 +27,11 @@ function in_display(){
 	else {
 		inventoryListDisplay.style.display = "block";
 	}
+	in_display();
+}
+//this is the function to update inventory display
+function in_display(){
+
 	
 	//this is displaying objects
 
