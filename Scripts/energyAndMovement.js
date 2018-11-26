@@ -70,11 +70,16 @@ function getKeyAndMove(input) {
 	var keyCode = (input.keyCode);
 
 	//stops the user from spamming
-	if (moving) { return; }
+	if (moving) {
+		return;
+	}
 
 	else {
-	moving = true;
-	setTimeout(function() { moving = false; }, speed + 50) }
+		moving = true;
+		setTimeout(function() {
+			moving = false;
+		}, speed + 50);
+	}
 
 	switch(keyCode) {
 	case 37: //left arrow key
@@ -91,6 +96,7 @@ function getKeyAndMove(input) {
 				if (-movementDistance < 0) {
 					heroPosition[0] = ((heroPosition[0] - 1 + mapSize) % mapSize);
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					checkChest(heroPosition[0], heroPosition[1]);
 					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
 					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
@@ -99,26 +105,11 @@ function getKeyAndMove(input) {
 					shiftTiles("left");
 					updateTile();
 				}
-				requestAnimationFrame(function(timestamp) {
-					starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
-					moveit(timestamp, character, -movementDistance, speed, character.style.left, 'LR'); // 50px over .2 seconds
-					if (-movementDistance < 0) {
-						heroPosition[0] = ((heroPosition[0] - 1 + mapSize) % mapSize);
-						checkForPurchase(heroPosition[0], heroPosition[1]);
-						checkChest(heroPosition[0], heroPosition[1]);
-						energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
-						p.innerHTML = energyBar.value;
-						if (jewelsPosition){
-							jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
-						}
-						shiftTiles("left");
-						updateTile();
-					}
-				});
-			}
+			});
 		}
+	}
+	break;
 
-		break;
 	case 38: //Up arrow key
 		// bounds for top edge of map
 		input.preventDefault();
@@ -132,6 +123,7 @@ function getKeyAndMove(input) {
 				if (-movementDistance < 0) {
 					heroPosition[1] = ((heroPosition[1] - 1 + mapSize) % mapSize);
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					checkChest(heroPosition[0], heroPosition[1]);
 					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
 					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
@@ -140,26 +132,11 @@ function getKeyAndMove(input) {
 					shiftTiles("up");
 					updateTile();
 				}
-				requestAnimationFrame(function(timestamp) {
-					starttime = timestamp || new Date().getTime(); //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
-					moveit(timestamp, character, -movementDistance, speed, character.style.top, 'UD'); // 50px over .2 seconds
-					if (-movementDistance < 0) {
-						heroPosition[1] = ((heroPosition[1] - 1 + mapSize) % mapSize);
-						checkForPurchase(heroPosition[0], heroPosition[1]);
-						checkChest(heroPosition[0], heroPosition[1]);
-						energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
-						p.innerHTML = energyBar.value;
-						if (jewelsPosition){
-							jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
-						}
-						shiftTiles("up");
-						updateTile();
-					}
-				});
-			}
+			});
 		}
+	}
+	break;
 
-		break;
 	case 39: //right arrow key
 		// bounds for right edge of map
 		input.preventDefault();
@@ -174,16 +151,20 @@ function getKeyAndMove(input) {
 				if (movementDistance > 0) {
 					heroPosition[0] = ((heroPosition[0] + 1 + mapSize) % mapSize);
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					checkChest(heroPosition[0], heroPosition[1]);
 					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
 					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
 						jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
 					}
-				});
-			}
+					shiftTiles("right");
+					updateTile();
+				}
+			});
 		}
+	}
+	break;
 
-		break;
 	case 40: //down arrow key
 		// bounds for bottom edge of map
 		input.preventDefault();
@@ -198,6 +179,7 @@ function getKeyAndMove(input) {
 				if (movementDistance > 0) {
 					heroPosition[1] = ((heroPosition[1] + 1 + mapSize) % mapSize);
 					checkForPurchase(heroPosition[0], heroPosition[1]);
+					checkChest(heroPosition[0], heroPosition[1]);
 					energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
 					p.innerHTML = energyBar.value;
 					if (jewelsPosition){
@@ -206,26 +188,11 @@ function getKeyAndMove(input) {
 					shiftTiles("down");
 					updateTile();
 				}
-				requestAnimationFrame(function(timestamp) {
-					starttime = timestamp || new Date().getTime();
-					moveit(timestamp, character, movementDistance, speed, character.style.top, 'UD'); // 50px over .2 seconds
-					if (movementDistance > 0) {
-						heroPosition[1] = ((heroPosition[1] + 1 + mapSize) % mapSize);
-						checkForPurchase(heroPosition[0], heroPosition[1]);
-						checkChest(heroPosition[0], heroPosition[1]);
-						energyBar.value -= energyCost(heroPosition[0], heroPosition[1]);
-						p.innerHTML = energyBar.value;
-						if (jewelsPosition){
-							jewel_found(heroPosition[0],heroPosition[1],jewelsPosition[0],jewelsPosition[1]);
-						}
-						shiftTiles("down");
-						updateTile();
-					}
-				});
-			}
+			});
 		}
-
-		break;
+	}
+	break;
+	
 	}
 }
 
