@@ -13,6 +13,7 @@
 	<script src="../scripts/energy.js"></script>
 	<script src="../scripts/customAlerts.js"></script>
 	<script src="../scripts/encounterChest.js"></script>
+	<script src="../scripts/display_in.js"></script>
 </head>
 <body>
 	<div id="container">
@@ -21,6 +22,18 @@
 			<div id="stats">
 				<progress id="Energy" value="0" max="0"></progress><span id="EnergyCount"></span>
 				<p id="WhiffleCount" value= "0">Whiffles:</p>
+				<button onclick="in_div_display()">Inventory</button>
+				<div id="inventoryList">
+					<p id="hatchet"> </p>
+					<p id="axe"> </p>
+					<p id="chainsaw"> </p>
+					<p id="chisel"> </p>
+					<p id="sledge"> </p>
+					<p id="jackhammer"></p>
+					<p id="machete"></p>
+					<p id="shears"></p>
+					<p id="binoculars"> </p>
+				</div>
 			</div>
 			<div id="noActionAlert" class="alert">
 				<p>Custom Alert Text</p>

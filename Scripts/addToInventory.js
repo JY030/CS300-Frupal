@@ -32,11 +32,13 @@ function removeItemFromMap(x, y) {
 			}
 		}
 	}
+	
 }
 
 //adds argument to inventory. might want to update in the future so that it checks argument is a valid inventory object
 function addToInventory(toAdd) {
 	inventory.push(toAdd);
+	in_display();
 }
 
 /*removes all instances of object from inventory. returns number of objects removed (0 if none found)*/
@@ -50,7 +52,7 @@ function removeFromInventory(toRemove) {
 			numRemoved++;
 		}
 	}
-
+	in_display();
 	return numRemoved;
 }
 
