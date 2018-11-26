@@ -38,41 +38,38 @@ function in_display(){
 	//hatchet
 	var obj = "hatchet";
 	var hatchet = in_count(obj,inventory)
-	document.getElementById("hatchet").innerHTML = "hatchet price 15 quantity " + hatchet;
+	document.getElementById("hatchet").innerHTML = "Hatchet. Price: 15, Quantity: " + hatchet;
 
 	var obj = "axe";
         var axe = in_count(obj,inventory)
-        document.getElementById("axe").innerHTML ="axe price 30 quantity " +  axe;
+        document.getElementById("axe").innerHTML ="Axe. Price: 30, Quantity: " +  axe;
 
 	var obj = "chainsaw";
         var chainsaw = in_count(obj,inventory)
-        document.getElementById("chainsaw").innerHTML = "chainsaw price 60 quantity " + chainsaw;
+        document.getElementById("chainsaw").innerHTML = "Chainsaw. Price: 60, Quantity: " + chainsaw;
 
 	var obj = "chisel";
         var chisel = in_count(obj,inventory)
-        document.getElementById("chisel").innerHTML = "chisel price 5 quantity " + chisel;
+        document.getElementById("chisel").innerHTML = "Chisel. Price: 5, Quantity: " + chisel;
 
 	var obj = "sledge";
         var sledge = in_count(obj,inventory)
-        document.getElementById("sledge").innerHTML = "sledge price 25 quantity " + sledge;
+        document.getElementById("sledge").innerHTML = "Sledge. Price: 25, Quantity: " + sledge;
 
         var obj = "jackhammer";
         var jackhammer = in_count(obj,inventory)
-        document.getElementById("jackhammer").innerHTML = "jackhammer price 100 quantity " + jackhammer;
+        document.getElementById("jackhammer").innerHTML = "Jackhammer. Price: 100, Quantity: " + jackhammer;
 
 	var obj = "machete";
         var machete = in_count(obj,inventory)
-        document.getElementById("machete").innerHTML = "machete price 25 quantity " + machete;
+        document.getElementById("machete").innerHTML = "Machete. Price: 25, Quantity: " + machete;
 
 	var obj = "shears";
         var shears = in_count(obj,inventory)
-        document.getElementById("shears").innerHTML = "shears price 35 quantity " + shears;
+        document.getElementById("shears").innerHTML = "Shears. Price: 35, Quantity: " + shears;
 
 	var obj = "binoculars";
         var binoculars = in_count(obj,inventory)
-        document.getElementById("binoculars").innerHTML = "binoculars price 50 quantity " + binoculars;
-
-    
-    
+        document.getElementById("binoculars").innerHTML = "Binoculars. Price: 50, Quantity: " + binoculars;    
 }
 
