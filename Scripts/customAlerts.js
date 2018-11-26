@@ -1,3 +1,4 @@
+//This Alert flashes an alert of your color then fades after a few secs
 function NoActionCustomAlert(color, contentText) {
 	var custAlert = document.getElementById("noActionAlert");
 	custAlert.style.backgroundColor = color;
@@ -13,6 +14,7 @@ function NoActionCustomAlert(color, contentText) {
 	}, 1000);
 }
 
+//Stops the player until they hit the "ok" button
 function GenericCustomAlert(color, contentText, callback) {
 	callback = oneCallBack(callback);
 
@@ -40,6 +42,7 @@ function GenericCustomAlert(color, contentText, callback) {
 	}, false);
 }
 
+//Stops the player until they either press "ok" or "cancel"
 function DecisionCustomAlert(color, contentText, callback) {
 	callback = oneCallBack(callback);
 	
@@ -75,6 +78,7 @@ function DecisionCustomAlert(color, contentText, callback) {
 	}, false);
 }
 
+//Prevents more than one callback to fire
 function oneCallBack(fn) {
 	var hasCalled = false;
 	
