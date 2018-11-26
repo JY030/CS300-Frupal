@@ -31,6 +31,7 @@ function energyCost(x,y){
 	var terrain = checkTileTerrain(x,y).toLowerCase();
 	//Sets cost based on terrain type. He says only 2 types. Either 1 or 2 energy
 	//Can be updated here if we need more dynamic terrain types. Won't be hard
+
 	switch(terrain){
 		case "bog" : cost += 2; break;
 		case "meadow" : cost += 1; break;
@@ -39,8 +40,9 @@ function energyCost(x,y){
 		case "wall" : cost += 1; break;
 		default : cost += 1; break;
 	}
+	//cost += costOfTerrain(terrain);
 
-	if(obstacle != "None" || obstacle != "Diamond"){
+	if(obstacle != "none" || obstacle != "diamond"){
 	switch(obstacle){
 		case "boulder" : cost += checkToolBag("boulder");
 						removeItemFromMap(x,y);
@@ -56,7 +58,23 @@ function energyCost(x,y){
 	}
 	return cost;
 }
+//Checks the cost of the terrain type.
+//Takes in a string of terrain, returns the value
+/*function costOfTerrain(terrain){
+	var cost = 0;
+	
+	switch(terrain){
+		case "bog" : cost += 2; break;
+		case "meadow" : cost += 1; break;
+		case "forest" : cost += 1; break;
+		case "swamp" : cost += 2; break;
+		case "wall" : cost += 1; break;
+		default : cost += 1; break;
+	}
 
+	return cost;
+}
+*/
 
 //This function is only called by the one up above, just an inventory checker
 //Takes and obstacle and returns the cost of removing that obstacle given the inventory
@@ -93,15 +111,20 @@ function checkToolBag(Obstacle){
 
 function checkEnergy(x,y){
 	var obstacle = checkTile(x,y).toLowerCase();
+	var terrain = checkTileTerrain(x,y).toLowerCase();
+	
 	var cost = checkToolBag(obstacle);
+	//cost += costOfTerrain(terrain);
+	
 	if(cost > energyBar.value){
 		energyBar.value -= 1;
 		p.innerHTML = energyBar.value;
 		NoActionCustomAlert("blue", "You don't have enough energy to move there!<br />Lose 1 energy.");
 		if(energyBar.value <= 0){
         GenericCustomAlert("red", 'You ran out of energy by running into a wall!', function() {window.location.reload()});
-        return;
-    }
+        return false;
+		}
+		
 		return false;
 	}
 	return true;
