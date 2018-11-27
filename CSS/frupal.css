@@ -91,6 +91,12 @@ span {
 	display: none;
 }
 
+#inventoryList {
+	background-color: lightgrey;
+	border: solid lightslategray;
+	margin: 10px 0 0;
+}
+
 #inventoryList img {
 	float: left;
 	margin-right: 10px;
@@ -98,11 +104,21 @@ span {
 	width: 32px;
 }
 
+#inventoryList p {
+	padding-top: 5px;
+	margin: 0 15px 15px;
+}
+
 .moneyBag {
 	float: left;
 	margin-right: 10px;
 	height: 32px;
 	width: 32px;
+}
+
+#WhiffleCount {
+	padding-top: 5px;
+	margin: 0 0 15px 0;
 }
 
 /* Terrain types */
