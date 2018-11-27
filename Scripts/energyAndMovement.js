@@ -28,8 +28,12 @@ function loadCharacter() {
 	character = document.getElementById('hero'); // loads character in
 	//character.style.position = 'absolute'; // dw about this
 	//character.style.left = (parseInt(spawnLeft) * heroPositionOffset + printThis.offsetLeft) + 'px'; // spawn coordinates, x center of map
-	character.style.top = (parseInt(spawnTop) * heroPositionOffset + printThis.offsetTop) + 'px'; // spawn coordinates, y center of map
-
+	//if mapsize is odd and less than our 20 size than remove the extra padding-left on hero.
+	if (mapSize < 20 && (mapSize % 2) == 1) {
+		character.style.paddingLeft = 0 + 'px';
+	}
+	character.style.top = (parseInt(spawnTop) * heroPositionOffset) + 'px'; // spawn coordinates, y center of map
+	
 	//Might move elsewhere. Sets the edges to the border of our box and the mapSize the user chooses
 	edgeTop = printThis.offsetTop;
 	edgeLeft = printThis.offsetLeft;

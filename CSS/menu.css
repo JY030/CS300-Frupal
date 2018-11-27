@@ -35,12 +35,20 @@ h1 {
 	display: none;
 }
 
-.gloassaryCell {
+#glossaryContent h2{
+	color: fuchsia;
+}
+
+.glossaryCell {
 	border: 1px solid blue;
 	display: inline-block;
 	padding: 15px;
 	margin: 10px 5px;
 	background-color: ivory;
+}
+
+.glossaryCell p {
+	font-size: 12px;
 }
 
 .fadeIn {

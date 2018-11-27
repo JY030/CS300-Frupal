@@ -19,21 +19,24 @@
 <body>
 	<div id="container">
 		<h1 id="title">FRUPAL</h1>
-		<div id="printThis" align="center" class="mapBorder">
+		<div id="printThis" align="center" class="mapBorder" ">
 			<div id="stats">
 				<progress id="Energy" value="0" max="0"></progress><span id="EnergyCount"></span>
-				<p id="WhiffleCount" value= "0">Whiffles:</p>
-				<button onclick="in_div_display()">Inventory</button>
+				<div>
+					<img class="moneyBag" title="Whiffles" src="../Assets/Money.png"/>
+					<p id="WhiffleCount" value= "0">Whiffles:</p>
+				</div>
+				<button style="margin-left: 75px;" onclick="in_div_display()">Inventory</button>
 				<div id="inventoryList" style="display: none;">
-					<p id="hatchet"> </p>
-					<p id="axe"> </p>
-					<p id="chainsaw"> </p>
-					<p id="chisel"> </p>
-					<p id="sledge"> </p>
-					<p id="jackhammer"></p>
-					<p id="machete"></p>
-					<p id="shears"></p>
-					<p id="binoculars"> </p>
+					<img title="Hatchet" src="../Assets/Hatchet.png"/><p id="hatchet"></p>
+					<img title="Axe" src="../Assets/Axe.png"/><p id="axe"></p>
+					<img title="Chainsaw" src="../Assets/Chainsaw.png"/><p id="chainsaw"></p>
+					<img title="Chisel" src="../Assets/Chisel.png"/><p id="chisel"></p>
+					<img title="Sledgehammer" src="../Assets/Sledgehammer.png"/><p id="sledge"></p>
+					<img title="Jackhammer" src="../Assets/Jackhammer.png"/><p id="jackhammer"></p>
+					<img title="Machete" src="../Assets/Machete.png"/><p id="machete"></p>
+					<img title="Shears" src="../Assets/Shears.png"/><p id="shears"></p>
+					<img title="Binoculars" src="../Assets/Binoculars.png"/><p id="binoculars"></p>
 				</div>
 			</div>
 			<div id="noActionAlert" class="alert">
