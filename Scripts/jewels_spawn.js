@@ -26,10 +26,14 @@ function jewel_visual(coordinate){
 }
 
 function jewel_spawn(x,y){
-	
+	//place the jewel wherever we set it to.
 	for(var i = 0; i < mapToLoad.length; i++){
 		for(var j = 0; j < mapToLoad[i].length; j++){
 				if(mapToLoad[j][i].x == x && mapToLoad[j][i].y == y) {
+					//If we had a water terrain with the jewel keep rerolling until we get a none water terrain.
+					while (mapToLoad[j][i].image === "water") {
+						mapToLoad[j][i].image = file[randomTerrainOrItem(6, true)].display;
+					}
 					mapToLoad[j][i].content = file[7].display;
 				}
 		}

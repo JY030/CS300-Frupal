@@ -239,14 +239,15 @@ function loadMap(file) {
 						isInTilesList = true;
 					}
 					
-					//if user put a diamond on a map reset the random jewel.
+					//if the user put a diamond on a map and didn't want it to be random, reset the random jewel posistions created earlier.
 					if (rJewel == false && tile[4] == "Diamonds") {
 						jewelsPosition[0] = cell.x;
 						jewelsPosition[1] = cell.y;
 						cell.content = tile[4];
 					}
 					else if (rJewel == true && tile[4] == "Diamonds") {
-						cell.content = randomTerrainOrItem(500, false);//Put random one instead.
+						//if the user wanted a random jewel (even if they had one in the tiles list) put a random item for the one in the list instead and keep the random jewel posistions.
+						cell.content = randomTerrainOrItem(500, false);
 					}
 					else {
 						cell.content = tile[4]; //Put obstacle in cell
@@ -270,6 +271,7 @@ function loadMap(file) {
 }
 
 //Altered Jewel_random function to match for random item or terrain type.
+//Return either a number or a string. I am not proud of this -James
 function randomTerrainOrItem(num, isTerrain) {
 	var x = Math.floor(Math.random() * num);
 	
