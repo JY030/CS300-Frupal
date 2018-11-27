@@ -29,6 +29,7 @@ function generateRandomMap(size) {
 		}
 	}
 
+	//set tile and tiles directly NSEW to value
 	function setSurrounding(value, x, y) {
 		rMapTerrain[x][y] = value;
 		rMapTerrain[(x + 1 + size) % size][y] = value;
@@ -41,7 +42,7 @@ function generateRandomMap(size) {
 	function addForest(x, y) {
 		setSurrounding(1, x, y);
 		tile = [x,y];
-		while (Math.random() < 0.85) {
+		while (Math.random() < 0.82) {
 			next = nextTile(tile[0], tile[1]);
 			setSurrounding(1, next[0], next[1]);
 			tile = next;
@@ -51,7 +52,7 @@ function generateRandomMap(size) {
 	function addBog(x, y) {
 		setSurrounding(4, x, y);
 		tile = [x,y];
-		while (Math.random() < 0.85) {
+		while (Math.random() < 0.82) {
 			next = nextTile(tile[0], tile[1]);
 			setSurrounding(4, next[0], next[1]);
 			tile = next;
@@ -61,7 +62,7 @@ function generateRandomMap(size) {
 	function addSwamp(x, y) {
 		setSurrounding(5, x, y);
 		tile = [x,y];
-		while (Math.random() < 0.85) {
+		while (Math.random() < 0.82) {
 			next = nextTile(tile[0], tile[1]);
 			setSurrounding(5, next[0], next[1]);
 			tile = next;
@@ -72,7 +73,7 @@ function generateRandomMap(size) {
 	function addLake(x, y) {
 		setSurrounding(2, x, y);
 		tile = [x,y];
-		while (Math.random() < 0.85) {
+		while (Math.random() < 0.82) {
 			next = nextTile(tile[0], tile[1]);
 			setSurrounding(2, next[0], next[1]);
 			tile = next;
@@ -175,13 +176,13 @@ function generateRandomMap(size) {
 					case (roll < .899):
 						rMapObject[j][k] = "boulder";
 						break;
-					case (roll < .92):
+					case (roll < .93):
 						rMapObject[j][k] = "power-bar";
 						break;	
-					case (roll < .94):
+					case (roll < .95):
 						rMapObject[j][k] = "type1-treasure";
 						break;							
-					case (roll < .95):
+					case (roll < .96):
 						rMapObject[j][k] = "type2-treasure";
 						break;		
 					case (roll < .97):
@@ -217,15 +218,6 @@ function generateRandomMap(size) {
 			}
 		}
 	}
-	
-/*	
-	function printArray(toPrint) {
-		for (i in toPrint) 
-			console.log(toPrint[i]);
-	}
-
-	printArray(rMapTerrain);
-	printArray(rMapObject);*/
 	
 	return tilesToSave;
 			

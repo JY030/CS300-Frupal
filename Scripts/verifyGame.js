@@ -113,10 +113,10 @@ function isValidState() {
 			
 		
 	}
-	if (hasDiamonds == false) {
+/*	if (hasDiamonds == false) {
 		alert("Error: Invalid game state - map doesn't contain diamonds (specified tile MUST exist that contains \'Diamonds\' in object field");
 			return false;
-		}
+		}*/
 
 	return true;			
 }
