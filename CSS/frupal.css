@@ -75,6 +75,7 @@ body {
     width: 64px;
     margin-left: 4px;
 }
+
 span {
 	display: inline-block;
 	width: 32px;
@@ -88,6 +89,20 @@ span {
 
 .notVisable > span {
 	display: none;
+}
+
+#inventoryList img {
+	float: left;
+	margin-right: 10px;
+	height: 32px;
+	width: 32px;
+}
+
+.moneyBag {
+	float: left;
+	margin-right: 10px;
+	height: 32px;
+	width: 32px;
 }
 
 /* Terrain types */
