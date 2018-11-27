@@ -66,6 +66,10 @@ window.onload = function() {
 	//Load up our map with the tile list.
 	loadMap(file);
 	
+	//make sure hero doesn't spawn on top of water
+	while (checkTileTerrain(heroPosition[0], heroPosition[1]) == "water")
+		heroPosition[0] +=1;	
+	
 	//Create spans for the size of map window we can see at all times.
 	showVisibleMap();
 	

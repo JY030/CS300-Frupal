@@ -195,6 +195,9 @@ function lineofsight(a, rows, cols, playerx,  playery, binocularcheck){
 
 function loadMap(file) {
 	//Load up the map with everything from the tile set.
+	if (rTiles == true) {
+		tiles = generateRandomMap(mapSize);
+	}
 	mapToLoad.forEach(function (row) {
 		row.forEach(function (cell) {
 			var isInTilesList = false; //This tells us we had found a tile, so don't look at more.
@@ -254,16 +257,10 @@ function loadMap(file) {
 			
 			//Can't find in tile list?
 			if (isInTilesList == false){
-				// Then make a meadow that is not visable or random if the player chose in settings.
-				if (rTiles == false) {
-					cell.image += file[0].display;
-					cell.visibility = 0;
-				}
-				else {
-					cell.image += file[randomTerrainOrItem(6, true)].display;
-					cell.content = randomTerrainOrItem(500, false);
-					cell.visibility = 0;
-				}
+				// Then make a meadow that is not visable
+				cell.image += file[0].display;
+				cell.visibility = 0;
+
 			}
 		});
 	});
