@@ -44,7 +44,7 @@ function jewel_spawn(x,y){
 
 function jewel_found(x,y,jx,jy){
   if (x==jx && y==jy){
-		GenericCustomAlert("green", 'You have found the jewel and won the game!,', function() {window.location.reload()});
+		GenericCustomAlert("green", 'You have found the jewel and won the game!', function() {window.location.reload()});
 		return true;
    }
    else{

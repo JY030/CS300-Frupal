@@ -33,7 +33,6 @@ function loadCharacter() {
 		character.style.paddingLeft = 0 + 'px';
 	}
 	character.style.top = (parseInt(spawnTop) * heroPositionOffset) + 'px'; // spawn coordinates, y center of map
-	//character.style.top = (Math.floor(printThis.offsetHeight / 2) + (parseInt(spawnTop) * heroPositionOffset) - 2) + 'px'; // spawn coordinates, y center of map
 	
 	//Might move elsewhere. Sets the edges to the border of our box and the mapSize the user chooses
 	edgeTop = printThis.offsetTop;
