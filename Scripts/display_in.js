@@ -7,13 +7,11 @@ function in_count(object,inventory)
 {
     var count=0;
     for (i in inventory){
-	if (inventory[i] == object){
-	    count++;
-	}
+		if (inventory[i] == object){
+			count++;
+		}
     }
     return count;
-    
-
 }
 
 //this is for displaying inventory
@@ -25,9 +23,9 @@ function in_div_display()
 		inventoryListDisplay.style.display = "none";
 	}
 	else {
+		in_display();
 		inventoryListDisplay.style.display = "block";
 	}
-	in_display();
 }
 //this is the function to update inventory display
 function in_display(){

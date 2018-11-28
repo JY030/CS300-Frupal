@@ -107,9 +107,7 @@ span {
 
 #inventoryList img {
 	float: left;
-	margin-right: 10px;
-	height: 32px;
-	width: 32px;
+	margin: 5px 10px 0 5px;
 }
 
 #inventoryList p {
