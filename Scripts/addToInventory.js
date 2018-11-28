@@ -68,15 +68,21 @@ function checkForPurchase(x, y) {
 		return false;
 
 	if (tileObject == "binoculars" && binocularcheck == 1) {
+		var audio = new Audio('../Assets/Sounds/Alert.wav');
+		audio.play();
 		NoActionCustomAlert("purple", "You've already got some sweet binocs, you don't need another pair.");
 		return false;
 	}
 
 	if (money < usefulItems[tileObject]) {
+		var audio = new Audio('../Assets/Sounds/Alert.wav');
+		audio.play();
 		NoActionCustomAlert("purple", "Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
 		return false;
 	}
 
+	var audio = new Audio('../Assets/Sounds/Alert.wav');
+	audio.play();
 	DecisionCustomAlert("purple", "Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?", function(answer) {
 		if (answer == true) {
 			money -= usefulItems[tileObject];
@@ -87,6 +93,8 @@ function checkForPurchase(x, y) {
 				NoActionCustomAlert("purple", "You bought the "+tileObject);
 				energyBar.value += 20; p.innerHTML = energyBar.value;
 				whiffles.innerHTML = "Whiffles: "+money;
+				var audio = new Audio('../Assets/Sounds/powerbar.wav');
+				audio.play();
 				return true;
 			}
 
@@ -96,7 +104,9 @@ function checkForPurchase(x, y) {
 				binocularcheck = 1;
 			}
 			whiffles.innerHTML = "Whiffles: "+money;
-
+			
+			var audio = new Audio('../Assets/Sounds/ItemPickUp.wav');
+			audio.play();
 			return false;
 		}
 	});

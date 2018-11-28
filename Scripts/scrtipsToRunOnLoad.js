@@ -1,5 +1,4 @@
 window.onload = function() {
-	
 	file = [{
 			"display": "meadow"
 		},
@@ -108,4 +107,13 @@ window.onload = function() {
 	p.innerHTML += energy;
 	
 	loadCharacter();
+	
+	var backgroundMusic = new Audio('../Assets/Sounds/background.mp3');
+	backgroundMusic.volume = 0.1;
+	DecisionCustomAlert("purple", "Play Background Music?", function(answer) {
+		if (answer == true) {
+			backgroundMusic.loop = true;
+			backgroundMusic.play();
+		}
+	});
 }

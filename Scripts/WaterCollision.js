@@ -20,10 +20,14 @@ function isWaterCollision(futureX, futureY) {
 		foundWater = true;
 		energyBar.value -= 1;
 		p.innerHTML = energyBar.value;
+		var audio = new Audio('../Assets/Sounds/cantMove.wav');
+		audio.play();
 		NoActionCustomAlert("blue", "You can't swim! Lose 1 energy.");
 	}
 	
 	if(energyBar.value <= 0){
+		var audio = new Audio('../Assets/Sounds/lose.wav');
+		audio.play();
 		GenericCustomAlert("red", 'You ran out of energy by Going into water!', function() {window.location.reload()});
 		return;
 	}
