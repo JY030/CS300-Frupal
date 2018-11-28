@@ -184,10 +184,10 @@ function generateRandomMap(size) {
 						case (roll < .85):
 							rMapObject[j][k] = "tree";
 							break;
-						case (roll < .905):
+						case (roll < .89):
 							rMapObject[j][k] = "boulder";
 							break;
-						case (roll < .93):
+						case (roll < .935):
 							rMapObject[j][k] = "power-bar";
 							break;	
 						case (roll < .95):
