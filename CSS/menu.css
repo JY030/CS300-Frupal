@@ -1,0 +1,75 @@
+body, html {
+	margin: 0;
+}
+
+body {
+	background: url("../Assets/StartBackground.png") no-repeat center;
+	background-size: cover;
+	background-color: black;
+}
+
+h1 {
+	color: blue;
+}
+
+#menuContainer {
+	opacity: 0;
+	margin: 10px 10px 20px;
+	text-align: center;
+}
+
+#settingsContent {
+	display: none;
+}
+
+.randomSection {
+	background-color: snow;
+	margin: 10px;
+	padding: 10px;
+	text-align: left;
+	width: 200px;
+	line-height: 25px;
+}
+
+#glossaryContent {
+	display: none;
+}
+
+#glossaryContent h2{
+	color: fuchsia;
+}
+
+.glossaryCell {
+	border: 1px solid blue;
+	display: inline-block;
+	padding: 15px;
+	margin: 10px 5px;
+	background-color: ivory;
+}
+
+.glossaryCell p {
+	font-size: 12px;
+}
+
+.fadeIn {
+	opacity: 1 !important;
+	animation: fadeIn 3s;
+	animation-iteration-count: 1;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.display {
+	display: inline-block !important;
+}
+
+.doNotDisplay {
+	display: none;
+}

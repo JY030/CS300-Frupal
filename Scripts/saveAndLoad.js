@@ -12,6 +12,11 @@ function saveToLocal() {
 	localStorage.setItem("money", money);
 	localStorage.setItem("inventory", JSON.stringify(inventory));
 	localStorage.setItem("tiles", JSON.stringify(tiles));
+	
+	localStorage.setItem("rJewel", JSON.stringify(rJewel));
+	localStorage.setItem("rTiles", JSON.stringify(rTiles));
+	localStorage.setItem("rHero", JSON.stringify(rHero));
+	
 }
 
 function loadFromLocal() {
@@ -24,6 +29,10 @@ function loadFromLocal() {
 		inventory = JSON.parse(localStorage.getItem("inventory"));//Everything in here should be strings
 		tiles = JSON.parse(localStorage.getItem("tiles"));
 	
+		rJewel = JSON.parse(localStorage.getItem("rJewel"));
+		rTiles = JSON.parse(localStorage.getItem("rTiles"));
+		rHero = JSON.parse(localStorage.getItem("rHero")); 
+		
 		return true;
 	}
 //	alert("Failed to load game from local storage")

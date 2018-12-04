@@ -26,10 +26,14 @@ function jewel_visual(coordinate){
 }
 
 function jewel_spawn(x,y){
-	
+	//place the jewel wherever we set it to.
 	for(var i = 0; i < mapToLoad.length; i++){
 		for(var j = 0; j < mapToLoad[i].length; j++){
 				if(mapToLoad[j][i].x == x && mapToLoad[j][i].y == y) {
+					//If we had a water terrain with the jewel keep rerolling until we get a none water terrain.
+					while (mapToLoad[j][i].image === "water") {
+						mapToLoad[j][i].image = file[randomTerrainOrItem(6, true)].display;
+					}
 					mapToLoad[j][i].content = file[7].display;
 				}
 		}
@@ -44,15 +48,11 @@ function jewel_spawn(x,y){
 
 function jewel_found(x,y,jx,jy){
   if (x==jx && y==jy){
-    setTimeout( function () {window.alert("you have found the jewel and won the game"); }, 300);
-    //I wasn't sure if bool is how you wanted the function to check or not, but
-    //returning true means to quit game and returning false means continue,
-    //this should be called every time the character moves to my understanding
-    setTimeout( function() { window.location.reload(); }, 500);
-      return true;
+		GenericCustomAlert("green", 'You have found the jewel and won the game!', function() {window.location.reload()});
+		return true;
    }
    else{
-     return false;
+		return false;
   }
 }
 

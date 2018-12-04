@@ -1,21 +1,130 @@
-.mapBorder{
-	max-width: 256px;
-	max-height: 256px;
-	border: 1px solid red;
+body, html {
+	margin: 0;
 }
 
-.tileSize {
+body {
+	background: url("../Assets/Background1.png") no-repeat center;
+	background-size: cover;
+}
+
+.alert {
+	display: none;
+	position: absolute;
+	padding: 10px;
+	color: white;
+	opacity: 0;
+	transition: opacity 1.0s;
+	margin: 5px 0 0 255px;
+}
+
+.alert button {
+	margin: 0 5px;
+	border: none;
+	background-color: whitesmoke;
+	padding: 5px;
+}
+
+.alert button:active {
+	background-color: gray;
+}
+
+#hero {
+	position: absolute;
+	right: 0;
+	left: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 32px;
+}
+
+#printThis {
+	position: absolute;
+	right: 0;
+	left: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#container {
+	margin: 0;
+	text-align: center;
+}
+
+#title {
+	color: blue;
+	margin: 0 0 35px 0;
+}
+
+#stats {
+	margin: 0;
+	position: absolute;
+	background-color: darkgray;
+	padding: 10px;
+	border: 1px solid saddlebrown;
+	text-align: left;
+}
+
+.mapBorder{
+	border: 1px solid cadetblue;
+	display: inline-block;
+}
+
+#Energy{
+	color: #43b749;
+    background-color: white;
+	border: black solid 1px;
+
+}
+
+#Energy::-webkit-progress-bar{ background: white;}
+#EnergyCount{
+	display: inline-block;
+    height: 32px;
+    width: 64px;
+    margin-left: 4px;
+}
+
+span {
 	display: inline-block;
 	width: 32px;
 	height: 32px;
 }
 
 .notVisable {
-	background-color: black;
+	background-color: black !important;
+	background-image: none !important;
 }
 
 .notVisable > span {
 	display: none;
+}
+
+#inventoryList {
+	background-color: lightgrey;
+	border: solid lightslategray;
+	margin: 10px 0 0;
+}
+
+#inventoryList img {
+	float: left;
+	margin: 5px 10px 0 5px;
+}
+
+#inventoryList p {
+	padding-top: 5px;
+	margin: 0 15px 15px;
+}
+
+.moneyBag {
+	float: left;
+	margin-right: 10px;
+	height: 32px;
+	width: 32px;
+}
+
+#WhiffleCount {
+	padding-top: 5px;
+	margin: 0 0 15px 0;
 }
 
 /* Terrain types */
@@ -63,21 +172,24 @@
 	background-size: 32px 32px;
 }
 
-.blackberry-bush {
+.bush {
 	background-image: url("../Assets/Bush.png");
 	background-size: 32px 32px;
 }
 
 .power-bar {
-	background-color: gray;
+	background-image: url("../Assets/Powerbar.png");
+	background-size: 32px 32px;
 }
 
 .type1-treasure {
-	background-color: gray;
+	background-image: url("../Assets/Chest.png");
+	background-size: 32px 32px;
 }
 
 .type2-treasure {
-	background-color: gray;
+	background-image: url("../Assets/Chest.png");
+	background-size: 32px 32px;
 }
 
 .diamonds {
@@ -98,7 +210,8 @@
 }
 
 .chainsaw {
-	background-color: lightgreen;
+	background-image: url("../Assets/Chainsaw.png");
+	background-size: 32px 32px;
 }
 
 .chisel {
@@ -110,7 +223,8 @@
 }
 
 .jackhammer {
-	background-color: lightgreen;
+	background-image: url("../Assets/Jackhammer.png");
+	background-size: 32px 32px;
 }
 
 .machete {
@@ -118,15 +232,17 @@
 }
 
 .shears {
-	background-color: lightgreen;
+	background-image: url("../Assets/Shears.png");
+	background-size: 32px 32px;
 }
 
 .binoculars {
-	background-color: lightgreen;
+	background-image: url("../Assets/Binoculars.png");
+	background-size: 32px 32px;
 }
 
 .none {
-	background-color: white;
+	
 }
 
 /* End Content */

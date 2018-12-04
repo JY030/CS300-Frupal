@@ -1,0 +1,215 @@
+<html>
+<head>
+	<title>FRUPAL</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/menu.css">
+	<script src="../scripts/verifyGame.js"></script>
+	<script src="../scripts/saveAndLoad.js"></script>
+	<script src="../scripts/menu.js"></script>
+</head>
+<body>
+	<div id="menuContainer">
+		<div id="startContent">
+			<h1>Welcome To Frupal</h1>
+			<h2>Try not to wander too far...</h2>
+			<p>Select an Option</p>
+			<button onclick="StartGame()">Start Game</button>
+			<button onclick="LoadSettings()">Settings</button>
+			<button onclick="LoadGlossary()">Glossary</button>
+		</div>
+		<div id="settingsContent">
+			<h1>Settings</h1>
+			<form onsubmit="return false;" method="post" name="settingsForm">
+				<p>
+					Map Name
+					<input type="text" name="mapName" value="" placeholder="Ex: Map Name"/>
+				</p>
+				<p>
+					Map Size
+					<input type="text" name="mapSize" value="" placeholder="Ex: 25"/>
+				</p>
+				<p>
+					Player Starting Posistion
+					<input type="text" name="heroPosistion" value="" placeholder="Ex: 0,0"/>
+				</p>
+				<p>
+					Energy
+					<input type="text" name="energy" value="" placeholder="Ex: 100"/>
+				</p>
+				<p>
+					Money
+					<input type="text" name="money" value="" placeholder="Ex: 10"/>
+				</p>
+				<p>
+					Inventory<br />
+					<textarea type="text" name="inventory" rows="4" cols="50" value="" placeholder="Ex: [&#147;jackhammer&#148;, &#147;axe&#148;]"></textarea>
+				</p>
+				<p>
+					Tiles<br />
+					<textarea type="text" rows="4" cols="50" name="tiles" value="" placeholder="Ex: [[0,0,0,1,&#147;None&#148;],[0,1,1,2,&#147;Axe&#148;],...]"></textarea>
+				</p>
+				<div class="randomSection">
+					<input type="checkbox" name="randomJewel">Random Jewel<br />
+					<input type="checkbox" name="randomTiles">Random Unspecified tiles<br />
+					<input type="checkbox" name="randomStart">Random Start Location<br />
+				</div>
+				<input type="submit" name="submit" onclick="validate()">
+			</form>
+			<button onclick="SettingsBack()">Back</button>
+		</div>
+		<div id="glossaryContent">
+			<h1>Glossary</h1>
+			<div>
+				<p>
+					Use the Arrow keys to move and find the Royal Diamonds.<br />
+					Each move will spend 1 Energy.<br />
+					If you use all your energy you lose!
+				</p>
+			</div>
+			<div class="glossaryCell">
+				<p>The Hero</p>
+				<img src="../Assets/Player.png" height="32px" width="32px"/>
+			</div>
+			<h2>Items</h2>
+			<div class="glossaryCell">
+				<p>
+					The Royal Diamonds<br />
+					Gather this to win!
+				</p>
+				<img src="../Assets/Jewel.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Powerbar<br />
+					Buy this for 1 wiffle<br />and get 20 Energy!
+				</p>
+				<img src="../Assets/Powerbar.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Binoculars<br />
+					Buy this for 50 wiffles<br />to increase your vision.
+				</p>
+				<img src="../Assets/Binoculars.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Shears<br />
+					Buy this for 35 whiffles to<br />remove blackberry bushes for 2 energy points.
+				</p>
+				<img src="../Assets/Shears.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Machete<br />
+					Buy this for 25 whiffles to<br />remove blackberry bushes for 2 energy points.
+				</p>
+				<img src="../Assets/Machete.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Jackhammer<br />
+					Buy this for 100 whiffles to<br />remove a boulder for 4 energy points.
+				</p>
+				<img src="../Assets/Jackhammer.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Sledge<br />
+					Buy this for 25 whiffles to<br />remove a boulder for 12 energy points.
+				</p>
+				<img src="../Assets/Sledgehammer.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Chisel<br />
+					Buy this for 5 whiffles to<br />remove a boulder for 15 energy points.
+				</p>
+				<img src="../Assets/Chisel.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Chainsaw<br />
+					Buy this for 60 whiffles to<br />remove trees for 2 energy points.
+				</p>
+				<img src="../Assets/Chainsaw.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Axe<br />
+					Buy this for 30 whiffles to<br />remove trees for 6 energy points.
+				</p>
+				<img src="../Assets/Axe.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Hatchet<br />
+					Buy this for 15 whiffles to<br />remove trees for 8 energy points.
+				</p>
+				<img src="../Assets/Hatchet.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Treasure Chest<br />
+					Beware! Opening a Treasure Chest<br />will either contain 100 whiffles or<br />
+					it will explode and you will lose 100 whiffles!
+				</p>
+				<img src="../Assets/Chest.png" height="32px" width="32px"/>
+			</div>
+			<h2>Terrain</h2>
+			<div class="glossaryCell">
+				<p>Meadow</p>
+				<img src="../Assets/Meadow.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>Forest</p>
+				<img src="../Assets/Forest.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Swamp<br />
+					Will cost you 2 energy when moving into this.
+				</p>
+				<img src="../Assets/Swamp.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Bog<br />
+					Will cost you 2 energy when moving into this.
+				</p>
+				<img src="../Assets/Bog.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Water<br />
+					You are unable to travel on water and will lose 1 energy if you try!
+				</p>
+				<img src="../Assets/Water.png" height="32px" width="32px"/>
+			</div>
+			<h2>Obstacles</h2>
+			<div class="glossaryCell">
+				<p>
+					Boulder<br />
+					You will lose an additional 16 energy when removing this.
+				</p>
+				<img src="../Assets/Boulder.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Blackberry Bush<br />
+					You will lose an additional 4 energy when removing this.
+				</p>
+				<img src="../Assets/Bush.png" height="32px" width="32px"/>
+			</div>
+			<div class="glossaryCell">
+				<p>
+					Trees<br />
+					You will lose an additional 10 energy when removing this.
+				</p>
+				<img src="../Assets/Trees.png" height="32px" width="32px"/>
+			</div>
+			<br />
+			<button onclick="GlossaryBack()">Back</button>
+		</div>
+	</div>
+</body>
+</html>
