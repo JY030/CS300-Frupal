@@ -1,6 +1,0 @@
-I have finished the array checking for visibility
-I have yet to finish a visual display for the array
-The array output shows up on the web console
-
-MapVisbility requires player location x,y, as well as the map size to run properly. I hard coded in the constants for now. 
-The program right now marks records what the player has seen using a 2d array of cell objects.
