@@ -11,6 +11,7 @@ window.onload = function() {
 function StartGame() {
 	var audio = new Audio('../Assets/Sounds/Alert.wav');
 	audio.play();
+	audio.volume = 0.01;
 	setTimeout(function() {
 			location.href = "Index.html";
 		}, 600);
@@ -19,6 +20,7 @@ function StartGame() {
 function validate() {
 	var audio = new Audio('../Assets/Sounds/Alert.wav');
 	audio.play();
+	audio.volume = 0.01;
 	
 	mapName = document.getElementsByName("mapName")[0].value;
 	mapSize = document.getElementsByName("mapSize")[0].value;
@@ -40,6 +42,7 @@ function validate() {
 function LoadSettings() {
 	var audio = new Audio('../Assets/Sounds/Alert.wav');
 	audio.play();
+	audio.volume = 0.01;
 	
 	document.getElementById("startContent").classList = "doNotDisplay";
 		
@@ -61,6 +64,7 @@ function LoadSettings() {
 function SettingsBack() {
 	var audio = new Audio('../Assets/Sounds/Alert.wav');
 	audio.play();
+	audio.volume = 0.01;
 	
 	document.getElementById("settingsContent").classList = "doNotDisplay";
 	document.getElementById("startContent").classList = "display";
@@ -69,6 +73,7 @@ function SettingsBack() {
 function LoadGlossary() {
 	var audio = new Audio('../Assets/Sounds/Alert.wav');
 	audio.play();
+	audio.volume = 0.01;
 	
 	document.getElementById("startContent").classList = "doNotDisplay";
 	document.getElementById("glossaryContent").classList = "display";
@@ -77,6 +82,7 @@ function LoadGlossary() {
 function GlossaryBack() {
 	var audio = new Audio('../Assets/Sounds/Alert.wav');
 	audio.play();
+	audio.volume = 0.01;
 	
 	document.getElementById("glossaryContent").classList = "doNotDisplay";
 	document.getElementById("startContent").classList = "display";

@@ -68,6 +68,7 @@ function getKeyAndMove(input) {
 	if (energyBar.value <= 0) {
 		var audio = new Audio('../Assets/Sounds/lose.wav');
 		audio.play();
+		audio.volume = 0.05;
 		GenericCustomAlert("red", 'You ran out of energy!', function() {window.location.reload()});
 		return;
 	}

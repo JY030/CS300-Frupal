@@ -136,10 +136,12 @@ function checkEnergy(futureX,futureY){
 		p.innerHTML = energyBar.value;
 		var audio = new Audio('../Assets/Sounds/cantMove.wav');
 		audio.play();
+		audio.volume = 0.05;
 		NoActionCustomAlert("blue", "You don't have enough energy to move there!<br />Lose 1 energy.");
 		if(energyBar.value <= 0){
 			var audio = new Audio('../Assets/Sounds/lose.wav');
 			audio.play();
+			audio.volume = 0.01;
 			GenericCustomAlert("red", 'You ran out of energy by running into a wall!', function() {window.location.reload()});
 			return false;
 		}

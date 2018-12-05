@@ -17,6 +17,7 @@ function checkChest(x, y) {
 	
 	var audio = new Audio('../Assets/Sounds/Alert.wav');
 	audio.play();
+	audio.volume = 0.01;
 	DecisionCustomAlert("purple", "Open the chest?", function(answer) {
 		if (answer == true) {
 			ChestType = chestContents[tileObject];
@@ -25,6 +26,7 @@ function checkChest(x, y) {
 				whiffles.innerHTML = "Whiffles: "+money;
 				var audio = new Audio('../Assets/Sounds/coins.wav');
 				audio.play();
+				audio.volume = 0.05;
 				NoActionCustomAlert("green", "You opened the chest! You got 100 Whiffles!");
 			
 			}
@@ -33,6 +35,7 @@ function checkChest(x, y) {
 				whiffles.innerHTML = "Whiffles: "+money;
 				var audio = new Audio('../Assets/Sounds/badNoise.wav');
 				audio.play();
+				audio.volume = 0.05;
 				NoActionCustomAlert("red", "You opened the chest! Lost all of your whiffles!");
 			}
 			removeItemFromMap(x, y);

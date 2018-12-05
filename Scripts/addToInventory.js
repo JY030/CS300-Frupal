@@ -70,6 +70,7 @@ function checkForPurchase(x, y) {
 	if (tileObject == "binoculars" && binocularcheck == 1) {
 		var audio = new Audio('../Assets/Sounds/Alert.wav');
 		audio.play();
+		audio.volume = 0.01;
 		NoActionCustomAlert("purple", "You've already got some sweet binocs, you don't need another pair.");
 		return false;
 	}
@@ -77,12 +78,14 @@ function checkForPurchase(x, y) {
 	if (money < usefulItems[tileObject]) {
 		var audio = new Audio('../Assets/Sounds/Alert.wav');
 		audio.play();
+		audio.volume = 0.01;
 		NoActionCustomAlert("purple", "Can't buy the "+tileObject+", you are too damn poor. Get some more whiffles and come back!");
 		return false;
 	}
 
 	var audio = new Audio('../Assets/Sounds/Alert.wav');
 	audio.play();
+	audio.volume = 0.01;
 	DecisionCustomAlert("purple", "Purchase "+tileObject+" for "+usefulItems[tileObject]+" whiffles?", function(answer) {
 		if (answer == true) {
 			money -= usefulItems[tileObject];
@@ -95,6 +98,7 @@ function checkForPurchase(x, y) {
 				whiffles.innerHTML = "Whiffles: "+money;
 				var audio = new Audio('../Assets/Sounds/powerbar.wav');
 				audio.play();
+				audio.volume = 0.01;
 				return true;
 			}
 
@@ -107,6 +111,7 @@ function checkForPurchase(x, y) {
 			
 			var audio = new Audio('../Assets/Sounds/ItemPickUp.wav');
 			audio.play();
+			audio.volume = 0.01;
 			return false;
 		}
 	});
