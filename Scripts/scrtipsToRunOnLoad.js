@@ -109,3 +109,7 @@ window.onload = function() {
 	
 	loadCharacter();
 }
+
+function Back() {
+	location.href = "Menu.html";
+}
