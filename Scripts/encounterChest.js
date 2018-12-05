@@ -15,18 +15,27 @@ function checkChest(x, y) {
 	if (!chestContents.hasOwnProperty(tileObject))
 		return false;
 	
+	var audio = new Audio('../Assets/Sounds/Alert.wav');
+	audio.play();
+	audio.volume = 0.01;
 	DecisionCustomAlert("purple", "Open the chest?", function(answer) {
 		if (answer == true) {
 			ChestType = chestContents[tileObject];
 			if (ChestType == 1) {
 				money += 100;
 				whiffles.innerHTML = "Whiffles: "+money;
+				var audio = new Audio('../Assets/Sounds/coins.wav');
+				audio.play();
+				audio.volume = 0.05;
 				NoActionCustomAlert("green", "You opened the chest! You got 100 Whiffles!");
 			
 			}
 			if (ChestType == 2) {
 				money = 0;
 				whiffles.innerHTML = "Whiffles: "+money;
+				var audio = new Audio('../Assets/Sounds/badNoise.wav');
+				audio.play();
+				audio.volume = 0.05;
 				NoActionCustomAlert("red", "You opened the chest! Lost all of your whiffles!");
 			}
 			removeItemFromMap(x, y);

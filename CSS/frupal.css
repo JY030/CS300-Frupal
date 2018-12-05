@@ -50,7 +50,7 @@ body {
 	text-align: center;
 }
 
-#title {
+.title {
 	color: blue;
 	margin: 0 0 35px 0;
 }

@@ -66,6 +66,9 @@ function moveit(timestamp, el, dist, duration, pxs, dir) {
 // switch statement based on key pressed => which direction to move
 function getKeyAndMove(input) {
 	if (energyBar.value <= 0) {
+		var audio = new Audio('../Assets/Sounds/lose.wav');
+		audio.play();
+		audio.volume = 0.05;
 		GenericCustomAlert("red", 'You ran out of energy!', function() {window.location.reload()});
 		return;
 	}

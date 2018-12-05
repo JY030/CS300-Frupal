@@ -48,6 +48,9 @@ function jewel_spawn(x,y){
 
 function jewel_found(x,y,jx,jy){
   if (x==jx && y==jy){
+		var audio = new Audio('../Assets/Sounds/Win.mp3');
+		audio.play();
+		audio.volume = 0.05;
 		GenericCustomAlert("green", 'You have found the jewel and won the game!', function() {window.location.reload()});
 		return true;
    }

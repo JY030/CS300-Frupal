@@ -9,10 +9,19 @@ window.onload = function() {
 }
 
 function StartGame() {
-	location.href = "Index.html";
+	var audio = new Audio('../Assets/Sounds/Alert.wav');
+	audio.play();
+	audio.volume = 0.01;
+	setTimeout(function() {
+			location.href = "Index.html";
+		}, 600);
 }
 
 function validate() {
+	var audio = new Audio('../Assets/Sounds/Alert.wav');
+	audio.play();
+	audio.volume = 0.01;
+	
 	mapName = document.getElementsByName("mapName")[0].value;
 	mapSize = document.getElementsByName("mapSize")[0].value;
 	heroPosition = JSON.parse(document.getElementsByName("heroPosistion")[0].value);
@@ -31,6 +40,10 @@ function validate() {
 }
 
 function LoadSettings() {
+	var audio = new Audio('../Assets/Sounds/Alert.wav');
+	audio.play();
+	audio.volume = 0.01;
+	
 	document.getElementById("startContent").classList = "doNotDisplay";
 		
 	document.getElementsByName("mapName")[0].value = mapName;
@@ -49,16 +62,28 @@ function LoadSettings() {
 }
 
 function SettingsBack() {
+	var audio = new Audio('../Assets/Sounds/Alert.wav');
+	audio.play();
+	audio.volume = 0.01;
+	
 	document.getElementById("settingsContent").classList = "doNotDisplay";
 	document.getElementById("startContent").classList = "display";
 }
 
 function LoadGlossary() {
+	var audio = new Audio('../Assets/Sounds/Alert.wav');
+	audio.play();
+	audio.volume = 0.01;
+	
 	document.getElementById("startContent").classList = "doNotDisplay";
 	document.getElementById("glossaryContent").classList = "display";
 }
 
 function GlossaryBack() {
+	var audio = new Audio('../Assets/Sounds/Alert.wav');
+	audio.play();
+	audio.volume = 0.01;
+	
 	document.getElementById("glossaryContent").classList = "doNotDisplay";
 	document.getElementById("startContent").classList = "display";
 }
