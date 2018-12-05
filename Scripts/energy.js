@@ -134,10 +134,14 @@ function checkEnergy(futureX,futureY){
 	if(cost > energyBar.value){
 		energyBar.value -= 1;
 		p.innerHTML = energyBar.value;
+		var audio = new Audio('../Assets/Sounds/cantMove.wav');
+		audio.play();
 		NoActionCustomAlert("blue", "You don't have enough energy to move there!<br />Lose 1 energy.");
 		if(energyBar.value <= 0){
-        GenericCustomAlert("red", 'You ran out of energy by running into a wall!', function() {window.location.reload()});
-        return false;
+			var audio = new Audio('../Assets/Sounds/lose.wav');
+			audio.play();
+			GenericCustomAlert("red", 'You ran out of energy by running into a wall!', function() {window.location.reload()});
+			return false;
 		}
 		
 		return false;
